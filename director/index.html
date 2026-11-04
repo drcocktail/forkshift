@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f7f3ea"><title>Disaster Director · Two Futures Arcade</title>
+<style>
+
+:root{--ink:#20271f;--muted:#778074;--paper:#f7f3ea;--card:#fffdf8;--line:#e8e3d7;--green:#2d775b;--lime:#d9f18a;--orange:#f08f59;--red:#d45d56;--blue:#849ed1;--shadow:0 16px 45px #3136240d}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px system-ui,sans-serif;min-height:100vh}button{font:inherit;color:inherit;cursor:pointer}.wrap{max-width:1240px;margin:auto;padding:22px 28px 32px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}.brand{display:flex;align-items:center;gap:12px}.mark{width:42px;height:42px;border-radius:14px;background:var(--ink);display:grid;place-items:center;color:var(--lime);font-size:22px}.brand strong{font:700 16px ui-rounded,system-ui,sans-serif;letter-spacing:-.4px}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-top:2px}.topright{display:flex;align-items:center;gap:12px}.tag{border:1px solid var(--line);border-radius:99px;padding:8px 12px;font:11px ui-monospace,monospace;color:#626c5e;background:#ffffff85}.tag b{color:var(--green)}.iconbtn{width:36px;height:36px;border:1px solid var(--line);border-radius:50%;background:transparent;font-weight:700}.hero{display:flex;justify-content:space-between;align-items:end;margin:0 2px 18px}.eyebrow{font:11px ui-monospace,monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:9px}.hero h1{font:700 clamp(28px,4vw,40px)/1.05 ui-rounded,system-ui,sans-serif;letter-spacing:-1.8px;margin:0}.hero p{margin:8px 0 0;color:var(--muted);font-size:14px}.seed{font:11px ui-monospace,monospace;color:var(--muted);text-align:right}.seed strong{display:block;color:var(--ink);font-size:12px;margin-bottom:4px}.stage{display:grid;grid-template-columns:1fr 280px;gap:15px}.main{min-width:0}.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}.arena{padding:16px 18px 18px;position:relative;overflow:hidden}.arena:before{content:'';position:absolute;width:240px;height:150px;border-radius:50%;background:#dcedbb55;top:-100px;left:42%}.arenahead{display:flex;justify-content:space-between;align-items:center;position:relative}.lane-label{display:flex;align-items:center;gap:8px;font:11px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.1em;color:#67705f}.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px #2d775b18}.now{padding:7px 10px;border-radius:8px;background:#f1f4e9;font:11px ui-monospace,monospace;color:var(--green)}.sky{height:196px;margin:10px 0 12px;border-radius:15px;position:relative;background:linear-gradient(180deg,#dff0ee 0%,#eff6e7 72%,#dbe8bf 72%,#dbe8bf 100%);overflow:hidden}.sun{position:absolute;width:46px;height:46px;border-radius:50%;background:#ffdf85;right:14%;top:19%;box-shadow:0 0 0 11px #ffdf8540}.cloud{position:absolute;border-radius:40px;background:#ffffffad;width:72px;height:20px;top:33%;left:13%;animation:drift 18s linear infinite}.cloud:before,.cloud:after{content:'';position:absolute;background:inherit;border-radius:50%;width:25px;height:25px;left:12px;top:-10px}.cloud:after{left:33px;top:-6px;width:19px;height:19px}@keyframes drift{to{transform:translateX(270px)}}.hill{position:absolute;bottom:28px;border-radius:50% 50% 0 0;background:#9ebc7b;width:55%;height:55px;left:-5%}.hill.two{left:49%;background:#aec98a;height:75px;width:58%}.pond{position:absolute;bottom:27px;left:42%;width:75px;height:15px;border-radius:50%;background:#90bdc2}.home{position:absolute;bottom:27px;right:12%;width:54px;height:38px;background:#f5a977;border-radius:4px 4px 0 0}.home:before{content:'';position:absolute;top:-22px;left:-7px;border-left:34px solid transparent;border-right:34px solid transparent;border-bottom:25px solid #c86f5c}.home:after{content:'';position:absolute;bottom:0;left:21px;width:12px;height:22px;background:#8e6952}.character{position:absolute;bottom:23px;width:68px;height:82px;filter:drop-shadow(0 5px 3px #52613b22);animation:bob 2.3s ease-in-out infinite}.character.boba{left:23%;animation-delay:-.9s}.character.pip{left:12%;transform:scale(.88);animation-delay:-.3s}@keyframes bob{50%{translate:0 -5px}}.event-bubble{position:absolute;top:12px;left:50%;transform:translateX(-50%);background:#fffdf8e8;border:1px solid #ffffff;border-radius:11px;padding:7px 11px;font-size:11px;white-space:nowrap;box-shadow:0 5px 15px #303a2614}.event-bubble:after{content:'';position:absolute;border:6px solid transparent;border-top-color:#fffdf8e8;bottom:-12px;left:calc(50% - 6px)}.queue{display:flex;gap:8px;align-items:center;overflow:auto;padding:2px 1px 4px}.queue-title{font:10px ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#869080;white-space:nowrap;margin-right:2px}.parcel{border-radius:9px;background:#f5ead6;padding:7px 9px;font-size:11px;white-space:nowrap;color:#705a39;border:1px solid #eee0c7}.parcel.late{background:#fae7e1;color:#9d5147;border-color:#f2d2c8}.parcel.safe{background:#e8f3dd;color:#50704b;border-color:#d4e5c8}.timerow{display:flex;align-items:center;gap:12px;margin:16px 2px 12px}.timerow span{font:10px ui-monospace,monospace;color:var(--muted);white-space:nowrap}.ticks{display:flex;gap:5px;flex:1}.tick{height:5px;border-radius:9px;background:#e3e2d8;flex:1}.tick.done{background:#87a47e}.tick.current{background:var(--orange);box-shadow:0 0 0 3px #f08f5925}.tick.future{background:#e9e7df}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.action{min-height:95px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;transition:.18s;position:relative}.action:hover{transform:translateY(-3px);border-color:#96ad88;box-shadow:0 8px 20px #33442212}.action:disabled{opacity:.45;cursor:not-allowed;transform:none}.action .emoji{font-size:20px;display:block;margin-bottom:8px}.action strong{display:block;font:700 13px ui-rounded,system-ui,sans-serif;margin-bottom:3px}.action small{font-size:10px;line-height:1.3;color:var(--muted);display:block}.key{position:absolute;top:9px;right:9px;border:1px solid var(--line);border-radius:5px;padding:2px 5px;font:9px ui-monospace,monospace;color:#97998d}.aside{display:flex;flex-direction:column;gap:12px}.status{padding:16px}.statushead{display:flex;justify-content:space-between;align-items:center;font:12px ui-rounded,system-ui,sans-serif}.livepill{background:#e6f2de;color:#48734c;border-radius:99px;padding:5px 8px;font:9px ui-monospace,monospace;text-transform:uppercase}.meter{margin-top:15px}.meterline{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;margin-bottom:6px}.meterline b{color:var(--ink);font:11px ui-monospace,monospace}.bar{height:7px;background:#ecebe2;border-radius:99px;overflow:hidden}.bar i{height:100%;display:block;width:70%;background:var(--green);border-radius:99px;transition:width .4s}.bar.orange i{background:#eeaa59}.mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}.stat{padding:10px;background:#f8f6ef;border-radius:11px}.stat b{display:block;font:700 20px ui-rounded,system-ui,sans-serif;letter-spacing:-1px}.stat span{font:9px ui-monospace,monospace;color:var(--muted);text-transform:uppercase}.rewind{padding:16px;background:#f0ecf8;border:1px solid #e5def2}.rewind h3{font:700 13px ui-rounded,system-ui,sans-serif;margin:0 0 5px}.rewind p{margin:0 0 13px;color:#79708a;font-size:11px;line-height:1.4}.forkbtn{width:100%;border:0;border-radius:10px;background:#665388;color:white;padding:11px;font:700 12px ui-rounded,system-ui,sans-serif;transition:.2s}.forkbtn:hover{background:#574375;transform:translateY(-1px)}.forkbtn:disabled{background:#aaa3b4;cursor:default}.compare{display:none;padding:14px 16px;border-color:#dfd8ef}.compare.show{display:block}.comphead{display:flex;justify-content:space-between;font:12px ui-rounded,system-ui,sans-serif;margin-bottom:10px}.lanes{display:grid;grid-template-columns:1fr 1fr;gap:8px}.lane{background:#f7f5fb;border-radius:10px;padding:9px;font-size:10px;color:#6f687a}.lane b{display:block;color:#44395c;font:11px ui-monospace,monospace;margin-bottom:4px}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#20271f;color:#fff;padding:11px 16px;border-radius:99px;font-size:12px;transition:.25s;z-index:9}.toast.show{opacity:1;transform:translate(-50%,0)}.modal{position:fixed;inset:0;background:#17201688;display:none;place-items:center;padding:20px;z-index:10}.modal.show{display:grid}.sheet{max-width:460px;width:100%;background:var(--card);border-radius:22px;padding:24px;box-shadow:0 24px 80px #10170f55}.sheet h2{font:700 23px ui-rounded,system-ui,sans-serif;margin:0 0 8px}.sheet p{color:var(--muted);line-height:1.55;font-size:13px}.sheet button{border:0;background:var(--ink);color:#fff;border-radius:10px;padding:11px 15px;margin-top:8px}.file-label{display:inline-block;margin-top:10px;color:var(--green);font-weight:700;cursor:pointer}.file-label input{display:none}.footer{display:flex;justify-content:space-between;color:#93978a;font:10px ui-monospace,monospace;margin-top:14px;padding:0 3px}.endoverlay{position:absolute;inset:0;background:#fbf9f0eb;z-index:3;display:none;place-items:center;text-align:center;padding:15px}.endoverlay.show{display:grid}.endoverlay h2{font:700 23px ui-rounded,system-ui,sans-serif;margin:4px}.endoverlay p{font-size:12px;color:var(--muted);margin:4px}.endoverlay button{border:0;background:var(--green);color:white;padding:9px 14px;border-radius:9px;margin-top:8px}
+@media(max-width:900px){.stage{grid-template-columns:1fr}.aside{display:grid;grid-template-columns:1fr 1fr}.compare{grid-column:1/-1}}@media(max-width:560px){.wrap{padding:15px 13px 22px}.top{margin-bottom:19px}.topright .tag{display:none}.hero{align-items:start;gap:12px}.seed{max-width:110px;font-size:9px}.hero h1{font-size:30px}.hero p{font-size:12px;max-width:250px}.arena{padding:13px}.sky{height:177px}.cards{grid-template-columns:repeat(2,1fr)}.action{min-height:83px}.aside{grid-template-columns:1fr 1fr;gap:8px}.status,.rewind{padding:12px}.rewind h3{font-size:12px}.rewind p{font-size:10px}.mini-stats{gap:6px}.stat{padding:8px}.footer span:last-child{display:none}}
+
+.worker-slots{display:flex;justify-content:space-between;gap:6px;padding:9px 14px;background:#f4f5e9;font:700 11px ui-monospace,monospace}
+.worker-slots .offline{color:#a73838}.character.offline{filter:grayscale(.8);opacity:.55}
+.forecast{display:flex;gap:6px;flex-wrap:wrap;padding:9px 14px;background:#fffdf5;border-top:1px solid var(--line);font:11px ui-monospace,monospace}
+.forecast span{background:#f2eedf;border-radius:6px;padding:4px 7px}
+.fork-point{display:block;margin:0 0 7px;padding:5px 8px;border-radius:7px;border:1px solid #d9cee9;width:100%;background:#fff;color:var(--ink)}
+.route-strip{display:flex;gap:2px;margin-top:6px}.route-strip i{flex:1;height:6px;border-radius:3px;background:#dfdbe6}.route-strip .ok{background:#73b595}.route-strip .miss{background:#edaf64}.route-strip .leak{background:#db797a}
+body{font-family:ui-rounded,system-ui,sans-serif}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition:none!important}}
+</style></head>
+<body><div class="wrap">
+<header class="top"><div class="brand"><div class="mark">✳</div><div><strong>Two Futures Arcade</strong><small>DISASTER DIRECTOR</small></div></div><div class="topright"><div class="tag">SCENARIO <b id="scenarioTag">LOADING</b></div><button class="iconbtn" id="help" aria-label="How to play">?</button></div></header>
+<section class="hero"><div><div class="eyebrow">✦ tiny town, big choices</div><h1 id="title">Disaster Director</h1><p id="brief">Direct the deliveries. Keep Pip and Boba safe.</p></div><div class="seed"><strong id="origin">TWO FUTURES · 12 TURNS</strong>same storm, different choices</div></section>
+<div id="authorBox" class="panel" style="display:none;padding:12px 15px;margin:0 0 14px;align-items:center;gap:9px"><span style="font-size:17px">✎</span><input id="authorBrief" aria-label="Disaster pitch" maxlength="600" placeholder="Pitch a tiny-town disaster…" style="flex:1;min-width:0;border:0;background:transparent;outline:none;font:13px system-ui,sans-serif;color:var(--ink)"><button id="authorBtn" style="border:0;background:var(--green);color:white;border-radius:9px;padding:9px 12px;font:700 11px system-ui,sans-serif">Dream up a storm →</button></div>
+<div class="stage"><main class="main"><section class="panel arena"><div class="arenahead"><div class="lane-label"><i class="dot"></i> <span id="laneName">TIMELINE A · YOUR RUN</span></div><div class="now" id="turnLabel">TURN 1 / 12</div></div><div class="sky" id="sky"><div class="sun"></div><div class="cloud"></div><div class="hill"></div><div class="hill two"></div><div class="pond"></div><div class="home"></div><div class="event-bubble" id="event">Waiting for forecast...</div>
+<svg class="character pip" viewBox="0 0 80 95" role="img" aria-label="Pip the rabbit"><ellipse cx="29" cy="23" rx="9" ry="24" fill="#f2c5ad" transform="rotate(-9 29 23)"/><ellipse cx="51" cy="22" rx="9" ry="23" fill="#f2c5ad" transform="rotate(8 51 22)"/><ellipse cx="29" cy="24" rx="4" ry="15" fill="#ec9f9f"/><ellipse cx="51" cy="23" rx="4" ry="14" fill="#ec9f9f"/><ellipse cx="40" cy="55" rx="28" ry="30" fill="#fff8ed"/><ellipse cx="32" cy="51" rx="2.5" ry="3" fill="#383d35"/><ellipse cx="48" cy="51" rx="2.5" ry="3" fill="#383d35"/><path d="M37 59q3 4 6 0" fill="none" stroke="#b87675" stroke-width="2" stroke-linecap="round"/><circle cx="26" cy="59" r="4" fill="#f4b9ad"/><circle cx="54" cy="59" r="4" fill="#f4b9ad"/><path d="M24 76q16 14 32 0" fill="#e2a274"/><circle cx="60" cy="78" r="8" fill="#fff8ed"/></svg>
+<svg class="character boba" viewBox="0 0 80 95" role="img" aria-label="Boba the bear"><circle cx="20" cy="35" r="13" fill="#9c7654"/><circle cx="60" cy="35" r="13" fill="#9c7654"/><circle cx="20" cy="35" r="6" fill="#d5a886"/><circle cx="60" cy="35" r="6" fill="#d5a886"/><ellipse cx="40" cy="58" rx="29" ry="28" fill="#b98d64"/><ellipse cx="40" cy="62" rx="16" ry="12" fill="#f1d6b3"/><circle cx="31" cy="51" r="2.5" fill="#352f29"/><circle cx="49" cy="51" r="2.5" fill="#352f29"/><ellipse cx="40" cy="59" rx="4" ry="3" fill="#514035"/><path d="M36 65q4 4 8 0" fill="none" stroke="#765748" stroke-width="2" stroke-linecap="round"/><path d="M24 78q16 11 32 0" fill="#82a9a0"/></svg>
+<div class="endoverlay" id="end"><div><div style="font-size:30px">🌤️</div><h2 id="endTitle">Shift complete!</h2><p id="endText"></p><button id="restart">Run it again</button></div></div></div><div class="worker-slots"><span id="pipSlots"></span><span id="bobaSlots"></span></div><div class="forecast" id="forecast"></div><div class="queue" id="queue"><span class="queue-title">LIVE QUEUE</span><span class="parcel">Loading parcels…</span></div></section>
+<div class="timerow"><span>SHIFT</span><div class="ticks" id="ticks"></div><span id="timeLeft">12 SECONDS</span></div><div class="cards" id="actions"></div></main>
+<aside class="aside"><section class="panel status"><div class="statushead">Town pulse <span class="livepill" id="statusPill">ON SHIFT</span></div><div class="meter"><div class="meterline"><span>Delivery rhythm</span><b id="deliveryPct">—</b></div><div class="bar"><i id="deliveryBar"></i></div></div><div class="meter"><div class="meterline"><span>Storm pressure</span><b id="stormPct">—</b></div><div class="bar orange"><i id="stormBar"></i></div></div><div class="mini-stats"><div class="stat"><b id="delivered">0</b><span>On time</span></div><div class="stat"><b id="leaks">0</b><span>Private leaks</span></div><div class="stat"><b id="missed">0</b><span>Missed</span></div><div class="stat"><b id="charge">3</b><span>Spark charges</span></div></div></section>
+<section class="panel rewind"><h3>✦ Try the other future</h3><p>Pick a turn and replay this exact storm. Your previous timeline stays as a ghost.</p><select class="fork-point" id="forkPoint" aria-label="Turn to replay"></select><button class="forkbtn" id="fork">↶ &nbsp;Rewind & fork future</button><button class="forkbtn" id="autopilot" style="margin-top:7px;background:#fdfbf4;color:#625636;border:1px solid #e8e3d7">✦ &nbsp;Fill ghost with Autopilot</button></section>
+<section class="panel compare" id="compare"><div class="comphead"><span>Two futures, one storm</span><span>↔</span></div><div class="lanes"><div class="lane"><b id="baseLabel">GHOST BASELINE</b><span id="resultA">—</span><div class="route-strip" id="stripA"></div></div><div class="lane"><b id="liveLabel">YOUR RUN</b><span id="resultB">—</span><div class="route-strip" id="stripB"></div></div></div></section></aside></div>
+<div class="footer"><span><a href="../">Forkshift ↗</a> · 1–4 choose · R rewind</span><span id="modelMeta">SCENARIO DATA · LOCAL</span></div></div><div class="toast" id="toast"></div>
+<div class="modal" id="modal"><div class="sheet"><div class="eyebrow">✦ quick briefing</div><h2>How to direct a disaster</h2><p>Each turn is one move, with no timer while you decide. Pick one action to manage the town’s delivery queue, protect private parcels, or help the crew. The storm’s next event is the same in both futures.</p><p>When you’re ready, hit <b>Rewind & fork future</b> to play the same turns again. Compare the two runs to see how your choices changed the outcome.</p><p><b>Keys:</b> 1–4 choose an action · R rewinds to replay. You can also load a scenario JSON from your device.</p><label class="file-label">＋ Load a scenario JSON <input id="file" type="file" accept="application/json,.json"></label><br><button id="closeHelp">Let’s go →</button></div></div>
+<script type="module">
+import {start,step,replay,ACTIONS} from './engine.mjs';
+const $=s=>document.querySelector(s);let level,state,ghost=null,lane='A',ticks=12,locked=false;
+const icons={auto:'⚙️',rescue:'🛟',guard:'🛡️',boost:'⚡'};
+const fixture={level:{title:'Mossbell’s Big Splash',brief:'A surprise cloudburst is headed for the hill. Keep the parcels moving and our pals dry.',turns:[{voice:2,private:1,bulk:1,pip:2,boba:2,event:'Clouds gather over Mossbell'},{voice:1,private:1,bulk:2,pip:2,boba:1,event:'A gust rattles the postbox'},{voice:2,private:2,bulk:1,pip:2,boba:2,event:'First drops — umbrellas up!'},{voice:1,private:1,bulk:1,pip:1,boba:1,event:'The footbridge starts to wobble'},{voice:2,private:2,bulk:2,pip:2,boba:1,event:'A puddle becomes a stream'},{voice:1,private:1,bulk:1,pip:2,boba:2,event:'Wind pushes parcels downhill'},{voice:2,private:2,bulk:1,pip:2,boba:1,event:'A private letter is exposed!'},{voice:1,private:1,bulk:2,pip:1,boba:2,event:'The bridge is nearly under water'},{voice:2,private:1,bulk:1,pip:2,boba:2,event:'The rain begins to ease'},{voice:1,private:2,bulk:2,pip:2,boba:2,event:'One last wave rolls through'},{voice:2,private:1,bulk:1,pip:2,boba:1,event:'Sunlight breaks through the clouds'},{voice:1,private:1,bulk:1,pip:2,boba:2,event:'The town is safe — shift complete'}]},metadata:{model:'fixture',provider:'local'},origin:'fixture'};
+function norm(value){
+  if(!value || typeof value!=='object') throw new Error('Invalid tape.');
+  return value.level ? value : {level:value,metadata:{model:'imported',provider:'local file'},origin:'imported'};
+}
+function load(value){
+  const tape=norm(value);
+  const initial=start(tape.level);
+  level=tape;state=initial;ticks=tape.level.turns.length;lane='A';
+  ghost={...replay(tape.level,Array(ticks).fill('auto')),autopilot:true};
+  $('#forkPoint').value='0';
+  render();
+}
+function actionList(){return Object.entries(ACTIONS).map(([id,action])=>({id,...action}));}
+function strip(selector,history){
+  $(selector).innerHTML=Array.from({length:ticks},(_,i)=>{
+    const turn=history[i];
+    const tint=!turn?'':turn.leaks?'leak':turn.missed?'miss':'ok';
+    return `<i class="${tint}" aria-hidden="true"></i>`;
+  }).join('');
+}
+function through(history,tick){
+  const rows=history.slice(0,tick);
+  const sum=key=>rows.reduce((total,row)=>total+row[key],0);
+  return `${sum('delivered')} on time · ${sum('missed')} missed · ${sum('leaks')} leaks`;
+}
+function render(){
+  const upcoming=level.level.turns[state.tick];
+  const turn=Math.min(state.tick+1,ticks);
+  const {done,delivered,missed,leaks,charge,queue}=state;
+  $('#title').textContent=level.level.title;
+  $('#brief').textContent=level.level.brief;
+  $('#scenarioTag').textContent=String(level.origin||'imported').toUpperCase();
+  $('#modelMeta').textContent=`${level.metadata?.provider||'Local file'} · ${level.metadata?.model||'Imported tape'}`;
+  $('#laneName').textContent=`TIMELINE ${lane} · YOUR RUN`;
+  $('#turnLabel').textContent=done?'SHIFT COMPLETE':`TURN ${turn} / ${ticks}`;
+  $('#timeLeft').textContent=done?'DONE':`${ticks-state.tick} TURNS LEFT`;
+  $('#event').textContent=upcoming?.event||'The shift is over.';
+  for(const [key,name] of [['pip','Pip'],['boba','Boba']]){
+    const slots=upcoming?.[key];
+    const off=slots===0;
+    $('#'+key+'Slots').textContent=slots===undefined?name:`${name} · ${off?'OFFLINE':slots+' slots'}`;
+    $('#'+key+'Slots').classList.toggle('offline',off);
+    $('.character.'+key).classList.toggle('offline',off);
+  }
+  $('#forecast').innerHTML=upcoming
+    ? `<b>Arriving this turn</b> <span>♫ ${upcoming.voice} audio</span> <span>🔒 ${upcoming.private} sealed</span> <span>▣ ${upcoming.bulk} bulk</span>`
+    : '<b>All packets resolved.</b>';
+  for(const [key,value] of Object.entries({delivered,missed,leaks,charge}))$('#'+key).textContent=value;
+  const total=delivered+missed, pct=total?Math.round(delivered/total*100):100;
+  $('#deliveryPct').textContent=`${pct}%`;$('#deliveryBar').style.width=`${pct}%`;
+  const pressure=Math.min(100,missed*13+leaks*16+queue.length*5);
+  $('#stormPct').textContent=`${pressure}%`;$('#stormBar').style.width=`${pressure}%`;
+  $('#statusPill').textContent=done?'SHIFT ENDED':'ON SHIFT';
+  $('#queue').innerHTML='<span class="queue-title">WAITING FROM EARLIER TURNS</span>'+
+    (queue.length?queue.map(p=>`<span class="parcel ${p.kind==='private'?'late':''}">${p.kind} · T−${Math.max(0,p.deadline-state.tick)}</span>`).join('')
+      :'<span class="parcel safe">✨ Queue is clear</span>');
+  $('#ticks').innerHTML=Array.from({length:ticks},(_,i)=>`<i class="tick ${i<state.tick?'done':i===state.tick&&!done?'current':'future'}"></i>`).join('');
+  $('#actions').innerHTML=actionList().map((a,i)=>{
+    const disabled=done||a.id==='boost'&&!charge;
+    return `<button class="action" data-action="${a.id}" ${disabled?'disabled':''}><span class="emoji">${icons[a.id]}</span><strong>${a.label}</strong><small>${a.description}</small><span class="key">${i+1}</span></button>`;
+  }).join('');
+  document.querySelectorAll('.action').forEach(button=>button.onclick=()=>move(button.dataset.action));
+  $('#end').classList.toggle('show',done);
+  if(done){
+    $('#endTitle').textContent=!missed&&!leaks?'A perfect little shift!':'Shift complete!';
+    $('#endText').textContent=`${delivered} on time · ${missed} missed · ${leaks} private leaks`;
+  }
+  const point=$('#forkPoint'), previous=Number(point.value);
+  point.innerHTML=Array.from({length:Math.max(1,state.tick)},(_,i)=>`<option value="${i}">Replay from turn ${i+1}</option>`).join('');
+  point.value=String(Math.min(previous,Math.max(0,state.tick-1)));
+  $('#fork').disabled=state.tick===0;
+  $('#compare').classList.toggle('show',Boolean(ghost));
+  if(ghost){
+    const compared=Math.min(ghost.tick,state.tick);
+    $('#baseLabel').textContent=ghost.autopilot?`AUTOPILOT · T${compared}`:`GHOST · T${compared}`;
+    $('#liveLabel').textContent=`YOUR RUN · T${compared}`;
+    $('#resultA').textContent=through(ghost.history,compared);
+    $('#resultB').textContent=through(state.history,compared);
+    strip('#stripA',ghost.history);
+    strip('#stripB',state.history);
+  }
+}
+function move(id){
+  if(!state||locked||state.done||(id==='boost'&&!state.charge))return;
+  locked=true;
+  try{state=step(level.level,state,id);render();}
+  finally{setTimeout(()=>locked=false,150);}
+}
+function toast(message){
+  const panel=$('#toast');
+  panel.textContent=message;
+  panel.classList.add('show');
+  setTimeout(()=>panel.classList.remove('show'),2100);
+}
+function fork(){
+  if(!state?.tick)return;
+  const tick=Number($('#forkPoint').value);
+  ghost=state;lane=lane==='A'?'B':'A';
+  state=replay(level.level,ghost.history.slice(0,tick).map(row=>row.action));
+  render();
+  toast(`Turn ${tick+1} is yours to change. The previous run is your ghost.`);
+}
+function autopilot(){
+  ghost={...replay(level.level,Array(ticks).fill('auto')),autopilot:true};
+  render();
+  toast('Autopilot ghost ready. Compare your choices on the same turns.');
+}
+document.addEventListener('keydown',event=>{
+  if(event.target?.matches?.('input, textarea, select')||$('#modal').classList.contains('show'))return;
+  if(event.key.toLowerCase()==='r'){fork();return;}
+  const action=actionList()[Number(event.key)-1];
+  if(action)move(action.id);
+});
+$('#fork').onclick=fork;
+$('#autopilot').onclick=autopilot;
+$('#restart').onclick=()=>load(level);
+$('#help').onclick=()=>$('#modal').classList.add('show');
+$('#closeHelp').onclick=()=>$('#modal').classList.remove('show');
+$('#modal').onclick=event=>{if(event.target.id==='modal')$('#modal').classList.remove('show');};
+$('#file').onchange=async event=>{
+  const file=event.target.files[0];
+  if(!file)return;
+  try{load(JSON.parse(await file.text()));$('#modal').classList.remove('show');toast('Scenario loaded.');}
+  catch{toast('That tape is invalid. Your current shift is unchanged.');}
+};
+if(['localhost','127.0.0.1'].includes(location.hostname))$('#authorBox').style.display='flex';$('#authorBtn').onclick=async()=>{const brief=$('#authorBrief').value.trim();if(!brief)return toast('Add a one-line disaster pitch first.');$('#authorBtn').disabled=true;$('#authorBtn').textContent='Dreaming…';toast('Your local model is dreaming up a storm. This may take a minute.');try{const r=await fetch('/api/director/author',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({brief})});if(!r.ok)throw new Error('author request failed');const data=await r.json();load(norm(data));toast('New storm ready!')}catch(e){console.error(e);toast('Could not author a scenario. The current tape is ready to play.')}finally{$('#authorBtn').disabled=false;$('#authorBtn').textContent='Dream up a storm →'}};try{
+  const response=await fetch('./level.json');
+  if(!response.ok)throw new Error('No tape.');
+  load(await response.json());
+}catch{load(fixture);toast('Playing the bundled fixture tape.');}
+</script></body></html>

@@ -3,12 +3,17 @@
 - [Public source](https://github.com/drcocktail/forkshift)
 - [Interactive demo and walkthrough](https://drcocktail.github.io/forkshift/)
 - [Direct three-minute video](https://drcocktail.github.io/forkshift/Forkshift-Rescue-Arcade.mp4)
+- [Disaster Director game](https://drcocktail.github.io/forkshift/director/)
 - [Rescue Arcade](https://drcocktail.github.io/forkshift/Forkshift-Arcade.html)
 - [Redshift Branch Garden](https://drcocktail.github.io/forkshift/Forkshift-Branch-Garden.html)
 
 The hosted demos replay recorded episodes. Run the Python server to start new local episodes. A fresh Redshift trial requires access to a compatible Redshift v2 checkout. The public release includes the Forkshift adapter, public receipt data and verification UI.
 
-## What the demo establishes
+## Disaster Director
+
+The browser game plays a saved model-authored level without a key. Rewind from any completed turn, compare your run with its ghost, or load an imported tape. The local cockpit can author a new storm from a short pitch. [Game guide and evidence](DIRECTOR.md)
+
+## What the worker drill establishes
 
 Forkshift runs a process-level inference incident with two private Ollama servers and synthetic golden requests. A recovery can pass the task check and fail the separate routing safety check. The green-light trap kills the backup worker after its canary and route switch. The runtime rolls back on the failed request, and the recorded Llama agent chooses to repair the primary.
 

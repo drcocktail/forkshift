@@ -19,6 +19,7 @@ REDSHIFT_REPORT = ROOT / "redshift_evidence" / "live-branch-trial.json"
 if not REDSHIFT_REPORT.is_file():
     REDSHIFT_REPORT = REDSHIFT_REPORT.with_name("branch-trial.json")
 TOTAL_CARDS = 10
+SCENE_OFFSET = 0
 W, H = 1280, 720
 BG = (26, 22, 38)
 PANEL = (47, 39, 59)
@@ -125,7 +126,7 @@ def base(section, source, index, total):
     d.line((49, 668, 1230, 668), fill=EDGE, width=1)
     d.text((51, 684), section.upper(), font=font(11, True), fill=MINT)
     d.text((510, 684), source, font=font(10, True), fill=MUTED)
-    d.text((1155, 684), f"{index:02d}/{total:02d}", font=font(11, True), fill=YELLOW)
+    d.text((1155, 684), f"{index+SCENE_OFFSET:02d}/{total:02d}", font=font(11, True), fill=YELLOW)
     return im, d
 
 
@@ -507,9 +508,56 @@ def load_redshift_report():
     return report
 
 
+def director_scenes():
+    level_path=ROOT/"director"/"level.json"
+    comparison_path=ROOT/"director"/"evidence"/"replay-comparison.json"
+    if not level_path.is_file() or not comparison_path.is_file():
+        return []
+    tape=json.loads(level_path.read_text())
+    result=json.loads(comparison_path.read_text())
+    level=tape["level"]
+    assert result["level"] == level["title"] and result["model"] == tape["metadata"]["model"]
+    scenes=[]
+    im,d=base("DISASTER DIRECTOR","director/level.json",1,TOTAL_CARDS)
+    title(d,"TYPE A DISASTER · PLAY THE CONSEQUENCES","A moon concert goes sideways.",
+          "A Meta model authors the world tape. Its packet waves and worker outages drive a playable shift.",YELLOW)
+    rounded(d,(62,280,1218,620),PANEL,EDGE,24,2)
+    critter(d,122,358,1.07,"Pip",PURPLE,"sealed + public")
+    critter(d,964,358,1.07,"Boba",MINT,"public traffic")
+    d.text((367,329),level["title"],font=font(32),fill=INK)
+    paragraph(d,(368,386),tape["metadata"]["pitch"],font(15),MUTED,510,6)
+    ribbon(d,368,536,f'{tape["metadata"]["model"].upper()} · {len(level["turns"])} TURNS',YELLOW,(59,48,48),330)
+    scenes.append(im)
+    im,d=base("PLAY TWO FUTURES","director/evidence/replay-comparison.json",2,TOTAL_CARDS)
+    title(d,"SAME STORM · DIFFERENT CHOICES","Autopilot leaks. Can you beat its ghost?",
+          "Spend three spark charges carefully. Rewind to any completed turn and keep the other future beside yours.",MINT)
+    auto,clean=result["autopilot"],result["best_clean"]
+    badge(d,66,304,548,"Autopilot",f'{auto["delivered"]} on time · {auto["leaks"]} leaks',
+          f'{auto["missed"]} missed · same tape and arrivals',False)
+    badge(d,665,304,548,"Best clean route",f'{clean["delivered"]} on time · {clean["leaks"]} leaks',
+          f'{clean["missed"]} missed · replayed through the game engine',True)
+    for y,run in ((489,auto),(547,clean)):
+        for i,event in enumerate(run["events"]):
+            color=RED if event["leaks"] else YELLOW if event["missed"] else MINT
+            x=103+i*91
+            rounded(d,(x,y,x+72,y+24),color,color,8,1)
+    scenes.append(im)
+    im,d=base("THE GAME AND THE WORKERS","Forkshift Arcade · live and recorded paths",3,TOTAL_CARDS)
+    title(d,"FROM A PLAYABLE STORM TO A REAL LOCAL FAILURE","Then we kill the worker.",
+          "The public game is a simulation. The Rescue Arcade drill starts real local inference processes and records what happens when one exits.",PINK)
+    rounded(d,(64,300,1216,607),PANEL,EDGE,24,2)
+    critter(d,128,362,1.1,"Pip",PURPLE,"primary worker")
+    critter(d,964,362,1.1,"Boba",MINT,"backup worker","ouch")
+    d.line((326,462,930,462),fill=EDGE,width=6)
+    packet(d,625,448,1.22,YELLOW)
+    ribbon(d,459,522,"GREEN CANARY → EXIT → ROLLBACK",MINT,(34,53,53),360)
+    scenes.append(im)
+    return scenes
+
+
 def main():
     import argparse
-    global TOTAL_CARDS
+    global TOTAL_CARDS, SCENE_OFFSET
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--replace",action="store_true",help="replace the existing MP4 after reviewing the optional Redshift ending")
     args=parser.parse_args()
@@ -519,7 +567,10 @@ def main():
     if OUT.exists() and args.replace and report is None:
         raise SystemExit("Refusing to replace the existing video until redshift_evidence/branch-trial.json exists.")
     records = load_records()
-    TOTAL_CARDS=10+(2 if report is not None else 0)
+    has_director=(ROOT/"director"/"level.json").is_file() and (ROOT/"director"/"evidence"/"replay-comparison.json").is_file()
+    TOTAL_CARDS=10+(2 if report is not None else 0)+(3 if has_director else 0)
+    opening=director_scenes()
+    SCENE_OFFSET=len(opening)
     scenes = [
         scene_intro(records),
         event_scene(records, 1, "PRIMARY FAULT", "A worker exits mid-incident.",
@@ -541,7 +592,8 @@ def main():
     if report is not None:
         scenes.append(scene_redshift_trials(report, 11))
         scenes.append(scene_redshift_calls(report, 12))
-    fps, seconds_per_scene = 6, 15
+    scenes=opening+scenes
+    fps, seconds_per_scene = 6, 180//len(scenes)
     with tempfile.TemporaryDirectory(prefix="forkshift-arcade-video-") as td:
         folder = Path(td)
         paths=[]

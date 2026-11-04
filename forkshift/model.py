@@ -49,17 +49,19 @@ def generate(model, prompt, *, schema=None, tokens=200, keep_alive=None):
     return result['response'], metadata
 
 
-def generate_muse(prompt):
+def generate_muse(prompt, *, schema=SCHEMA, schema_name="ForkshiftPlan", tokens=1200, reasoning_effort=None):
     key = os.environ.get('MODEL_API_KEY')
     if not key:
         raise ValueError('Set MODEL_API_KEY to enable Muse planning.')
     model = os.environ.get('META_MODEL', MUSE_MODEL)
     body = {
-        'model': model, 'max_completion_tokens': 1200,
+        'model': model, 'max_completion_tokens': tokens,
         'messages': [{'role': 'user', 'content': prompt}],
         'response_format': {'type': 'json_schema',
-                            'json_schema': {'name': 'ForkshiftPlan', 'strict': True, 'schema': SCHEMA}},
+                            'json_schema': {'name': schema_name, 'strict': True, 'schema': schema}},
     }
+    if reasoning_effort is not None:
+        body['reasoning_effort'] = reasoning_effort
     request = Request(MUSE_ENDPOINT, data=json.dumps(body).encode(),
                       headers={'Content-Type': 'application/json', 'Authorization': f'Bearer {key}'})
     started = time.monotonic()
@@ -68,7 +70,7 @@ def generate_muse(prompt):
             result = json.loads(stream.read(1_000_000))
         choice = result['choices'][0]
         if choice.get('finish_reason') != 'stop':
-            raise ValueError('Muse did not finish its plan.')
+            raise ValueError(f'Muse completion ended with finish_reason={choice.get("finish_reason")!r}.')
         answer = choice['message']['content']
     except HTTPError as exc:
         raise ValueError(f'Muse API returned HTTP {exc.code}.') from None

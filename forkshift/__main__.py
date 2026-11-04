@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
-from . import arcade, branch_view
+from . import arcade, branch_view, director
 from .canary import canary
 from .model import propose
 from .scenarios import INCIDENTS, incident_info
@@ -60,6 +60,17 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/':
             self.reply(200, (ROOT / 'static/index.html').read_bytes(), 'text/html')
+        elif self.path == '/director':
+            self.send_response(308)
+            self.send_header('Location', '/director/')
+            self.send_header('Content-Length', '0')
+            self.end_headers()
+        elif self.path == '/director/':
+            self.reply(200, (ROOT / 'director' / 'index.html').read_bytes(), 'text/html')
+        elif self.path == '/director/engine.mjs':
+            self.reply(200, (ROOT / 'director' / 'engine.mjs').read_bytes(), 'text/javascript')
+        elif self.path == '/director/level.json':
+            self.reply(200, (ROOT / 'director' / 'level.json').read_bytes())
         elif self.path == '/arcade':
             self.reply(200, (ROOT / 'static' / 'arcade.html').read_bytes(), 'text/html')
         elif self.path == '/redshift':
@@ -96,7 +107,7 @@ class Handler(BaseHTTPRequestHandler):
         return ROOT / 'evidence' / f'{key}.json'
 
     def do_POST(self):
-        if self.path not in ('/api/run', '/api/canary', '/api/arcade/run'):
+        if self.path not in ('/api/run', '/api/canary', '/api/arcade/run', '/api/director/author'):
             self.reply(404, {'error': 'Unknown path.'})
             return
         origin = self.headers.get('Origin')
@@ -117,7 +128,9 @@ class Handler(BaseHTTPRequestHandler):
             body = json.loads(self.rfile.read(length))
             if not isinstance(body, dict) or not all(isinstance(v, str) for v in body.values()):
                 raise ValueError('Expected a JSON object of strings.')
-            if self.path == '/api/arcade/run' and set(body) == {'scenario', 'agent', 'engine'}:
+            if self.path == '/api/director/author' and set(body) == {'brief'}:
+                result = director.author(body['brief'])
+            elif self.path == '/api/arcade/run' and set(body) == {'scenario', 'agent', 'engine'}:
                 if body['agent'] not in ('llama', 'policy'):
                     raise ValueError('Reference controls are only available as recordings.')
                 result = arcade.run(body['scenario'], body['agent'], body['engine'])
