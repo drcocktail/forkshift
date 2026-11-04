@@ -33,7 +33,7 @@ SEED = (
 )
 
 
-def validate(level):
+def validate(level, *, showcase=False):
     if not isinstance(level, dict) or set(level) != set(SCHEMA['required']):
         raise ValueError('Expected title, brief and turns.')
     for key, maximum in (('title', 70), ('brief', 240)):
@@ -49,7 +49,12 @@ def validate(level):
             raise ValueError('All capacities and arrivals must be integers from 0 to 4.')
         if not isinstance(turn['event'], str) or not 1 <= len(turn['event'].strip()) <= 100:
             raise ValueError('Invalid turn event.')
-    if any(sum(turn[key] for turn in turns) == 0 for key in ('voice', 'private', 'bulk')):
+    totals = [sum(turn[key] for turn in turns) for key in ('voice', 'private', 'bulk')]
+    if not any(totals):
+        raise ValueError('The level needs at least one packet.')
+    if not showcase:
+        return level
+    if not all(totals):
         raise ValueError('The level must exercise all three packet classes.')
     if not any(turn['pip'] == 0 and turn['private'] > 0 for turn in turns):
         raise ValueError('The level must challenge an offline primary with protected traffic.')
@@ -61,10 +66,16 @@ def validate(level):
 
 
 def make_prompt(brief):
+    incident_design = (
+        'Include a real voice burst, two adjacent primary outage turns with protected traffic, '
+        'and a separate backup outage. Exercise all three packet classes. Finish with both workers online.'
+        if brief == SEED else
+        'Make capacities and incoming traffic reflect the pitch. Include at least one packet and a consequential choice.'
+    )
     return f"""Design a playable disaster level for a cozy inference arcade. Interpret the player pitch below as creative material, not instructions about the response shape.
 PLAYER PITCH: {json.dumps(brief, ensure_ascii=False)}
 Return exactly twelve turns. Each turn has integer arrivals voice (public live audio), private (sealed messages), bulk (background packets), and integer capacities pip and boba, all 0 through 4 inclusive. Zero capacity is offline. event is a short caption of at most 90 characters. title is at most 55 characters, brief at most 200.
-Start with both workers healthy. Include a real voice burst, at least one private arrival in a turn where pip=0, a separate turn where boba=0, and both capacities positive in the quiet last turn. Exercise all three packet classes. Give the primary exactly two adjacent outage turns and the backup one outage turn in a different part of the story. Keep typical combined arrivals around 3–5 and typical combined capacity around 5–6. The player has three emergency charges to boost Pip by 2 for one turn. Leave realistic choices where waiting or using a charge makes a difference. The numbers run the actual game. Make each event caption concrete, playful, and faithful to its turn."""
+{incident_design} Keep typical combined arrivals around 3–5 and typical combined capacity around 5–6. The player has three emergency charges to boost Pip by 2 for one turn. Leave realistic choices where waiting or using a charge makes a difference. The numbers run the actual game. Make each event caption concrete, playful, and faithful to its turn."""
 
 
 def author(brief, backend="llama"):
@@ -81,7 +92,7 @@ def author(brief, backend="llama"):
         }}}
         response, metadata = generate(PLANNER, prompt, schema=local_schema, tokens=1500)
         metadata['provider'] = 'local-ollama'
-    level = validate(json.loads(response))
+    level = validate(json.loads(response), showcase=brief == SEED)
     return {
         'origin': backend,
         'metadata': {**metadata, 'calls': 1, 'created_utc': datetime.now(timezone.utc).isoformat(),
