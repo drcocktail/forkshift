@@ -11,7 +11,7 @@ The hosted demos replay recorded episodes. Run the Python server to start new lo
 
 ## Disaster Director
 
-The browser game plays a saved model-authored level without a key. Rewind from any completed turn, compare your run with its ghost, or load an imported tape. The local cockpit can author a new storm from a short pitch. [Game guide and evidence](DIRECTOR.md)
+Muse Spark 1.3 wrote the floating night-market level and recorded a rival run in two live calls. Rewind any completed turn, race its ghost, or load an imported tape. The local cockpit can author a new storm from a short pitch. [Game guide and evidence](DIRECTOR.md)
 
 ## What the worker drill establishes
 

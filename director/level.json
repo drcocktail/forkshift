@@ -1,115 +1,115 @@
 {
-  "origin": "llama",
+  "origin": "muse",
   "metadata": {
-    "model": "llama3.1:8b",
-    "latency_ms": 28573,
-    "prompt_tokens": 322,
-    "output_tokens": 557,
-    "provider": "local-ollama",
+    "model": "muse-spark-1.3",
+    "provider": "meta-model-api",
+    "latency_ms": 14898,
+    "prompt_tokens": 250,
+    "output_tokens": 1323,
     "calls": 1,
-    "created_utc": "2026-11-04T16:57:05.215271+00:00",
-    "prompt_sha256": "c252d5e5e831bb274d45ffa770443bdd476440375c344592d6430627adbdf284",
-    "pitch": "A sold-out moon concert. Pip handles the singer’s live mic and sealed backstage messages. Boba can safely relay public audio but must never see the sealed messages. A confetti cannon knocks Pip offline halfway through the chorus. Boba drops out later when the stage lights surge. End with a quiet encore and both workers back."
+    "created_utc": "2026-11-04T17:30:31.536285+00:00",
+    "prompt_sha256": "96dd2f532ddf7c57c8a8e7d223fd1ab35b2169b9d37e4662ccb2c1e8e71c9ad2",
+    "pitch": "A floating night market loses gravity. Pip is hit by a runaway lantern and goes offline while sealed recipes still arrive. Boba can relay live orders but fails during the fireworks. Use three sparks wisely. Finish with a quiet sunrise."
   },
   "level": {
-    "title": "Moonlight Meltdown",
-    "brief": "Pip and Boba handle the mic and messages for a sold-out moon concert.",
+    "brief": "Night market floats loose. Pip goes dark, Boba drops during fireworks. You have 3 sparks: each boosts Pip +2 for one turn. Spend wisely.",
+    "title": "Floating Night Market: Zero-G Lantern Drift",
     "turns": [
       {
-        "voice": 2,
-        "private": 1,
+        "boba": 3,
         "bulk": 1,
-        "pip": 4,
-        "boba": 4,
-        "event": "Concert Begins!"
+        "event": "Stalls light up, dumpling steam curls over the docks.",
+        "pip": 3,
+        "private": 1,
+        "voice": 2
       },
       {
-        "voice": 3,
-        "private": 0,
+        "boba": 3,
         "bulk": 2,
-        "pip": 4,
-        "boba": 4,
-        "event": "Singer's First Notes"
-      },
-      {
-        "voice": 1,
-        "private": 1,
-        "bulk": 0,
-        "pip": 4,
-        "boba": 4,
-        "event": "Pip Handles the Mic"
-      },
-      {
-        "voice": 4,
-        "private": 0,
-        "bulk": 1,
-        "pip": 4,
-        "boba": 4,
-        "event": "Boba Relays the Beat"
-      },
-      {
-        "voice": 2,
-        "private": 1,
-        "bulk": 2,
-        "pip": 4,
-        "boba": 4,
-        "event": "Chorus Time!"
-      },
-      {
-        "voice": 0,
-        "private": 0,
-        "bulk": 0,
-        "pip": 0,
-        "boba": 4,
-        "event": "Confetti Cannon Hits!"
-      },
-      {
-        "voice": 0,
-        "private": 0,
-        "bulk": 0,
-        "pip": 0,
-        "boba": 4,
-        "event": "Pip Offline!"
-      },
-      {
-        "voice": 1,
-        "private": 0,
-        "bulk": 1,
-        "pip": 0,
-        "boba": 4,
-        "event": "Boba Keeps Going"
-      },
-      {
-        "voice": 3,
-        "private": 1,
-        "bulk": 2,
-        "pip": 0,
-        "boba": 4,
-        "event": "Pip's Messages Pile Up"
-      },
-      {
-        "voice": 2,
-        "private": 0,
-        "bulk": 1,
-        "pip": 0,
-        "boba": 0,
-        "event": "Boba Drops Out!"
-      },
-      {
-        "voice": 1,
-        "private": 1,
-        "bulk": 0,
+        "event": "Gravity hiccups, soup bowls wobble and lift off.",
         "pip": 2,
-        "boba": 0,
-        "event": "Emergency Charge!"
+        "private": 1,
+        "voice": 2
       },
       {
-        "voice": 4,
-        "private": 0,
-        "bulk": 2,
+        "boba": 3,
+        "bulk": 1,
+        "event": "Runaway lantern smacks Pip! Pip offline with a fizzle.",
+        "pip": 0,
+        "private": 3,
+        "voice": 1
+      },
+      {
+        "boba": 3,
+        "bulk": 1,
+        "event": "Sealed recipes pile up while Pip blinks dead.",
+        "pip": 0,
+        "private": 2,
+        "voice": 1
+      },
+      {
+        "boba": 3,
+        "bulk": 1,
+        "event": "Packet: lost spice manifest drifts by, grab or wait?",
+        "pip": 0,
+        "private": 2,
+        "voice": 2
+      },
+      {
+        "boba": 3,
+        "bulk": 1,
+        "event": "Pip reboots weakly, one eye flickering back on.",
+        "pip": 1,
+        "private": 1,
+        "voice": 2
+      },
+      {
+        "boba": 0,
+        "bulk": 1,
+        "event": "Choice: fireworks start! Boba fails, spend spark on Pip?",
         "pip": 2,
+        "private": 1,
+        "voice": 3
+      },
+      {
+        "boba": 0,
+        "bulk": 0,
+        "event": "Fireworks boom, live orders crackle with no relay.",
+        "pip": 2,
+        "private": 1,
+        "voice": 3
+      },
+      {
         "boba": 2,
-        "event": "Encore Time!"
+        "bulk": 1,
+        "event": "Smoke clears, Boba shakes sparks off whiskers.",
+        "pip": 3,
+        "private": 1,
+        "voice": 2
+      },
+      {
+        "boba": 3,
+        "bulk": 1,
+        "event": "Stalls tether down, last floating lanterns caught.",
+        "pip": 3,
+        "private": 1,
+        "voice": 1
+      },
+      {
+        "boba": 3,
+        "bulk": 0,
+        "event": "Choice: save last spark or light the dawn grill?",
+        "pip": 3,
+        "private": 1,
+        "voice": 1
+      },
+      {
+        "boba": 3,
+        "bulk": 1,
+        "event": "Quiet sunrise, warm buns shared in soft light.",
+        "pip": 3,
+        "private": 0,
+        "voice": 1
       }
     ]
   }

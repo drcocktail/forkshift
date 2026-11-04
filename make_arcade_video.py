@@ -519,13 +519,13 @@ def director_scenes():
     assert result["level"] == level["title"] and result["model"] == tape["metadata"]["model"]
     scenes=[]
     im,d=base("DISASTER DIRECTOR","director/level.json",1,TOTAL_CARDS)
-    title(d,"TYPE A DISASTER · PLAY THE CONSEQUENCES","A moon concert goes sideways.",
-          "A Meta model authors the world tape. Its packet waves and worker outages drive a playable shift.",YELLOW)
+    title(d,"TYPE A DISASTER · PLAY THE CONSEQUENCES","A night market loses gravity.",
+          "Muse Spark authors the world tape. Its packet waves and worker outages drive a playable shift.",YELLOW)
     rounded(d,(62,280,1218,620),PANEL,EDGE,24,2)
     critter(d,122,358,1.07,"Pip",PURPLE,"sealed + public")
     critter(d,964,358,1.07,"Boba",MINT,"public traffic")
-    d.text((367,329),level["title"],font=font(32),fill=INK)
-    paragraph(d,(368,386),tape["metadata"]["pitch"],font(15),MUTED,510,6)
+    paragraph(d,(368,323),level["title"],font(29),INK,530,4)
+    paragraph(d,(368,408),tape["metadata"]["pitch"],font(15),MUTED,510,6)
     ribbon(d,368,536,f'{tape["metadata"]["model"].upper()} · {len(level["turns"])} TURNS',YELLOW,(59,48,48),330)
     scenes.append(im)
     im,d=base("PLAY TWO FUTURES","director/evidence/replay-comparison.json",2,TOTAL_CARDS)
@@ -542,7 +542,18 @@ def director_scenes():
             x=103+i*91
             rounded(d,(x,y,x+72,y+24),color,color,8,1)
     scenes.append(im)
-    im,d=base("THE GAME AND THE WORKERS","Forkshift Arcade · live and recorded paths",3,TOTAL_CARDS)
+    if "muse_ghost" in result:
+        muse=result["muse_ghost"]
+        im,d=base("RACE MUSE SPARK","director/muse-ghost.json",3,TOTAL_CARDS)
+        title(d,"THE DIRECTOR BECOMES THE RIVAL","Can you beat Muse at its own level?",
+              "Muse Spark chose twelve moves. The same game engine scored them. Its ghost is playable on the public site.",MINT)
+        badge(d,66,304,548,"Muse Spark ghost",f'{muse["score"]} points',
+              f'{muse["delivered"]} on time · {muse["missed"]} missed · {muse["leaks"]} leaks',True)
+        badge(d,665,304,548,"Best clean route",f'{clean["score"]} points',
+              f'{clean["delivered"]} on time · {clean["missed"]} missed · {clean["leaks"]} leaks',True)
+        ribbon(d,383,485,"PLAY · REWIND · TRY ONE MOVE DIFFERENTLY",YELLOW,(59,48,48),475)
+        scenes.append(im)
+    im,d=base("THE GAME AND THE WORKERS","Forkshift Arcade · live and recorded paths",len(scenes)+1,TOTAL_CARDS)
     title(d,"FROM A PLAYABLE STORM TO A REAL LOCAL FAILURE","Then we kill the worker.",
           "The public game is a simulation. The Rescue Arcade drill starts real local inference processes and records what happens when one exits.",PINK)
     rounded(d,(64,300,1216,607),PANEL,EDGE,24,2)
@@ -568,7 +579,8 @@ def main():
         raise SystemExit("Refusing to replace the existing video until redshift_evidence/branch-trial.json exists.")
     records = load_records()
     has_director=(ROOT/"director"/"level.json").is_file() and (ROOT/"director"/"evidence"/"replay-comparison.json").is_file()
-    TOTAL_CARDS=10+(2 if report is not None else 0)+(3 if has_director else 0)
+    director_result=json.loads((ROOT/"director"/"evidence"/"replay-comparison.json").read_text()) if has_director else {}
+    TOTAL_CARDS=10+(2 if report is not None else 0)+(3 if has_director else 0)+int("muse_ghost" in director_result)
     opening=director_scenes()
     SCENE_OFFSET=len(opening)
     scenes = [
@@ -593,7 +605,8 @@ def main():
         scenes.append(scene_redshift_trials(report, 11))
         scenes.append(scene_redshift_calls(report, 12))
     scenes=opening+scenes
-    fps, seconds_per_scene = 6, 180//len(scenes)
+    fps = 6
+    frames_per_scene, extra = divmod(180 * fps, len(scenes))
     with tempfile.TemporaryDirectory(prefix="forkshift-arcade-video-") as td:
         folder = Path(td)
         paths=[]
@@ -603,10 +616,10 @@ def main():
             paths.append(p)
         swift=folder/"write_movie.swift"
         swift.write_text(SWIFT_WRITER)
-        frames=[p for p in paths for _ in range(fps*seconds_per_scene)]
+        frames=[p for index,p in enumerate(paths) for _ in range(frames_per_scene + (index < extra))]
         subprocess.run(["swift",str(swift),str(OUT),str(fps),*map(str,frames)],check=True,cwd=ROOT)
     print(f"Wrote {OUT}")
-    print(f"{len(scenes)} authored cards × {seconds_per_scene}s = {len(scenes)*seconds_per_scene}s")
+    print(f"{len(scenes)} authored cards · 180s")
     print("Encoded from saved local evidence; optional Redshift cards require branch-trial.json. No network, live inference, browser, screen capture, or paid calls.")
 
 

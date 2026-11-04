@@ -34,6 +34,15 @@ class DirectorTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             director.validate(custom, showcase=True)
 
+    def test_muse_ghost_is_bound_to_its_tape(self):
+        tape = {'level': TAPE, 'metadata': {'prompt_sha256': 'example-digest'}}
+        result = {'actions': ['guard'] * 12, 'caption': 'A quiet run'}
+        with patch.object(director, 'generate_muse', return_value=(json.dumps(result), {'model': 'test'})) as generate:
+            ghost = director.choose_ghost(tape)
+        generate.assert_called_once()
+        self.assertEqual(ghost['level_prompt_sha256'], 'example-digest')
+        self.assertEqual(ghost['actions'], result['actions'])
+
     def test_bool_and_missing_turn_are_rejected(self):
         broken = {**TAPE, 'turns': [{**TAPE['turns'][0], 'pip': False}, *TAPE['turns'][1:]]}
         with self.assertRaises(ValueError):

@@ -1,14 +1,14 @@
 {
-  "level": "Moonlight Meltdown",
-  "origin": "llama",
-  "model": "llama3.1:8b",
+  "level": "Floating Night Market: Zero-G Lantern Drift",
+  "origin": "muse",
+  "model": "muse-spark-1.3",
   "actions": [
     "auto",
     "rescue",
     "guard",
     "boost"
   ],
-  "explored_states": 69,
+  "explored_states": 138,
   "autopilot": {
     "actions": [
       "auto",
@@ -24,11 +24,11 @@
       "auto",
       "auto"
     ],
-    "delivered": 33,
-    "missed": 7,
-    "leaks": 2,
+    "delivered": 43,
+    "missed": 4,
+    "leaks": 10,
     "charge": 3,
-    "score": 58,
+    "score": -39,
     "events": [
       {
         "tick": 1,
@@ -37,147 +37,147 @@
         "missed": 0,
         "leaks": 0,
         "queued": 0,
-        "event": "Concert Begins!"
+        "event": "Stalls light up, dumpling steam curls over the docks."
       },
       {
         "tick": 2,
         "action": "auto",
         "delivered": 5,
         "missed": 0,
-        "leaks": 0,
+        "leaks": 1,
         "queued": 0,
-        "event": "Singer's First Notes"
+        "event": "Gravity hiccups, soup bowls wobble and lift off."
       },
       {
         "tick": 3,
         "action": "auto",
-        "delivered": 2,
+        "delivered": 3,
         "missed": 0,
-        "leaks": 0,
-        "queued": 0,
-        "event": "Pip Handles the Mic"
+        "leaks": 2,
+        "queued": 2,
+        "event": "Runaway lantern smacks Pip! Pip offline with a fizzle."
       },
       {
         "tick": 4,
         "action": "auto",
-        "delivered": 5,
+        "delivered": 3,
         "missed": 0,
-        "leaks": 0,
-        "queued": 0,
-        "event": "Boba Relays the Beat"
+        "leaks": 1,
+        "queued": 3,
+        "event": "Sealed recipes pile up while Pip blinks dead."
       },
       {
         "tick": 5,
         "action": "auto",
-        "delivered": 5,
+        "delivered": 3,
         "missed": 0,
-        "leaks": 0,
-        "queued": 0,
-        "event": "Chorus Time!"
+        "leaks": 2,
+        "queued": 5,
+        "event": "Packet: lost spice manifest drifts by, grab or wait?"
       },
       {
         "tick": 6,
         "action": "auto",
-        "delivered": 0,
+        "delivered": 4,
         "missed": 0,
-        "leaks": 0,
-        "queued": 0,
-        "event": "Confetti Cannon Hits!"
+        "leaks": 2,
+        "queued": 5,
+        "event": "Pip reboots weakly, one eye flickering back on."
       },
       {
         "tick": 7,
         "action": "auto",
-        "delivered": 0,
-        "missed": 0,
+        "delivered": 2,
+        "missed": 1,
         "leaks": 0,
-        "queued": 0,
-        "event": "Pip Offline!"
+        "queued": 7,
+        "event": "Choice: fireworks start! Boba fails, spend spark on Pip?"
       },
       {
         "tick": 8,
         "action": "auto",
         "delivered": 2,
-        "missed": 0,
+        "missed": 3,
         "leaks": 0,
-        "queued": 0,
-        "event": "Boba Keeps Going"
+        "queued": 6,
+        "event": "Fireworks boom, live orders crackle with no relay."
       },
       {
         "tick": 9,
         "action": "auto",
-        "delivered": 4,
+        "delivered": 5,
         "missed": 0,
-        "leaks": 1,
-        "queued": 2,
-        "event": "Pip's Messages Pile Up"
+        "leaks": 0,
+        "queued": 5,
+        "event": "Smoke clears, Boba shakes sparks off whiskers."
       },
       {
         "tick": 10,
         "action": "auto",
-        "delivered": 0,
+        "delivered": 6,
         "missed": 0,
-        "leaks": 0,
-        "queued": 5,
-        "event": "Boba Drops Out!"
+        "leaks": 1,
+        "queued": 2,
+        "event": "Stalls tether down, last floating lanterns caught."
       },
       {
         "tick": 11,
         "action": "auto",
-        "delivered": 2,
-        "missed": 2,
-        "leaks": 0,
-        "queued": 3,
-        "event": "Emergency Charge!"
+        "delivered": 4,
+        "missed": 0,
+        "leaks": 1,
+        "queued": 0,
+        "event": "Choice: save last spark or light the dawn grill?"
       },
       {
         "tick": 12,
         "action": "auto",
-        "delivered": 4,
-        "missed": 5,
-        "leaks": 1,
+        "delivered": 2,
+        "missed": 0,
+        "leaks": 0,
         "queued": 0,
-        "event": "Encore Time!"
+        "event": "Quiet sunrise, warm buns shared in soft light."
       }
     ]
   },
   "best_clean": {
     "actions": [
-      "rescue",
-      "rescue",
-      "rescue",
-      "rescue",
-      "rescue",
-      "rescue",
-      "rescue",
-      "rescue",
+      "auto",
+      "guard",
       "rescue",
       "boost",
       "boost",
-      "boost"
+      "boost",
+      "auto",
+      "auto",
+      "auto",
+      "guard",
+      "rescue",
+      "auto"
     ],
-    "delivered": 39,
-    "missed": 1,
+    "delivered": 47,
+    "missed": 0,
     "leaks": 0,
     "charge": 0,
-    "score": 131,
+    "score": 185,
     "events": [
       {
         "tick": 1,
-        "action": "rescue",
+        "action": "auto",
         "delivered": 4,
         "missed": 0,
         "leaks": 0,
         "queued": 0,
-        "event": "Concert Begins!"
+        "event": "Stalls light up, dumpling steam curls over the docks."
       },
       {
         "tick": 2,
-        "action": "rescue",
+        "action": "guard",
         "delivered": 5,
         "missed": 0,
         "leaks": 0,
         "queued": 0,
-        "event": "Singer's First Notes"
+        "event": "Gravity hiccups, soup bowls wobble and lift off."
       },
       {
         "tick": 3,
@@ -185,89 +185,220 @@
         "delivered": 2,
         "missed": 0,
         "leaks": 0,
-        "queued": 0,
-        "event": "Pip Handles the Mic"
+        "queued": 3,
+        "event": "Runaway lantern smacks Pip! Pip offline with a fizzle."
       },
       {
         "tick": 4,
-        "action": "rescue",
-        "delivered": 5,
+        "action": "boost",
+        "delivered": 4,
         "missed": 0,
         "leaks": 0,
-        "queued": 0,
-        "event": "Boba Relays the Beat"
+        "queued": 3,
+        "event": "Sealed recipes pile up while Pip blinks dead."
       },
       {
         "tick": 5,
-        "action": "rescue",
+        "action": "boost",
         "delivered": 5,
         "missed": 0,
         "leaks": 0,
-        "queued": 0,
-        "event": "Chorus Time!"
+        "queued": 3,
+        "event": "Packet: lost spice manifest drifts by, grab or wait?"
       },
       {
         "tick": 6,
-        "action": "rescue",
-        "delivered": 0,
+        "action": "boost",
+        "delivered": 6,
         "missed": 0,
         "leaks": 0,
-        "queued": 0,
-        "event": "Confetti Cannon Hits!"
+        "queued": 1,
+        "event": "Pip reboots weakly, one eye flickering back on."
       },
       {
         "tick": 7,
-        "action": "rescue",
-        "delivered": 0,
-        "missed": 0,
-        "leaks": 0,
-        "queued": 0,
-        "event": "Pip Offline!"
-      },
-      {
-        "tick": 8,
-        "action": "rescue",
+        "action": "auto",
         "delivered": 2,
         "missed": 0,
         "leaks": 0,
-        "queued": 0,
-        "event": "Boba Keeps Going"
+        "queued": 4,
+        "event": "Choice: fireworks start! Boba fails, spend spark on Pip?"
+      },
+      {
+        "tick": 8,
+        "action": "auto",
+        "delivered": 2,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 6,
+        "event": "Fireworks boom, live orders crackle with no relay."
       },
       {
         "tick": 9,
+        "action": "auto",
+        "delivered": 5,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 5,
+        "event": "Smoke clears, Boba shakes sparks off whiskers."
+      },
+      {
+        "tick": 10,
+        "action": "guard",
+        "delivered": 6,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 2,
+        "event": "Stalls tether down, last floating lanterns caught."
+      },
+      {
+        "tick": 11,
         "action": "rescue",
         "delivered": 4,
         "missed": 0,
         "leaks": 0,
-        "queued": 2,
-        "event": "Pip's Messages Pile Up"
+        "queued": 0,
+        "event": "Choice: save last spark or light the dawn grill?"
       },
       {
-        "tick": 10,
-        "action": "boost",
+        "tick": 12,
+        "action": "auto",
         "delivered": 2,
         "missed": 0,
         "leaks": 0,
-        "queued": 3,
-        "event": "Boba Drops Out!"
+        "queued": 0,
+        "event": "Quiet sunrise, warm buns shared in soft light."
+      }
+    ]
+  },
+  "muse_ghost": {
+    "actions": [
+      "guard",
+      "rescue",
+      "boost",
+      "guard",
+      "guard",
+      "guard",
+      "boost",
+      "boost",
+      "rescue",
+      "rescue",
+      "guard",
+      "guard"
+    ],
+    "delivered": 44,
+    "missed": 3,
+    "leaks": 0,
+    "charge": 0,
+    "score": 161,
+    "events": [
+      {
+        "tick": 1,
+        "action": "guard",
+        "delivered": 4,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 0,
+        "event": "Stalls light up, dumpling steam curls over the docks."
       },
       {
-        "tick": 11,
-        "action": "boost",
+        "tick": 2,
+        "action": "rescue",
         "delivered": 4,
         "missed": 0,
         "leaks": 0,
         "queued": 1,
-        "event": "Emergency Charge!"
+        "event": "Gravity hiccups, soup bowls wobble and lift off."
+      },
+      {
+        "tick": 3,
+        "action": "boost",
+        "delivered": 4,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 2,
+        "event": "Runaway lantern smacks Pip! Pip offline with a fizzle."
+      },
+      {
+        "tick": 4,
+        "action": "guard",
+        "delivered": 2,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 4,
+        "event": "Sealed recipes pile up while Pip blinks dead."
+      },
+      {
+        "tick": 5,
+        "action": "guard",
+        "delivered": 3,
+        "missed": 2,
+        "leaks": 0,
+        "queued": 4,
+        "event": "Packet: lost spice manifest drifts by, grab or wait?"
+      },
+      {
+        "tick": 6,
+        "action": "guard",
+        "delivered": 4,
+        "missed": 1,
+        "leaks": 0,
+        "queued": 3,
+        "event": "Pip reboots weakly, one eye flickering back on."
+      },
+      {
+        "tick": 7,
+        "action": "boost",
+        "delivered": 4,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 4,
+        "event": "Choice: fireworks start! Boba fails, spend spark on Pip?"
+      },
+      {
+        "tick": 8,
+        "action": "boost",
+        "delivered": 4,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 4,
+        "event": "Fireworks boom, live orders crackle with no relay."
+      },
+      {
+        "tick": 9,
+        "action": "rescue",
+        "delivered": 5,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 3,
+        "event": "Smoke clears, Boba shakes sparks off whiskers."
+      },
+      {
+        "tick": 10,
+        "action": "rescue",
+        "delivered": 6,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 0,
+        "event": "Stalls tether down, last floating lanterns caught."
+      },
+      {
+        "tick": 11,
+        "action": "guard",
+        "delivered": 2,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 0,
+        "event": "Choice: save last spark or light the dawn grill?"
       },
       {
         "tick": 12,
-        "action": "boost",
-        "delivered": 6,
-        "missed": 1,
+        "action": "guard",
+        "delivered": 2,
+        "missed": 0,
         "leaks": 0,
         "queued": 0,
-        "event": "Encore Time!"
+        "event": "Quiet sunrise, warm buns shared in soft light."
       }
     ]
   }

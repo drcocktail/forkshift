@@ -101,24 +101,69 @@ def author(brief, backend="llama"):
     }
 
 
+GHOST_ACTIONS = ('auto', 'rescue', 'guard', 'boost')
+GHOST_SCHEMA = {
+    'type': 'object',
+    'properties': {
+        'actions': {'type': 'array', 'items': {'type': 'string', 'enum': list(GHOST_ACTIONS)}},
+        'caption': {'type': 'string'},
+    },
+    'required': ['actions', 'caption'],
+    'additionalProperties': False,
+}
+
+
+def choose_ghost(tape):
+    level = validate(tape['level'])
+    prompt = f"""You are the rival player in Disaster Director. Choose exactly one move for each of the twelve turns.
+You receive this actual level: {json.dumps(level, ensure_ascii=False)}
+Mechanics: each turn appends incoming voice, private, and bulk packets, in that order. Pip processes first, then Boba.
+Voice expires after one extra turn, private after two extra turns, bulk after three extra turns. All packets left after turn 12 expire.
+Choose auto, rescue, guard, or boost each turn.
+auto serves FIFO on both workers and can leak private packets when Boba takes them.
+rescue prioritizes voice, then private, then bulk. guard prioritizes private, then voice, then bulk.
+For rescue and guard Boba takes only public voice or bulk. Within a packet kind earliest deadlines go first.
+boost uses guard with two extra Pip slots even during outage. You have three charges. Avoid wasting charges on quiet turns.
+Delivered voice is worth 4 points, private 6, bulk 1. Misses cost 2, leaks cost 20. Aim for zero leaks and maximize deliveries.
+Return 12 ordered action IDs and a short, playful caption for your recorded ghost. You do not execute moves or declare your result."""
+    answer, metadata = generate_muse(prompt, schema=GHOST_SCHEMA, schema_name='DisasterDirectorGhost',
+                                     tokens=3400, reasoning_effort='low')
+    result = json.loads(answer)
+    if (not isinstance(result, dict) or set(result) != set(GHOST_SCHEMA['required'])
+            or not isinstance(result['actions'], list) or len(result['actions']) != TURNS
+            or any(action not in GHOST_ACTIONS for action in result['actions'])
+            or result['actions'].count('boost') > 3
+            or not isinstance(result['caption'], str) or not result['caption'].strip()):
+        raise ValueError('Muse did not return a complete ghost run.')
+    return {
+        'actions': result['actions'], 'caption': result['caption'][:140],
+        'level_title': level['title'], 'level_prompt_sha256': tape['metadata']['prompt_sha256'],
+        'metadata': {**metadata, 'calls': 1, 'created_utc': datetime.now(timezone.utc).isoformat(),
+                     'prompt_sha256': hashlib.sha256(prompt.encode()).hexdigest()},
+    }
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--brief', default=SEED)
     parser.add_argument('--backend', choices=('llama', 'muse'), default='llama')
+    parser.add_argument('--ghost-for', type=Path, help='Ask Muse to play a published tape.')
     parser.add_argument('--output', required=True, type=Path)
     args = parser.parse_args()
     args.output.parent.mkdir(parents=True, exist_ok=True)
     # Reserve the output before the request. A second invocation cannot spend on this recording.
     with args.output.open('x') as stream:
         try:
-            result = author(args.brief, args.backend)
+            result = (choose_ghost(json.loads(args.ghost_for.read_text()))
+                      if args.ghost_for else author(args.brief, args.backend))
         except (ValueError, OSError) as exc:
-            json.dump({'origin': 'failed', 'attempted': True, 'backend': args.backend, 'error': str(exc)}, stream, indent=2)
+            json.dump({'origin': 'failed', 'attempted': True, 'backend': 'muse' if args.ghost_for else args.backend, 'error': str(exc)}, stream, indent=2)
             stream.write('\n')
             parser.exit(1, f'Level authoring failed: {exc}\n')
         json.dump(result, stream, indent=2, ensure_ascii=False)
         stream.write('\n')
-    print(f'{result["level"]["title"]} · {result["metadata"]["model"]}')
+    title = result['level_title'] if args.ghost_for else result['level']['title']
+    print(f'{title} · {result["metadata"]["model"]}')
 
 
 if __name__ == '__main__':

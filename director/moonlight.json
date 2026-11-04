@@ -1,0 +1,116 @@
+{
+  "origin": "llama",
+  "metadata": {
+    "model": "llama3.1:8b",
+    "latency_ms": 28573,
+    "prompt_tokens": 322,
+    "output_tokens": 557,
+    "provider": "local-ollama",
+    "calls": 1,
+    "created_utc": "2026-11-04T16:57:05.215271+00:00",
+    "prompt_sha256": "c252d5e5e831bb274d45ffa770443bdd476440375c344592d6430627adbdf284",
+    "pitch": "A sold-out moon concert. Pip handles the singer’s live mic and sealed backstage messages. Boba can safely relay public audio but must never see the sealed messages. A confetti cannon knocks Pip offline halfway through the chorus. Boba drops out later when the stage lights surge. End with a quiet encore and both workers back."
+  },
+  "level": {
+    "title": "Moonlight Meltdown",
+    "brief": "Pip and Boba handle the mic and messages for a sold-out moon concert.",
+    "turns": [
+      {
+        "voice": 2,
+        "private": 1,
+        "bulk": 1,
+        "pip": 4,
+        "boba": 4,
+        "event": "Concert Begins!"
+      },
+      {
+        "voice": 3,
+        "private": 0,
+        "bulk": 2,
+        "pip": 4,
+        "boba": 4,
+        "event": "Singer's First Notes"
+      },
+      {
+        "voice": 1,
+        "private": 1,
+        "bulk": 0,
+        "pip": 4,
+        "boba": 4,
+        "event": "Pip Handles the Mic"
+      },
+      {
+        "voice": 4,
+        "private": 0,
+        "bulk": 1,
+        "pip": 4,
+        "boba": 4,
+        "event": "Boba Relays the Beat"
+      },
+      {
+        "voice": 2,
+        "private": 1,
+        "bulk": 2,
+        "pip": 4,
+        "boba": 4,
+        "event": "Chorus Time!"
+      },
+      {
+        "voice": 0,
+        "private": 0,
+        "bulk": 0,
+        "pip": 0,
+        "boba": 4,
+        "event": "Confetti Cannon Hits!"
+      },
+      {
+        "voice": 0,
+        "private": 0,
+        "bulk": 0,
+        "pip": 0,
+        "boba": 4,
+        "event": "Pip Offline!"
+      },
+      {
+        "voice": 1,
+        "private": 0,
+        "bulk": 1,
+        "pip": 0,
+        "boba": 4,
+        "event": "Boba Keeps Going"
+      },
+      {
+        "voice": 3,
+        "private": 1,
+        "bulk": 2,
+        "pip": 0,
+        "boba": 4,
+        "event": "Pip's Messages Pile Up"
+      },
+      {
+        "voice": 2,
+        "private": 0,
+        "bulk": 1,
+        "pip": 0,
+        "boba": 0,
+        "event": "Boba Drops Out!"
+      },
+      {
+        "voice": 1,
+        "private": 1,
+        "bulk": 0,
+        "pip": 2,
+        "boba": 0,
+        "event": "Emergency Charge!"
+      },
+      {
+        "voice": 4,
+        "private": 0,
+        "bulk": 2,
+        "pip": 2,
+        "boba": 2,
+        "event": "Encore Time!"
+      }
+    ]
+  }
+}

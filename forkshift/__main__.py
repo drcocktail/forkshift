@@ -69,8 +69,12 @@ class Handler(BaseHTTPRequestHandler):
             self.reply(200, (ROOT / 'director' / 'index.html').read_bytes(), 'text/html')
         elif self.path == '/director/engine.mjs':
             self.reply(200, (ROOT / 'director' / 'engine.mjs').read_bytes(), 'text/javascript')
-        elif self.path == '/director/level.json':
-            self.reply(200, (ROOT / 'director' / 'level.json').read_bytes())
+        elif self.path in ('/director/level.json', '/director/moonlight.json', '/director/muse-ghost.json'):
+            path = ROOT / self.path.removeprefix('/')
+            if path.is_file():
+                self.reply(200, path.read_bytes())
+            else:
+                self.reply(404, {'error': 'Recording unavailable.'})
         elif self.path == '/arcade':
             self.reply(200, (ROOT / 'static' / 'arcade.html').read_bytes(), 'text/html')
         elif self.path == '/redshift':

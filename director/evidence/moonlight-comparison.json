@@ -1,0 +1,274 @@
+{
+  "level": "Moonlight Meltdown",
+  "origin": "llama",
+  "model": "llama3.1:8b",
+  "actions": [
+    "auto",
+    "rescue",
+    "guard",
+    "boost"
+  ],
+  "explored_states": 72,
+  "autopilot": {
+    "actions": [
+      "auto",
+      "auto",
+      "auto",
+      "auto",
+      "auto",
+      "auto",
+      "auto",
+      "auto",
+      "auto",
+      "auto",
+      "auto",
+      "auto"
+    ],
+    "delivered": 33,
+    "missed": 7,
+    "leaks": 2,
+    "charge": 3,
+    "score": 58,
+    "events": [
+      {
+        "tick": 1,
+        "action": "auto",
+        "delivered": 4,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 0,
+        "event": "Concert Begins!"
+      },
+      {
+        "tick": 2,
+        "action": "auto",
+        "delivered": 5,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 0,
+        "event": "Singer's First Notes"
+      },
+      {
+        "tick": 3,
+        "action": "auto",
+        "delivered": 2,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 0,
+        "event": "Pip Handles the Mic"
+      },
+      {
+        "tick": 4,
+        "action": "auto",
+        "delivered": 5,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 0,
+        "event": "Boba Relays the Beat"
+      },
+      {
+        "tick": 5,
+        "action": "auto",
+        "delivered": 5,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 0,
+        "event": "Chorus Time!"
+      },
+      {
+        "tick": 6,
+        "action": "auto",
+        "delivered": 0,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 0,
+        "event": "Confetti Cannon Hits!"
+      },
+      {
+        "tick": 7,
+        "action": "auto",
+        "delivered": 0,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 0,
+        "event": "Pip Offline!"
+      },
+      {
+        "tick": 8,
+        "action": "auto",
+        "delivered": 2,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 0,
+        "event": "Boba Keeps Going"
+      },
+      {
+        "tick": 9,
+        "action": "auto",
+        "delivered": 4,
+        "missed": 0,
+        "leaks": 1,
+        "queued": 2,
+        "event": "Pip's Messages Pile Up"
+      },
+      {
+        "tick": 10,
+        "action": "auto",
+        "delivered": 0,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 5,
+        "event": "Boba Drops Out!"
+      },
+      {
+        "tick": 11,
+        "action": "auto",
+        "delivered": 2,
+        "missed": 2,
+        "leaks": 0,
+        "queued": 3,
+        "event": "Emergency Charge!"
+      },
+      {
+        "tick": 12,
+        "action": "auto",
+        "delivered": 4,
+        "missed": 5,
+        "leaks": 1,
+        "queued": 0,
+        "event": "Encore Time!"
+      }
+    ]
+  },
+  "best_clean": {
+    "actions": [
+      "auto",
+      "auto",
+      "auto",
+      "auto",
+      "auto",
+      "auto",
+      "auto",
+      "auto",
+      "rescue",
+      "boost",
+      "boost",
+      "boost"
+    ],
+    "delivered": 39,
+    "missed": 1,
+    "leaks": 0,
+    "charge": 0,
+    "score": 131,
+    "events": [
+      {
+        "tick": 1,
+        "action": "auto",
+        "delivered": 4,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 0,
+        "event": "Concert Begins!"
+      },
+      {
+        "tick": 2,
+        "action": "auto",
+        "delivered": 5,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 0,
+        "event": "Singer's First Notes"
+      },
+      {
+        "tick": 3,
+        "action": "auto",
+        "delivered": 2,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 0,
+        "event": "Pip Handles the Mic"
+      },
+      {
+        "tick": 4,
+        "action": "auto",
+        "delivered": 5,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 0,
+        "event": "Boba Relays the Beat"
+      },
+      {
+        "tick": 5,
+        "action": "auto",
+        "delivered": 5,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 0,
+        "event": "Chorus Time!"
+      },
+      {
+        "tick": 6,
+        "action": "auto",
+        "delivered": 0,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 0,
+        "event": "Confetti Cannon Hits!"
+      },
+      {
+        "tick": 7,
+        "action": "auto",
+        "delivered": 0,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 0,
+        "event": "Pip Offline!"
+      },
+      {
+        "tick": 8,
+        "action": "auto",
+        "delivered": 2,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 0,
+        "event": "Boba Keeps Going"
+      },
+      {
+        "tick": 9,
+        "action": "rescue",
+        "delivered": 4,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 2,
+        "event": "Pip's Messages Pile Up"
+      },
+      {
+        "tick": 10,
+        "action": "boost",
+        "delivered": 2,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 3,
+        "event": "Boba Drops Out!"
+      },
+      {
+        "tick": 11,
+        "action": "boost",
+        "delivered": 4,
+        "missed": 0,
+        "leaks": 0,
+        "queued": 1,
+        "event": "Emergency Charge!"
+      },
+      {
+        "tick": 12,
+        "action": "boost",
+        "delivered": 6,
+        "missed": 1,
+        "leaks": 0,
+        "queued": 0,
+        "event": "Encore Time!"
+      }
+    ]
+  }
+}

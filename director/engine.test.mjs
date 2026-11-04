@@ -44,3 +44,19 @@ test('published tape is playable and each route conserves arrivals',()=>{
     assert.equal(outcome.delivered+outcome.missed,offered);
   }
 });
+
+test('recorded Muse ghost plays the exact published level and matches the released score',()=>{
+  const load=name=>JSON.parse(readFileSync(new URL('./'+name,import.meta.url)));
+  const tape=load('level.json'), ghost=load('muse-ghost.json'), evidence=load('evidence/replay-comparison.json');
+  assert.equal(tape.origin,'muse');
+  assert.equal(ghost.level_prompt_sha256,tape.metadata.prompt_sha256);
+  assert.equal(ghost.level_title,tape.level.title);
+  assert.equal(ghost.actions.length,12);
+  assert(ghost.actions.filter(action=>action==='boost').length<=3);
+  const outcome=replay(tape.level,ghost.actions);
+  for(const key of ['delivered','missed','leaks','score']) assert.equal(outcome[key],evidence.muse_ghost[key]);
+  const best=replay(tape.level,evidence.best_clean.actions);
+  assert.equal(best.delivered,47);
+  assert.equal(best.leaks,0);
+  assert(best.score>outcome.score);
+});

@@ -1,6 +1,6 @@
 # Forkshift
 
-**Play [Disaster Director](https://drcocktail.github.io/forkshift/director/).** A Meta model authors a storm, and you can rewind any turn to see how a different move changes the outcome. [Play guide and evidence](DIRECTOR.md)
+**Play [Disaster Director](https://drcocktail.github.io/forkshift/director/).** Muse Spark authors the storm and plays it as your rival. Rewind any turn to see how a different move changes the outcome. [Play guide and evidence](DIRECTOR.md)
 
 **Start with the [hosted demo](https://drcocktail.github.io/forkshift/) or [Rescue Arcade](Forkshift-Arcade.html)** for the process-level incident environment, then open [Redshift Branch Garden](Forkshift-Branch-Garden.html) to inspect the native signed branch receipts. [Arcade contract](ARCADE.md) · [Redshift integration](REDSHIFT.md)
 
