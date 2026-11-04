@@ -67,6 +67,8 @@ class Handler(BaseHTTPRequestHandler):
             self.end_headers()
         elif self.path == '/director/':
             self.reply(200, (ROOT / 'director' / 'index.html').read_bytes(), 'text/html')
+        elif self.path == '/assets/bricolage-latin.woff2':
+            self.reply(200, (ROOT / 'assets' / 'bricolage-latin.woff2').read_bytes(), 'font/woff2')
         elif self.path == '/director/engine.mjs':
             self.reply(200, (ROOT / 'director' / 'engine.mjs').read_bytes(), 'text/javascript')
         elif self.path in ('/director/level.json', '/director/moonlight.json', '/director/muse-ghost.json'):

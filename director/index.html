@@ -3,42 +3,222 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f7f3ea"><title>Disaster Director · Two Futures Arcade</title>
 <style>
-
-:root{--ink:#20271f;--muted:#778074;--paper:#f7f3ea;--card:#fffdf8;--line:#e8e3d7;--green:#2d775b;--lime:#d9f18a;--orange:#f08f59;--red:#d45d56;--blue:#849ed1;--shadow:0 16px 45px #3136240d}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px system-ui,sans-serif;min-height:100vh}button{font:inherit;color:inherit;cursor:pointer}.wrap{max-width:1240px;margin:auto;padding:22px 28px 32px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}.brand{display:flex;align-items:center;gap:12px}.mark{width:42px;height:42px;border-radius:14px;background:var(--ink);display:grid;place-items:center;color:var(--lime);font-size:22px}.brand strong{font:700 16px ui-rounded,system-ui,sans-serif;letter-spacing:-.4px}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-top:2px}.topright{display:flex;align-items:center;gap:8px}.level-tools{display:flex;align-items:center;gap:7px}.level-select,.sharebtn{height:36px;border:1px solid var(--line);border-radius:10px;background:#fffdf8;padding:0 10px;font:11px ui-monospace,monospace;color:var(--ink)}.sharebtn{font:700 11px ui-rounded,system-ui,sans-serif}.level-error{display:none;color:#a64f46;font:10px ui-monospace,monospace;margin:-18px 0 10px 2px}.level-error.show{display:block}@media(max-width:560px){.topright{gap:5px}.level-select,.sharebtn{height:32px;padding:0 7px;font-size:10px}.brand{gap:8px}.mark{width:36px;height:36px}}.tag{border:1px solid var(--line);border-radius:99px;padding:8px 12px;font:11px ui-monospace,monospace;color:#626c5e;background:#ffffff85}.tag b{color:var(--green)}.iconbtn{width:36px;height:36px;border:1px solid var(--line);border-radius:50%;background:transparent;font-weight:700}.hero{display:flex;justify-content:space-between;align-items:end;margin:0 2px 18px}.eyebrow{font:11px ui-monospace,monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:9px}.hero h1{font:700 clamp(28px,4vw,40px)/1.05 ui-rounded,system-ui,sans-serif;letter-spacing:-1.8px;margin:0}.hero p{margin:8px 0 0;color:var(--muted);font-size:14px}.seed{font:11px ui-monospace,monospace;color:var(--muted);text-align:right}.seed strong{display:block;color:var(--ink);font-size:12px;margin-bottom:4px}.stage{display:grid;grid-template-columns:1fr 280px;gap:15px}.main{min-width:0}.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}.arena{padding:16px 18px 18px;position:relative;overflow:hidden}.arena:before{content:'';position:absolute;width:240px;height:150px;border-radius:50%;background:#dcedbb55;top:-100px;left:42%}.arenahead{display:flex;justify-content:space-between;align-items:center;position:relative}.lane-label{display:flex;align-items:center;gap:8px;font:11px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.1em;color:#67705f}.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px #2d775b18}.now{padding:7px 10px;border-radius:8px;background:#f1f4e9;font:11px ui-monospace,monospace;color:var(--green)}.sky{height:196px;margin:10px 0 12px;border-radius:15px;position:relative;background:linear-gradient(180deg,#dff0ee 0%,#eff6e7 72%,#dbe8bf 72%,#dbe8bf 100%);overflow:hidden}.sun{position:absolute;width:46px;height:46px;border-radius:50%;background:#ffdf85;right:14%;top:19%;box-shadow:0 0 0 11px #ffdf8540}.cloud{position:absolute;border-radius:40px;background:#ffffffad;width:72px;height:20px;top:33%;left:13%;animation:drift 18s linear infinite}.cloud:before,.cloud:after{content:'';position:absolute;background:inherit;border-radius:50%;width:25px;height:25px;left:12px;top:-10px}.cloud:after{left:33px;top:-6px;width:19px;height:19px}@keyframes drift{to{transform:translateX(270px)}}.hill{position:absolute;bottom:28px;border-radius:50% 50% 0 0;background:#9ebc7b;width:55%;height:55px;left:-5%}.hill.two{left:49%;background:#aec98a;height:75px;width:58%}.pond{position:absolute;bottom:27px;left:42%;width:75px;height:15px;border-radius:50%;background:#90bdc2}.home{position:absolute;bottom:27px;right:12%;width:54px;height:38px;background:#f5a977;border-radius:4px 4px 0 0}.home:before{content:'';position:absolute;top:-22px;left:-7px;border-left:34px solid transparent;border-right:34px solid transparent;border-bottom:25px solid #c86f5c}.home:after{content:'';position:absolute;bottom:0;left:21px;width:12px;height:22px;background:#8e6952}.character{position:absolute;bottom:23px;width:68px;height:82px;filter:drop-shadow(0 5px 3px #52613b22);animation:bob 2.3s ease-in-out infinite}.character.boba{left:23%;animation-delay:-.9s}.character.pip{left:12%;transform:scale(.88);animation-delay:-.3s}@keyframes bob{50%{translate:0 -5px}}.event-bubble{position:absolute;top:12px;left:50%;transform:translateX(-50%);background:#fffdf8e8;border:1px solid #ffffff;border-radius:11px;padding:7px 11px;font-size:11px;white-space:nowrap;box-shadow:0 5px 15px #303a2614}.event-bubble:after{content:'';position:absolute;border:6px solid transparent;border-top-color:#fffdf8e8;bottom:-12px;left:calc(50% - 6px)}.queue{display:flex;gap:8px;align-items:center;overflow:auto;padding:2px 1px 4px}.queue-title{font:10px ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#869080;white-space:nowrap;margin-right:2px}.parcel{border-radius:9px;background:#f5ead6;padding:7px 9px;font-size:11px;white-space:nowrap;color:#705a39;border:1px solid #eee0c7}.parcel.late{background:#fae7e1;color:#9d5147;border-color:#f2d2c8}.parcel.safe{background:#e8f3dd;color:#50704b;border-color:#d4e5c8}.timerow{display:flex;align-items:center;gap:12px;margin:16px 2px 12px}.timerow span{font:10px ui-monospace,monospace;color:var(--muted);white-space:nowrap}.ticks{display:flex;gap:5px;flex:1}.tick{height:5px;border-radius:9px;background:#e3e2d8;flex:1}.tick.done{background:#87a47e}.tick.current{background:var(--orange);box-shadow:0 0 0 3px #f08f5925}.tick.future{background:#e9e7df}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.action{min-height:95px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;transition:.18s;position:relative}.action:hover{transform:translateY(-3px);border-color:#96ad88;box-shadow:0 8px 20px #33442212}.action:disabled{opacity:.45;cursor:not-allowed;transform:none}.action .emoji{font-size:20px;display:block;margin-bottom:8px}.action strong{display:block;font:700 13px ui-rounded,system-ui,sans-serif;margin-bottom:3px}.action small{font-size:10px;line-height:1.3;color:var(--muted);display:block}.key{position:absolute;top:9px;right:9px;border:1px solid var(--line);border-radius:5px;padding:2px 5px;font:9px ui-monospace,monospace;color:#97998d}.aside{display:flex;flex-direction:column;gap:12px}.status{padding:16px}.statushead{display:flex;justify-content:space-between;align-items:center;font:12px ui-rounded,system-ui,sans-serif}.livepill{background:#e6f2de;color:#48734c;border-radius:99px;padding:5px 8px;font:9px ui-monospace,monospace;text-transform:uppercase}.meter{margin-top:15px}.meterline{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;margin-bottom:6px}.meterline b{color:var(--ink);font:11px ui-monospace,monospace}.bar{height:7px;background:#ecebe2;border-radius:99px;overflow:hidden}.bar i{height:100%;display:block;width:70%;background:var(--green);border-radius:99px;transition:width .4s}.bar.orange i{background:#eeaa59}.mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}.stat{padding:10px;background:#f8f6ef;border-radius:11px}.stat b{display:block;font:700 20px ui-rounded,system-ui,sans-serif;letter-spacing:-1px}.stat span{font:9px ui-monospace,monospace;color:var(--muted);text-transform:uppercase}.rewind{padding:16px;background:#f0ecf8;border:1px solid #e5def2}.rewind h3{font:700 13px ui-rounded,system-ui,sans-serif;margin:0 0 5px}.rewind p{margin:0 0 13px;color:#79708a;font-size:11px;line-height:1.4}.forkbtn{width:100%;border:0;border-radius:10px;background:#665388;color:white;padding:11px;font:700 12px ui-rounded,system-ui,sans-serif;transition:.2s}.forkbtn:hover{background:#574375;transform:translateY(-1px)}.forkbtn:disabled{background:#aaa3b4;cursor:default}.compare{display:none;padding:14px 16px;border-color:#dfd8ef}.compare.show{display:block}.comphead{display:flex;justify-content:space-between;font:12px ui-rounded,system-ui,sans-serif;margin-bottom:10px}.lanes{display:grid;grid-template-columns:1fr 1fr;gap:8px}.lane{background:#f7f5fb;border-radius:10px;padding:9px;font-size:10px;color:#6f687a}.lane b{display:block;color:#44395c;font:11px ui-monospace,monospace;margin-bottom:4px}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#20271f;color:#fff;padding:11px 16px;border-radius:99px;font-size:12px;transition:.25s;z-index:9}.toast.show{opacity:1;transform:translate(-50%,0)}.modal{position:fixed;inset:0;background:#17201688;display:none;place-items:center;padding:20px;z-index:10}.modal.show{display:grid}.sheet{max-width:460px;width:100%;background:var(--card);border-radius:22px;padding:24px;box-shadow:0 24px 80px #10170f55}.sheet h2{font:700 23px ui-rounded,system-ui,sans-serif;margin:0 0 8px}.sheet p{color:var(--muted);line-height:1.55;font-size:13px}.sheet button{border:0;background:var(--ink);color:#fff;border-radius:10px;padding:11px 15px;margin-top:8px}.file-label{display:inline-block;margin-top:10px;color:var(--green);font-weight:700;cursor:pointer}.file-label input{display:none}.footer{display:flex;justify-content:space-between;color:#93978a;font:10px ui-monospace,monospace;margin-top:14px;padding:0 3px}.endoverlay{position:absolute;inset:0;background:#fbf9f0eb;z-index:3;display:none;place-items:center;text-align:center;padding:15px}.endoverlay.show{display:grid}.endoverlay h2{font:700 23px ui-rounded,system-ui,sans-serif;margin:4px}.endoverlay p{font-size:12px;color:var(--muted);margin:4px}.endoverlay button{border:0;background:var(--green);color:white;padding:9px 14px;border-radius:9px;margin-top:8px}
-@media(max-width:900px){.stage{grid-template-columns:1fr}.aside{display:grid;grid-template-columns:1fr 1fr}.compare{grid-column:1/-1}}@media(max-width:560px){.wrap{padding:15px 13px 22px}.top{margin-bottom:19px}.topright .tag{display:none}.hero{align-items:start;gap:12px}.seed{max-width:110px;font-size:9px}.hero h1{font-size:30px}.hero p{font-size:12px;max-width:250px}.arena{padding:13px}.sky{height:177px}.cards{grid-template-columns:repeat(2,1fr)}.action{min-height:83px}.aside{grid-template-columns:1fr 1fr;gap:8px}.status,.rewind{padding:12px}.rewind h3{font-size:12px}.rewind p{font-size:10px}.mini-stats{gap:6px}.stat{padding:8px}.footer span:last-child{display:none}}
-
-.worker-slots{display:flex;justify-content:space-between;gap:6px;padding:9px 14px;background:#f4f5e9;font:700 11px ui-monospace,monospace}
-.worker-slots .offline{color:#a73838}.character.offline{filter:grayscale(.8);opacity:.55}
-.forecast{display:flex;gap:6px;flex-wrap:wrap;padding:9px 14px;background:#fffdf5;border-top:1px solid var(--line);font:11px ui-monospace,monospace}
-.forecast span{background:#f2eedf;border-radius:6px;padding:4px 7px}
-.fork-point{display:block;margin:0 0 7px;padding:5px 8px;border-radius:7px;border:1px solid #d9cee9;width:100%;background:#fff;color:var(--ink)}
-.route-strip{display:flex;gap:2px;margin-top:6px}.route-strip i{flex:1;height:6px;border-radius:3px;background:#dfdbe6}.route-strip .ok{background:#73b595}.route-strip .miss{background:#edaf64}.route-strip .leak{background:#db797a}
-body{font-family:ui-rounded,system-ui,sans-serif}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition:none!important}}
-@media(max-width:480px){.top{flex-wrap:wrap;gap:9px}.topright{flex-wrap:wrap}.event-bubble{white-space:normal;max-width:88%;width:max-content}}
-
-.sky.storm{background:linear-gradient(180deg,#c4badc 0%,#eee2f1 72%,#bcc8a2 72%,#bcc8a2 100%)}
-.sky.storm .sun{background:#f6c6ab;box-shadow:0 0 0 11px #f6c6ab42}
-#museCaption{margin:7px 0 0;color:#64577c}
+@font-face{font-family:Bricolage;src:url("../assets/bricolage-latin.woff2") format("woff2");font-weight:400 800;font-display:swap}
+:root{
+  color-scheme:light;
+  --ink:#26271f;
+  --muted:#535e50;
+  --paper:#f6f1e7;
+  --surface:#fffdf6;
+  --line:#d9d0be;
+  --green:#225941;
+  --green-wash:#e7efdf;
+  --violet:#554164;
+  --violet-wash:#efe8f3;
+  --red:#8d363a;
+  --amber:#7b4b24;
+  --display:Bricolage,system-ui,sans-serif;
+  font:15px/1.55 system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--paper);color:var(--ink);min-height:100vh}
+::selection{background:#ead0aa;color:#302237}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+button:disabled{cursor:default}
+:focus-visible{outline:3px solid #60457c;outline-offset:3px}
+a{color:var(--green);text-underline-offset:.2em}
+.wrap{width:min(100% - 3rem,78rem);margin-inline:auto;padding:1.3rem 0 2.5rem}
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-bottom:1.15rem;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:.65rem;min-width:0}
+.mark{display:grid;place-items:center;width:2.55rem;height:2.55rem;flex:none;border-radius:.65rem;background:#393046;color:#ffe0a5}
+.mark svg{width:1.45rem;height:1.45rem}
+.brand strong{display:block;font:800 1.23rem/1 var(--display);letter-spacing:-.03em}
+.brand small{display:block;margin-top:.18rem;color:var(--muted);font-size:.76rem}
+.topright,.level-tools{display:flex;align-items:center;gap:.55rem;min-width:0}
+.level-select,.sharebtn,.iconbtn,.fork-point,.file-label input{
+  min-height:2.75rem;border:1px solid var(--line);border-radius:.55rem;background:var(--surface);padding:.4rem .68rem;
+}
+.level-select{max-width:12.5rem}
+.sharebtn,.iconbtn{font-weight:700}
+.sharebtn:disabled{color:var(--muted);background:#eee8dc}
+.sharebtn:hover:not(:disabled),.iconbtn:hover,.level-select:hover{border-color:#85749b}
+.tag{color:var(--muted);font-size:.76rem;white-space:nowrap}
+.tag b{color:var(--green)}
+.level-error{display:none;color:var(--red);margin:.45rem 0;font-size:.84rem}
+.level-error.show{display:block}
+.hero{display:flex;justify-content:space-between;align-items:end;gap:1.15rem;padding:clamp(1.7rem,4vw,3.1rem) 0 1.4rem}
+.hero h1{font:800 clamp(2rem,5vw,3.85rem)/.99 var(--display);letter-spacing:-.04em;text-wrap:balance;margin:0}
+.hero p{max-width:68ch;margin:.7rem 0 0;color:var(--muted)}
+.seed{min-width:max-content;color:var(--muted);font-size:.78rem;text-align:right}
+.seed strong{display:block;color:var(--ink);font-weight:750}
+.author-box{display:none;align-items:end;gap:.7rem;margin:0 0 1.15rem;padding:0 0 1.15rem;border-bottom:1px solid var(--line)}
+.author-box label{display:grid;gap:.25rem;flex:1;color:var(--muted);font-size:.83rem}
+.author-box input{min-width:0;min-height:2.75rem;background:var(--surface);border:1px solid var(--line);border-radius:.5rem;padding:.45rem .7rem;caret-color:var(--green)}
+.author-box input::placeholder{color:var(--muted)}
+.author-box button,.endoverlay button{min-height:2.75rem;border:0;border-radius:.5rem;background:var(--green);color:#fffdf6;padding:.45rem .8rem;font-weight:750}
+.stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(16rem,19rem);gap:clamp(1rem,2.7vw,2.25rem);align-items:start}
+.main{min-width:0}
+.arena{padding:1rem;background:var(--surface);border:1px solid var(--line);border-radius:1rem;box-shadow:0 9px 23px #34233413}
+.arenahead,.statushead,.comphead,.meterline,.timerow{display:flex;justify-content:space-between;align-items:center;gap:.5rem}
+.lane-label,.now,.timerow,.worker-slots,.forecast,.queue-title,.livepill,.comphead,.lane b,.footer{
+  font-variant-numeric:tabular-nums;
+}
+.lane-label,.now{font-weight:750;font-size:.76rem}
+.lane-label{display:flex;align-items:center;gap:.48rem}
+.dot{width:.55rem;height:.55rem;flex:none;border-radius:50%;background:#387251}
+.now{color:var(--green);background:var(--green-wash);padding:.28rem .53rem;border-radius:.35rem}
+.sky{height:clamp(11.8rem,23vw,17.25rem);margin:.75rem 0 .55rem;border-radius:.65rem;position:relative;isolation:isolate;overflow:hidden;background:#e2eee5}
+.sky::before{content:"";position:absolute;inset:auto 0 0;height:30%;background:#cbd9af;z-index:-1}
+.sky.storm{background:#dacfe2}
+.sky.storm::before{background:#c3cba9}
+.sun{position:absolute;width:2.7rem;height:2.7rem;border-radius:50%;background:#f9d786;right:14%;top:23%}
+.sky.storm .sun{background:#efb9a0}
+.cloud{position:absolute;border-radius:1rem;background:#fffdf5c2;width:4.3rem;height:1.15rem;top:35%;left:14%}
+.cloud::before,.cloud::after{content:"";position:absolute;background:inherit;border-radius:50%;width:1.5rem;height:1.5rem;left:.7rem;top:-.5rem}
+.cloud::after{left:1.9rem;top:-.4rem;width:1.25rem;height:1.25rem}
+.hill{position:absolute;bottom:1.7rem;border-radius:50% 50% 0 0;background:#a9be83;width:57%;height:3.35rem;left:-5%;z-index:-1}
+.hill.two{left:49%;background:#b0c68c;height:4.65rem;width:59%}
+.pond{position:absolute;bottom:1.65rem;left:44%;width:4.6rem;height:.85rem;border-radius:50%;background:#85aeb4}
+.home{position:absolute;bottom:1.65rem;right:12%;width:3.25rem;height:2.35rem;background:#eda77f;border-radius:.2rem .2rem 0 0}
+.home::before{content:"";position:absolute;top:-1.35rem;left:-.4rem;border-inline:2rem solid transparent;border-bottom:1.5rem solid #9a554a}
+.home::after{content:"";position:absolute;bottom:0;left:1.25rem;width:.7rem;height:1.3rem;background:#754838}
+.character{position:absolute;bottom:1.25rem;width:clamp(3.5rem,9vw,5.6rem);height:auto;filter:drop-shadow(0 5px 4px #47563a30);transition:filter .18s,opacity .18s}
+.character.pip{left:13%}
+.character.boba{left:30%;bottom:1rem}
+.character.offline{filter:grayscale(.75);opacity:.65}
+.event-bubble{
+  position:absolute;top:.75rem;left:50%;transform:translateX(-50%);background:#fffdf4;color:#3d3a2f;
+  border:1px solid #d3c7ad;border-radius:.65rem;padding:.48rem .68rem;font-size:.86rem;line-height:1.3;
+  width:max-content;max-width:calc(100% - 1.4rem);text-align:center;text-wrap:pretty;box-shadow:0 4px 9px #3a29491c;
+}
+.worker-slots{display:flex;justify-content:space-between;gap:.45rem;padding:.55rem .62rem;background:#f0efe2;border-radius:.35rem;font-size:.78rem;font-weight:750}
+.worker-slots .offline{color:var(--red)}
+.forecast,.queue{display:flex;align-items:center;flex-wrap:wrap;gap:.32rem .48rem;padding:.52rem 0 0;font-size:.78rem}
+.forecast b,.queue-title{margin-right:.25rem;font-size:.76rem;font-weight:750;color:var(--muted)}
+.forecast span,.parcel{padding:.16rem .43rem;border:1px solid #e4d7be;border-radius:.35rem;background:#f7eddb;color:#5d4934;white-space:nowrap}
+.parcel.late{color:#823641;background:#f8e6e1;border-color:#edd0cd}
+.parcel.safe{color:var(--green);background:var(--green-wash);border-color:#d7e2cd}
+.timerow{margin:1.15rem 0 .75rem;font-size:.74rem;color:var(--muted);font-weight:700}
+.ticks{display:flex;gap:.26rem;flex:1}
+.tick{height:.3rem;border-radius:.2rem;background:#dfd8cb;flex:1}
+.tick.done{background:#7b9877}
+.tick.current{background:#a76134}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.53rem}
+.action{
+  min-height:7.25rem;min-width:0;position:relative;text-align:left;background:var(--surface);border:1px solid var(--line);
+  border-radius:.65rem;padding:.65rem;transition:border-color .18s,background-color .18s;
+}
+.action:hover:not(:disabled){background:#fffaea;border-color:#8f7794}
+.action:disabled{background:#eee8dc;color:#655d51}
+.action .action-icon{display:block;width:1.25rem;height:1.25rem;margin-bottom:.45rem;color:var(--green)}
+.action .action-icon svg{display:block;width:100%;height:100%}
+.action strong{display:block;margin-bottom:.16rem;font:760 .96rem/1.18 var(--display)}
+.action small{display:block;color:var(--muted);font-size:.76rem;line-height:1.35}
+.key{position:absolute;top:.54rem;right:.54rem;color:var(--muted);font-size:.71rem;font-variant-numeric:tabular-nums}
+.aside{display:grid;align-content:start}
+.aside section{border-top:1px solid var(--line);padding:1rem 0}
+.aside section:first-child{border-top:0;padding-top:0}
+.statushead,.comphead{font:750 1.09rem var(--display)}
+.livepill{color:var(--green);background:var(--green-wash);border-radius:.3rem;padding:.21rem .42rem;font:700 .7rem system-ui,sans-serif}
+.meter{margin-top:.7rem}
+.meterline{margin-bottom:.2rem;color:var(--muted);font-size:.78rem}
+.meterline b{color:var(--ink)}
+.bar{height:.34rem;background:#ded8c9;border-radius:1rem;overflow:hidden}
+.bar i{display:block;width:0;height:100%;background:#44785d;transition:width .25s ease-out}
+.bar.orange i{background:#9f5d34}
+.mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:.5rem .75rem;margin-top:.7rem}
+.stat{padding:.42rem 0;border-top:1px solid var(--line)}
+.stat b{display:block;font:800 1.5rem/1 var(--display);font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:.2rem;color:var(--muted);font-size:.75rem}
+.rewind h3{font:760 1.15rem/1.12 var(--display);margin:0}
+.rewind p{margin:.34rem 0 .65rem;color:var(--muted);font-size:.82rem}
+.fork-point{display:block;width:100%;margin-bottom:.4rem}
+.forkbtn{width:100%;min-height:2.75rem;margin:.25rem 0 0;border:1px solid var(--violet);border-radius:.5rem;background:var(--violet);color:#fffdf7;padding:.36rem .65rem;font-weight:730;font-size:.81rem}
+.forkbtn:hover:not(:disabled){background:#644d75}
+.forkbtn:disabled{background:#e8e0e8;border-color:#ded2de;color:#625766}
+#autopilot,#museGhost{background:var(--surface);color:var(--violet);border-color:var(--line)}
+#autopilot:hover,#museGhost:hover{border-color:var(--violet);background:var(--violet-wash)}
+.compare{display:none}
+.compare.show{display:block}
+.lanes{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:.55rem}
+.lane{min-width:0;color:var(--muted);font-size:.76rem;line-height:1.35}
+.lane b{display:block;margin-bottom:.22rem;color:var(--violet);font-size:.72rem}
+.route-strip{display:flex;gap:.12rem;margin-top:.45rem}
+.route-strip i{flex:1;height:.33rem;border-radius:.16rem;background:#ded8e2}
+.route-strip .ok{background:#6a9b80}
+.route-strip .miss{background:#cb8b54}
+.route-strip .leak{background:#bd616a}
+#museCaption{color:var(--violet);font-size:.79rem}
+.endoverlay{display:none;position:absolute;inset:0;place-items:center;z-index:1;background:#fffdf2ee;text-align:center;padding:1rem}
+.endoverlay.show{display:grid}
+.endoverlay h2{font:800 1.55rem/1.05 var(--display);margin:.35rem 0}
+.endoverlay p{margin:.3rem 0 .65rem;color:var(--muted)}
+.outcome-mark{display:inline-block;width:1.6rem;height:1.6rem;color:var(--green)}
+.help-panel{margin:0 0 1.2rem;border-block:1px solid var(--line);padding:1rem 0}
+.help-head{display:flex;justify-content:space-between;align-items:center;gap:.6rem}
+.help-head h2{margin:0;font:770 1.35rem var(--display)}
+.help-panel p{max-width:72ch;margin:.5rem 0;color:var(--muted)}
+.file-label{display:grid;gap:.3rem;width:min(100%,26rem);margin-top:.55rem;font-size:.85rem;font-weight:650}
+.file-label input{width:100%}
+.toast{position:fixed;z-index:2;bottom:1rem;left:50%;max-width:calc(100% - 2rem);width:max-content;transform:translateX(-50%);background:#382943;color:#fff6ec;border-radius:.5rem;padding:.6rem .85rem;box-shadow:0 5px 18px #34233824;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .2s;font-size:.86rem}
+.toast.show{visibility:visible;opacity:1}
+.footer{display:flex;justify-content:space-between;gap:.4rem 1rem;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:.8rem;margin-top:1.1rem;color:var(--muted);font-size:.76rem}
+.queue{scrollbar-color:#8e7890 #eee7db}
+@media(max-width:930px){
+  .stage{grid-template-columns:1fr}
+  .aside{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+  .aside section:first-child{border-top:1px solid var(--line);padding-top:1rem}
+}
+@media(max-width:670px){
+  .wrap{width:min(100% - 1.5rem,38rem)}
+  .top{align-items:flex-start;flex-direction:column;gap:.75rem}
+  .topright{width:100%;flex-wrap:wrap}
+  .topright .tag{margin-inline-start:auto}
+  .hero{display:block;padding-top:1.65rem}
+  .seed{display:none}
+  .arena{padding:.67rem}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .aside{grid-template-columns:1fr;gap:0}
+  .author-box{flex-wrap:wrap}
+  .author-box label{flex-basis:100%}
+}
+@media(max-width:375px){
+  .topright .tag{display:none}
+  .level-select{max-width:10rem}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style></head>
 <body><div class="wrap">
-<header class="top"><div class="brand"><div class="mark">✳</div><div><strong>Two Futures Arcade</strong><small>DISASTER DIRECTOR</small></div></div><div class="topright"><div class="level-tools"><select class="level-select" id="levelSelect" aria-label="Choose level"><option value="flagship">🌧️ Muse · flagship</option><option value="moonlight">🌙 Moonlight</option></select><button class="sharebtn" id="shareLevel" type="button">↗ Share level</button></div><div class="tag">SCENARIO <b id="scenarioTag">LOADING</b></div><button class="iconbtn" id="help" aria-label="How to play">?</button></div></header>
-<div class="level-error" id="levelError" role="status" aria-live="polite"></div><section class="hero"><div><div class="eyebrow">✦ tiny town, big choices</div><h1 id="title">Disaster Director</h1><p id="brief">Direct the deliveries. Keep Pip and Boba safe.</p></div><div class="seed"><strong id="origin">TWO FUTURES · 12 TURNS</strong>same storm, different choices</div></section>
-<div id="authorBox" class="panel" style="display:none;padding:12px 15px;margin:0 0 14px;align-items:center;gap:9px"><span style="font-size:17px">✎</span><input id="authorBrief" aria-label="Disaster pitch" maxlength="600" placeholder="Pitch a tiny-town disaster…" style="flex:1;min-width:0;border:0;background:transparent;outline:none;font:13px system-ui,sans-serif;color:var(--ink)"><button id="authorBtn" style="border:0;background:var(--green);color:white;border-radius:9px;padding:9px 12px;font:700 11px system-ui,sans-serif">Dream up a storm →</button></div>
-<div class="stage"><main class="main"><section class="panel arena"><div class="arenahead"><div class="lane-label"><i class="dot"></i> <span id="laneName">TIMELINE A · YOUR RUN</span></div><div class="now" id="turnLabel">TURN 1 / 12</div></div><div class="sky" id="sky"><div class="sun"></div><div class="cloud"></div><div class="hill"></div><div class="hill two"></div><div class="pond"></div><div class="home"></div><div class="event-bubble" id="event">Waiting for forecast...</div>
+<header class="top"><div class="brand"><div class="mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M16 2v8c0 6-5 7-11 7m11-7c0 6 5 7 11 7M16 10v19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="5" cy="17" r="2.7" fill="#a4edc7"/><circle cx="27" cy="17" r="2.7" fill="#ffacbc"/></svg></div><div><strong>Two Futures Arcade</strong><small>DISASTER DIRECTOR</small></div></div><div class="topright"><div class="level-tools"><select class="level-select" id="levelSelect" aria-label="Choose level"><option value="flagship">Night Market</option><option value="moonlight">Moonlight Meltdown</option></select><button class="sharebtn" id="shareLevel" type="button">Share level</button></div><div class="tag">SCENARIO <b id="scenarioTag">LOADING</b></div><button class="iconbtn" id="help" aria-controls="modal" aria-expanded="false">How to play</button></div></header>
+<div class="level-error" id="levelError" role="status" aria-live="polite"></div><section class="hero"><div><h1 id="title">Disaster Director</h1><p id="brief">Direct the deliveries. Keep Pip and Boba safe.</p></div><div class="seed"><strong id="origin">Two futures · 12 turns</strong>Same storm, different choices</div></section>
+<div id="authorBox" class="author-box"><label>Disaster pitch <input id="authorBrief" maxlength="600" placeholder="Pitch a tiny-town disaster…"></label><button id="authorBtn">Dream up a storm</button></div>
+<section class="help-panel" id="modal" aria-labelledby="help-title" hidden>
+  <div class="help-head"><h2 id="help-title">How to direct a disaster</h2><button class="iconbtn" id="closeHelp">Close help</button></div>
+  <p>Pick a move each turn. Save live audio, keep sealed packets with Pip, and spend your three spark charges when Pip needs them.</p>
+  <p>Rewind to a completed turn to keep your old run as a ghost and change what happens next. Use keys 1–4 to choose a move or R to rewind.</p>
+  <label class="file-label">Import a scenario JSON <input id="file" type="file" accept="application/json,.json"></label>
+</section>
+<div class="stage"><main class="main"><section class="arena"><div class="arenahead"><div class="lane-label"><i class="dot"></i> <span id="laneName">TIMELINE A · YOUR RUN</span></div><div class="now" id="turnLabel">TURN 1 / 12</div></div><div class="sky" id="sky"><div class="sun"></div><div class="cloud"></div><div class="hill"></div><div class="hill two"></div><div class="pond"></div><div class="home"></div><div class="event-bubble" id="event">Waiting for forecast...</div>
 <svg class="character pip" viewBox="0 0 80 95" role="img" aria-label="Pip the rabbit"><ellipse cx="29" cy="23" rx="9" ry="24" fill="#f2c5ad" transform="rotate(-9 29 23)"/><ellipse cx="51" cy="22" rx="9" ry="23" fill="#f2c5ad" transform="rotate(8 51 22)"/><ellipse cx="29" cy="24" rx="4" ry="15" fill="#ec9f9f"/><ellipse cx="51" cy="23" rx="4" ry="14" fill="#ec9f9f"/><ellipse cx="40" cy="55" rx="28" ry="30" fill="#fff8ed"/><ellipse cx="32" cy="51" rx="2.5" ry="3" fill="#383d35"/><ellipse cx="48" cy="51" rx="2.5" ry="3" fill="#383d35"/><path d="M37 59q3 4 6 0" fill="none" stroke="#b87675" stroke-width="2" stroke-linecap="round"/><circle cx="26" cy="59" r="4" fill="#f4b9ad"/><circle cx="54" cy="59" r="4" fill="#f4b9ad"/><path d="M24 76q16 14 32 0" fill="#e2a274"/><circle cx="60" cy="78" r="8" fill="#fff8ed"/></svg>
 <svg class="character boba" viewBox="0 0 80 95" role="img" aria-label="Boba the bear"><circle cx="20" cy="35" r="13" fill="#9c7654"/><circle cx="60" cy="35" r="13" fill="#9c7654"/><circle cx="20" cy="35" r="6" fill="#d5a886"/><circle cx="60" cy="35" r="6" fill="#d5a886"/><ellipse cx="40" cy="58" rx="29" ry="28" fill="#b98d64"/><ellipse cx="40" cy="62" rx="16" ry="12" fill="#f1d6b3"/><circle cx="31" cy="51" r="2.5" fill="#352f29"/><circle cx="49" cy="51" r="2.5" fill="#352f29"/><ellipse cx="40" cy="59" rx="4" ry="3" fill="#514035"/><path d="M36 65q4 4 8 0" fill="none" stroke="#765748" stroke-width="2" stroke-linecap="round"/><path d="M24 78q16 11 32 0" fill="#82a9a0"/></svg>
-<div class="endoverlay" id="end"><div><div style="font-size:30px">🌤️</div><h2 id="endTitle">Shift complete!</h2><p id="endText"></p><button id="restart">Run it again</button></div></div></div><div class="worker-slots"><span id="pipSlots"></span><span id="bobaSlots"></span></div><div class="forecast" id="forecast"></div><div class="queue" id="queue"><span class="queue-title">LIVE QUEUE</span><span class="parcel">Loading parcels…</span></div></section>
-<div class="timerow"><span>SHIFT</span><div class="ticks" id="ticks"></div><span id="timeLeft">12 SECONDS</span></div><div class="cards" id="actions"></div></main>
-<aside class="aside"><section class="panel status"><div class="statushead">Town pulse <span class="livepill" id="statusPill">ON SHIFT</span></div><div class="meter"><div class="meterline"><span>Delivery rhythm</span><b id="deliveryPct">—</b></div><div class="bar"><i id="deliveryBar"></i></div></div><div class="meter"><div class="meterline"><span>Storm pressure</span><b id="stormPct">—</b></div><div class="bar orange"><i id="stormBar"></i></div></div><div class="mini-stats"><div class="stat"><b id="delivered">0</b><span>On time</span></div><div class="stat"><b id="leaks">0</b><span>Private leaks</span></div><div class="stat"><b id="missed">0</b><span>Missed</span></div><div class="stat"><b id="charge">3</b><span>Spark charges</span></div></div></section>
-<section class="panel rewind"><h3>✦ Try the other future</h3><p>Pick a turn and replay this exact storm. Your previous timeline stays as a ghost.</p><select class="fork-point" id="forkPoint" aria-label="Turn to replay"></select><button class="forkbtn" id="fork">↶ &nbsp;Rewind & fork future</button><button class="forkbtn" id="autopilot" style="margin-top:7px;background:#fdfbf4;color:#625636;border:1px solid #e8e3d7">✦ &nbsp;Fill ghost with Autopilot</button><button class="forkbtn" id="museGhost" style="display:none;margin-top:7px;background:#fff8df;color:#755b22;border:1px solid #eadcae">✦ &nbsp;Race Muse’s ghost</button></section>
-<section class="panel compare" id="compare"><div class="comphead"><span>Two futures, one storm</span><span>↔</span></div><div class="lanes"><div class="lane"><b id="baseLabel">GHOST BASELINE</b><span id="resultA">—</span><div class="route-strip" id="stripA"></div></div><div class="lane"><b id="liveLabel">YOUR RUN</b><span id="resultB">—</span><div class="route-strip" id="stripB"></div></div></div><p id="museCaption" class="level-error"></p></section></aside></div>
-<div class="footer"><span><a href="../">Forkshift ↗</a> · 1–4 choose · R rewind</span><span id="modelMeta">SCENARIO DATA · LOCAL</span></div></div><div class="toast" id="toast"></div>
-<div class="modal" id="modal"><div class="sheet"><div class="eyebrow">✦ quick briefing</div><h2>How to direct a disaster</h2><p>Each turn is one move, with no timer while you decide. Pick one action to manage the town’s delivery queue, protect private parcels, or help the crew. The storm’s next event is the same in both futures.</p><p>When you’re ready, hit <b>Rewind & fork future</b> to play the same turns again. Compare the two runs to see how your choices changed the outcome.</p><p><b>Keys:</b> 1–4 choose an action · R rewinds to replay. You can also load a scenario JSON from your device.</p><label class="file-label">＋ Load a scenario JSON <input id="file" type="file" accept="application/json,.json"></label><br><button id="closeHelp">Let’s go →</button></div></div>
+<div class="endoverlay" id="end"><div><svg class="outcome-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 1 2.6 8.4L23 12l-8.4 2.6L12 23l-2.6-8.4L1 12l8.4-2.6Z"/></svg><h2 id="endTitle">Shift complete!</h2><p id="endText"></p><button id="restart">Run it again</button></div></div></div><div class="worker-slots"><span id="pipSlots"></span><span id="bobaSlots"></span></div><div class="forecast" id="forecast"></div><div class="queue" id="queue"><span class="queue-title">LIVE QUEUE</span><span class="parcel">Loading parcels…</span></div></section>
+<div class="timerow"><span>SHIFT</span><div class="ticks" id="ticks"></div><span id="timeLeft">12 TURNS LEFT</span></div><div class="cards" id="actions"></div></main>
+<aside class="aside"><section class="status"><div class="statushead">Town pulse <span class="livepill" id="statusPill">ON SHIFT</span></div><div class="meter"><div class="meterline"><span>Delivery rhythm</span><b id="deliveryPct">—</b></div><div class="bar"><i id="deliveryBar"></i></div></div><div class="meter"><div class="meterline"><span>Storm pressure</span><b id="stormPct">—</b></div><div class="bar orange"><i id="stormBar"></i></div></div><div class="mini-stats"><div class="stat"><b id="delivered">0</b><span>On time</span></div><div class="stat"><b id="leaks">0</b><span>Private leaks</span></div><div class="stat"><b id="missed">0</b><span>Missed</span></div><div class="stat"><b id="charge">3</b><span>Spark charges</span></div></div></section>
+<section class="rewind"><h3>Try the other future</h3><p>Pick a turn and replay this exact storm. Your previous timeline stays as a ghost.</p><select class="fork-point" id="forkPoint" aria-label="Turn to replay"></select><button class="forkbtn" id="fork">Rewind and fork</button><button class="forkbtn" id="autopilot" >Compare with Autopilot</button><button class="forkbtn" id="museGhost" style="display:none">Race Muse’s ghost</button></section>
+<section class="compare" id="compare"><div class="comphead"><span>Two futures, one storm</span></div><div class="lanes"><div class="lane"><b id="baseLabel">GHOST BASELINE</b><span id="resultA">—</span><div class="route-strip" id="stripA"></div></div><div class="lane"><b id="liveLabel">YOUR RUN</b><span id="resultB">—</span><div class="route-strip" id="stripB"></div></div></div><p id="museCaption" class="level-error"></p></section></aside></div>
+<div class="footer"><span><a href="../">Forkshift </a> · 1–4 choose · R rewind</span><span id="modelMeta" style="overflow-wrap:anywhere">SCENARIO DATA · LOCAL</span></div></div><div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script type="module">
 import {start,step,replay,ACTIONS} from './engine.mjs';
 const $=s=>document.querySelector(s);let level,state,ghost=null,lane='A',ticks=12,locked=false,bundledLevel=null;
-const icons={auto:'⚙️',rescue:'🛟',guard:'🛡️',boost:'⚡'};
+const iconPaths={
+  auto:'<circle cx="12" cy="12" r="7"/><path d="m14 10-1 3-3 1 1-3z"/>',
+  rescue:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="m6.5 6.5 3.4 3.4m4.2 4.2 3.4 3.4m0-11-3.4 3.4m-4.2 4.2-3.4 3.4"/>',
+  guard:'<path d="m12 3 7 3v6c0 3.5-3 6.4-7 9-4-2.6-7-5.5-7-9V6z"/><path d="m9 12 2 2 4-4"/>',
+  boost:'<path d="M13 3 5 14h6l-1 7 9-11h-6z"/>',
+};
+const icons=Object.fromEntries(Object.entries(iconPaths).map(([key,body])=>[key,`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`]));
 const fixture={level:{title:'Mossbell’s Big Splash',brief:'A surprise cloudburst is headed for the hill. Keep the parcels moving and our pals dry.',turns:[{voice:2,private:1,bulk:1,pip:2,boba:2,event:'Clouds gather over Mossbell'},{voice:1,private:1,bulk:2,pip:2,boba:1,event:'A gust rattles the postbox'},{voice:2,private:2,bulk:1,pip:2,boba:2,event:'First drops — umbrellas up!'},{voice:1,private:1,bulk:1,pip:1,boba:1,event:'The footbridge starts to wobble'},{voice:2,private:2,bulk:2,pip:2,boba:1,event:'A puddle becomes a stream'},{voice:1,private:1,bulk:1,pip:2,boba:2,event:'Wind pushes parcels downhill'},{voice:2,private:2,bulk:1,pip:2,boba:1,event:'A private letter is exposed!'},{voice:1,private:1,bulk:2,pip:1,boba:2,event:'The bridge is nearly under water'},{voice:2,private:1,bulk:1,pip:2,boba:2,event:'The rain begins to ease'},{voice:1,private:2,bulk:2,pip:2,boba:2,event:'One last wave rolls through'},{voice:2,private:1,bulk:1,pip:2,boba:1,event:'Sunlight breaks through the clouds'},{voice:1,private:1,bulk:1,pip:2,boba:2,event:'The town is safe — shift complete'}]},metadata:{model:'fixture',provider:'local'},origin:'fixture'};
 function norm(value){
   if(!value || typeof value!=='object') throw new Error('Invalid tape.');
@@ -87,7 +267,7 @@ function render(){
     $('.character.'+key).classList.toggle('offline',off);
   }
   $('#forecast').innerHTML=upcoming
-    ? `<b>Arriving this turn</b> <span>♫ ${upcoming.voice} audio</span> <span>🔒 ${upcoming.private} sealed</span> <span>▣ ${upcoming.bulk} bulk</span>`
+    ? `<b>Arriving this turn</b> <span>${upcoming.voice} audio</span> <span>${upcoming.private} sealed</span> <span>${upcoming.bulk} bulk</span>`
     : '<b>All packets resolved.</b>';
   for(const [key,value] of Object.entries({delivered,missed,leaks,charge}))$('#'+key).textContent=value;
   const total=delivered+missed, pct=total?Math.round(delivered/total*100):100;
@@ -97,11 +277,11 @@ function render(){
   $('#statusPill').textContent=done?'SHIFT ENDED':'ON SHIFT';
   $('#queue').innerHTML='<span class="queue-title">WAITING FROM EARLIER TURNS</span>'+
     (queue.length?queue.map(p=>`<span class="parcel ${p.kind==='private'?'late':''}">${p.kind} · T−${Math.max(0,p.deadline-state.tick)}</span>`).join('')
-      :'<span class="parcel safe">✨ Queue is clear</span>');
+      :'<span class="parcel safe">Queue is clear</span>');
   $('#ticks').innerHTML=Array.from({length:ticks},(_,i)=>`<i class="tick ${i<state.tick?'done':i===state.tick&&!done?'current':'future'}"></i>`).join('');
   $('#actions').innerHTML=actionList().map((a,i)=>{
     const disabled=done||a.id==='boost'&&!charge;
-    return `<button class="action" data-action="${a.id}" ${disabled?'disabled':''}><span class="emoji">${icons[a.id]}</span><strong>${a.label}</strong><small>${a.description}</small><span class="key">${i+1}</span></button>`;
+    return `<button class="action" data-action="${a.id}" ${disabled?'disabled':''}><span class="action-icon">${icons[a.id]}</span><strong>${a.label}</strong><small>${a.description}</small><span class="key">${i+1}</span></button>`;
   }).join('');
   document.querySelectorAll('.action').forEach(button=>button.onclick=()=>move(button.dataset.action));
   $('#end').classList.toggle('show',done);
@@ -153,7 +333,7 @@ function autopilot(){
   toast('Autopilot ghost ready. Compare your choices on the same turns.');
 }
 document.addEventListener('keydown',event=>{
-  if(event.target?.matches?.('input, textarea, select')||$('#modal').classList.contains('show'))return;
+  if(event.target?.matches?.('input, textarea, select')||event.target?.closest?.('#modal'))return;
   if(event.key.toLowerCase()==='r'){fork();return;}
   const action=actionList()[Number(event.key)-1];
   if(action)move(action.id);
@@ -183,13 +363,16 @@ fetch('./muse-ghost.json').then(r=>r.ok?r.json():null).then(data=>{
   refreshMuseGhost();
 }).catch(()=>{museTape=null;refreshMuseGhost();});
 $('#restart').onclick=()=>{load(level);refreshMuseGhost();};
-$('#help').onclick=()=>$('#modal').classList.add('show');
-$('#closeHelp').onclick=()=>$('#modal').classList.remove('show');
-$('#modal').onclick=event=>{if(event.target.id==='modal')$('#modal').classList.remove('show');};
+function setHelp(open){
+  $('#modal').hidden=!open;
+  $('#help').setAttribute('aria-expanded',String(open));
+}
+$('#help').onclick=()=>setHelp($('#modal').hidden);
+$('#closeHelp').onclick=()=>{setHelp(false);$('#help').focus();};
 $('#file').onchange=async event=>{
   const file=event.target.files[0];
   if(!file)return;
-  try{load(JSON.parse(await file.text()));bundledLevel=null;$('#levelSelect').value='';syncShare();refreshMuseGhost();$('#modal').classList.remove('show');toast('Scenario loaded.');}
+  try{load(JSON.parse(await file.text()));bundledLevel=null;$('#levelSelect').value='';syncShare();refreshMuseGhost();setHelp(false);toast('Scenario loaded.');}
   catch{toast('That tape is invalid. Your current shift is unchanged.');}
 };
 function syncShare(){
@@ -225,7 +408,7 @@ $('#shareLevel').onclick=async()=>{
 };
 const preferred=new URLSearchParams(location.search).get('level');
 syncShare();
-if(['localhost','127.0.0.1'].includes(location.hostname))$('#authorBox').style.display='flex';$('#authorBtn').onclick=async()=>{const brief=$('#authorBrief').value.trim();if(!brief)return toast('Add a one-line disaster pitch first.');$('#authorBtn').disabled=true;$('#authorBtn').textContent='Dreaming…';toast('Your local model is dreaming up a storm. This may take a minute.');try{const r=await fetch('/api/director/author',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({brief})});const data=await r.json();if(!r.ok)throw new Error(data.error||'Author request failed.');load(norm(data));bundledLevel=null;setLevelUrl(null);syncShare();refreshMuseGhost();toast('New storm ready!')}catch(e){console.error(e);toast(e.message+' The current tape is still ready to play.')}finally{$('#authorBtn').disabled=false;$('#authorBtn').textContent='Dream up a storm →'}};try{
+if(['localhost','127.0.0.1'].includes(location.hostname))$('#authorBox').style.display='flex';$('#authorBtn').onclick=async()=>{const brief=$('#authorBrief').value.trim();if(!brief)return toast('Add a one-line disaster pitch first.');$('#authorBtn').disabled=true;$('#authorBtn').textContent='Dreaming…';toast('Your local model is dreaming up a storm. This may take a minute.');try{const r=await fetch('/api/director/author',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({brief})});const data=await r.json();if(!r.ok)throw new Error(data.error||'Author request failed.');load(norm(data));bundledLevel=null;setLevelUrl(null);syncShare();refreshMuseGhost();toast('New storm ready!')}catch(e){console.error(e);toast(e.message+' The current tape is still ready to play.')}finally{$('#authorBtn').disabled=false;$('#authorBtn').textContent='Dream up a storm'}};try{
   const response=await fetch('./level.json');
   if(!response.ok)throw new Error('No tape.');
   load(await response.json());bundledLevel='flagship';setLevelUrl('flagship');syncShare();refreshMuseGhost();

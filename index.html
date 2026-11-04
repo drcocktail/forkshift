@@ -3,34 +3,146 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#21172b">
-<meta name="description" content="Forkshift is a rescue arcade for inference incidents, backed by real worker failures and signed Redshift branch receipts.">
+<meta name="theme-color" content="#241b2e">
+<meta name="description" content="Race Muse Spark through a zero-gravity night market, then see what happens when a real inference worker fails.">
 <title>Forkshift · Rescue Arcade</title>
 <style>
-:root{color-scheme:dark;--ink:#fff5ee;--muted:#d2bdda;--bg:#21172b;--panel:#30223d;--line:#59425f;--pink:#ff9fb1;--mint:#99efc2;--gold:#ffde93;font:16px/1.55 ui-rounded,system-ui,sans-serif}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% 0,#513656,transparent 50%),var(--bg);color:var(--ink)}main{max-width:1120px;padding:0 26px 66px;margin:auto}header{padding:19px 0;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center;justify-content:space-between}header strong{font-size:22px;letter-spacing:-.04em}a{color:var(--mint)}a:focus-visible,video:focus-visible{outline:3px solid var(--gold);outline-offset:5px}.hero{padding:48px 0 27px;display:grid;grid-template-columns:minmax(0,1fr) 240px;align-items:center;gap:20px}.eyebrow{font:700 12px ui-monospace,monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--gold)}h1{font-size:clamp(38px,7vw,77px);line-height:.98;letter-spacing:-.07em;margin:11px 0 19px}p{margin:0;color:var(--muted);max-width:680px}.actions{display:flex;gap:9px;flex-wrap:wrap;margin:22px 0 0}.action{display:inline-block;border:1px solid var(--line);border-radius:12px;padding:9px 14px;text-decoration:none;font-weight:750}.play{background:var(--pink);color:#351d31;border-color:var(--pink)}.mascot{width:100%;filter:drop-shadow(0 12px 10px #1b1026)}.movie{background:var(--panel);padding:15px;border:1px solid var(--line);border-radius:18px}.movie video{display:block;width:100%;aspect-ratio:16/9;background:#19131f;border-radius:11px}.movie p{font-size:13px;margin:9px 0 0}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}.card{border:1px solid var(--line);border-radius:14px;padding:13px;background:var(--panel)}.card strong{display:block;margin-bottom:3px}.card p{font-size:13px}footer{color:var(--muted);font-size:13px;margin-top:14px}@media(max-width:640px){main{padding-inline:14px}.hero{padding-top:30px;grid-template-columns:minmax(0,1fr) 80px}.cards{grid-template-columns:1fr}}
+@font-face{font-family:Bricolage;src:url("assets/bricolage-latin.woff2") format("woff2");font-weight:400 800;font-display:swap}
+:root{
+  color-scheme:dark;
+  --night:#241b2e;
+  --surface:#30233c;
+  --ink:#fff6ef;
+  --quiet:#d4c1db;
+  --rule:#5b4763;
+  --pink:#ffacbc;
+  --mint:#a4edc7;
+  --gold:#ffdd92;
+  --display:Bricolage,system-ui,sans-serif;
+  font:16px/1.65 system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--night);color:var(--ink)}
+::selection{background:var(--gold);color:var(--night)}
+a{color:var(--mint);text-underline-offset:.24em}
+a:focus-visible,video:focus-visible{outline:3px solid var(--gold);outline-offset:5px}
+.shell{width:min(100% - 3rem,72rem);margin-inline:auto}
+.site-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 0;border-bottom:1px solid var(--rule)}
+.wordmark{display:inline-flex;align-items:center;gap:.55rem;color:var(--ink);font:800 1.4rem var(--display);text-decoration:none;letter-spacing:-.035em}
+.wordmark svg{width:1.8rem;height:1.8rem}
+.site-header nav{display:flex;align-items:center;gap:clamp(.85rem,3vw,2.1rem);font-size:.875rem}
+.site-header nav a{color:var(--quiet);text-decoration:none}
+.site-header nav a:hover{color:var(--ink);text-decoration:underline}
+.hero{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);align-items:center;gap:clamp(1.4rem,5vw,5.5rem);padding:clamp(3rem,8vw,7.25rem) 0 clamp(3.5rem,7vw,6rem)}
+h1,h2,h3{font-family:var(--display);text-wrap:balance}
+h1{margin:0;font-size:clamp(3.3rem,7.8vw,6rem);font-weight:800;line-height:.91;letter-spacing:-.04em}
+h1 span{display:block;color:var(--pink)}
+.hero-copy>p{max-width:60ch;margin:1.6rem 0 0;color:var(--quiet);font-size:clamp(1rem,2vw,1.12rem)}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:.95rem 1.25rem;margin-top:1.65rem}
+.play{display:inline-flex;align-items:center;justify-content:center;gap:.65rem;min-height:3.125rem;padding:.65rem 1rem;border-radius:.6rem;background:var(--pink);color:#321f37;font-weight:760;text-decoration:none}
+.play:hover{background:#ffcad5}
+.play svg{width:.9rem;height:.9rem;fill:currentColor}
+.watch{display:inline-flex;align-items:center;min-height:2.75rem;font-weight:650}
+.hero-art{margin:0;min-width:0}
+.hero-art svg{display:block;width:100%;height:auto;overflow:visible}
+.hero-art figcaption{text-align:right;color:var(--quiet);font-size:.78rem;letter-spacing:.02em;margin-top:.4rem}
+.walkthrough{padding:clamp(2rem,5vw,4.25rem) 0;border-top:1px solid var(--rule)}
+.walkthrough h2{font-size:clamp(2.05rem,4vw,3.4rem);line-height:1;letter-spacing:-.035em;margin:0 0 1.3rem}
+.screen{margin:0}
+.screen video{display:block;width:100%;aspect-ratio:16/9;background:#1b1423;border:1px solid var(--rule);border-radius:.75rem}
+.screen figcaption{display:flex;flex-wrap:wrap;gap:.2rem 1rem;justify-content:space-between;margin-top:.75rem;color:var(--quiet);font-size:.875rem}
+.evidence{display:grid;grid-template-columns:minmax(11rem,1fr) minmax(0,2fr);gap:1.2rem 3rem;padding:clamp(2rem,5vw,4rem) 0;border-top:1px solid var(--rule)}
+.evidence h2{font-size:clamp(1.8rem,4vw,2.7rem);line-height:1;letter-spacing:-.035em;margin:0}
+.evidence ul{list-style:none;padding:0;margin:0}
+.evidence li{padding:.95rem 0;border-bottom:1px solid var(--rule)}
+.evidence li:first-child{padding-top:0}
+.evidence li:last-child{border:0}
+.evidence strong,.evidence a{font-weight:760}
+.evidence p{margin:.15rem 0 0;max-width:64ch;color:var(--quiet)}
+footer{padding:1.35rem 0 2.5rem;border-top:1px solid var(--rule);color:var(--quiet);font-size:.875rem}
+footer p{max-width:72ch;margin:.45rem 0 0}
+@media(max-width:700px){
+  .shell{width:min(100% - 2rem,35rem)}
+  .hero{grid-template-columns:1fr;padding-top:3.5rem;gap:2rem}
+  .hero-art{width:min(100%,26rem);justify-self:center}
+  .hero-art figcaption{text-align:center}
+  .evidence{grid-template-columns:1fr;gap:1.4rem}
+}
+@media(max-width:365px){
+  .site-header nav a:first-child{display:none}
+  .actions{align-items:flex-start;flex-direction:column;gap:.5rem}
+}
 </style>
 </head>
-<body><main>
-<header><strong>✦ Forkshift</strong><a href="https://github.com/drcocktail/forkshift">Source on GitHub ↗</a></header>
-<section class="hero">
-<div>
-<div class="eyebrow">Push the Frontier · Meta Global AI Developer Hackathon</div>
-<h1>Same storm.<br>Two futures.</h1>
-<p>Muse Spark writes a zero-gravity disaster and plays it as your rival. Rewind any turn, race its ghost, then watch what happens when we kill a real inference worker.</p>
-<div class="actions"><a class="action play" href="director/">▶ Play Disaster Director</a><a class="action" href="Forkshift-Arcade.html">Worker rescue ↗</a><a class="action" href="Forkshift-Branch-Garden.html">Inspect branch receipts ↗</a></div>
-</div>
-<svg class="mascot" viewBox="0 0 235 171" role="img" aria-label="Pip and Boba, two smiling inference workers">
-<path d="M60 64 34 36l1 46q-17 19-4 43 13 25 55 19 37-5 37-34 0-21-15-32l-4-40-27 24z" fill="#d4b6ff" stroke="#574163" stroke-width="5" stroke-linejoin="round"/>
-<path d="M161 53l-21-19-2 33q-17 15-11 43 6 27 44 28 39 0 47-29 5-21-11-40l-1-36-25 21z" fill="#99efc2" stroke="#3f6651" stroke-width="5" stroke-linejoin="round"/>
-<path d="M51 98q5-8 11 0m24 0q5-8 11 0m-31 11q7 8 14-1m71-15q5-8 11 0m21 0q5-8 11 0m-29 11q7 8 14-1" fill="none" stroke="#392941" stroke-width="4" stroke-linecap="round"/>
-<path d="m117 15 5 12 12 5-12 5-5 12-5-12-12-5 12-5z" fill="#ffde93"/>
-</svg>
-</section>
-<section class="movie" aria-label="Demo video"><video controls playsinline preload="metadata" aria-label="Forkshift Rescue Arcade captioned walkthrough"><source src="Forkshift-Rescue-Arcade.mp4" type="video/mp4"><a href="Forkshift-Rescue-Arcade.mp4">Open the video</a></video><p>Captioned walkthrough · <a href="Forkshift-Rescue-Arcade.mp4">Direct video link</a></p></section>
-<div class="cards">
-<div class="card"><strong>Real local fault injection</strong><p>Independently started Ollama processes, synthetic golden requests, and an observed worker exit after a green canary.</p></div>
-<div class="card"><strong>Two separate grades</strong><p>Recover the service and respect the route policy. An unsafe recovery can pass one and fail the other.</p></div>
-<div class="card"><strong>Signed branch outcomes</strong><p>Native Redshift v2 receipts identify the completed branch and the rejected shortcut. Verify both in the replay.</p></div>
-</div>
-<footer>Disaster Director runs in your browser. The worker rescue and Branch Garden replay recorded evidence. Author new storms and rerun the worker drill locally.</footer>
-</main></body></html>
+<body>
+<header class="site-header shell">
+  <a class="wordmark" href="./" aria-label="Forkshift home">
+    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2v8c0 6-5 7-11 7m11-7c0 6 5 7 11 7M16 10v19" stroke="#ffdd92" stroke-width="2.2" stroke-linecap="round"/><circle cx="5" cy="17" r="2.7" fill="#a4edc7"/><circle cx="27" cy="17" r="2.7" fill="#ffacbc"/></svg>
+    Forkshift
+  </a>
+  <nav aria-label="Site"><a href="#walkthrough">Walkthrough</a><a href="https://github.com/drcocktail/forkshift">Source on GitHub</a></nav>
+</header>
+<main class="shell">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <h1 id="hero-title">Same storm.<span>Two futures.</span></h1>
+      <p>Muse Spark writes a zero-gravity disaster and plays it as your rival. Rewind any turn, race its ghost, then watch what happens when we kill a real inference worker.</p>
+      <div class="actions">
+        <a class="play" href="director/index.html"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5 13 8l-9 5.5z"/></svg>Play Disaster Director</a>
+        <a class="watch" href="#walkthrough">Watch the 3-minute demo</a>
+      </div>
+    </div>
+    <figure class="hero-art">
+      <svg viewBox="0 0 480 374" role="img" aria-labelledby="market-title" xmlns="http://www.w3.org/2000/svg">
+        <title id="market-title">Pip and Boba among floating lanterns above the night market</title>
+        <path d="M34 202C47 115 105 49 195 32s193 7 239 85c33 55 23 136-32 183-63 53-159 62-248 47C68 334 20 288 34 202Z" fill="#3b2b49"/>
+        <path d="M31 250c70 4 109-21 176-21 85 0 133 40 236 15l-9 49c-65 53-164 67-269 48C96 328 51 298 31 250Z" fill="#30243d"/>
+        <g fill="none" stroke="#876998" stroke-width="1.5"><path d="M20 122c77-29 134-19 217-4 73 13 145 10 222-19"/><path d="M52 209c100-40 236-27 368 2"/><path d="M74 79c92-45 210-45 319-17"/></g>
+        <g fill="#f2d590">
+          <path d="M307 58a36 36 0 1 0 48 47 40 40 0 0 1-48-47Z"/>
+          <circle cx="140" cy="63" r="2"/><circle cx="235" cy="57" r="2"/><circle cx="380" cy="82" r="2"/><circle cx="405" cy="134" r="2"/>
+        </g>
+        <g stroke="#58425f" stroke-width="2">
+          <path d="M102 108v16m3 36v10M355 117v19m1 36v9M224 115v13m3 26v10" stroke="#bba1c4"/>
+          <rect x="88" y="123" width="30" height="36" rx="11" fill="#ffad8f"/>
+          <rect x="342" y="135" width="29" height="36" rx="11" fill="#ffbf8f"/>
+          <rect x="215" y="128" width="22" height="27" rx="8" fill="#ffdda0"/>
+        </g>
+        <g fill="none" stroke="#9a6070" stroke-width="1.4"><path d="M98 127v27m10-27v27m243-15v27m10-27v27"/></g>
+        <g stroke="#34283e" stroke-width="2.5" stroke-linejoin="round">
+          <path d="M68 263h92v47H68z" fill="#65506c"/><path d="M59 264l20-30h69l22 30Z" fill="#a9718c"/>
+          <path d="M319 270h88v42h-88z" fill="#65506c"/><path d="M310 270l20-29h65l22 29Z" fill="#71968d"/>
+          <path d="M179 288h114v37H179z" fill="#65506c"/><path d="M169 289l24-33h85l25 33Z" fill="#98769e"/>
+          <path d="M86 276h18v13H86zm39 0h18v13h-18zm210 5h18v13h-18zm37 0h18v13h-18zm-173 19h22v13h-22zm46 0h22v13h-22z" fill="#f0cf8e"/>
+        </g>
+        <path d="M160 180l-17-19 1 28c-16 17-11 39 8 48 20 9 53 4 65-11 9-11 7-26-3-36l-3-29-17 19Z" fill="#d4b6ff" stroke="#574163" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M267 194l-14-19-2 26c-15 16-9 36 7 44 21 10 53 6 65-9 8-12 5-27-5-36l-2-27-17 19Z" fill="#99efc2" stroke="#3f6651" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M159 208q5-7 10 0m21 0q5-7 10 0m-26 10q6 6 11 0m78 0q5-7 10 0m21 0q5-7 10 0m-26 10q6 6 11 0" fill="none" stroke="#392941" stroke-width="3" stroke-linecap="round"/>
+        <path d="M227 164l4-9 4 9 9 4-9 4-4 9-4-9-9-4z" fill="#ffdd92"/>
+        <g fill="#ba9bc8"><circle cx="86" cy="203" r="2"/><circle cx="411" cy="202" r="2"/><circle cx="58" cy="160" r="2"/><circle cx="275" cy="111" r="2"/></g>
+      </svg>
+      <figcaption>Pip and Boba above the floating night market</figcaption>
+    </figure>
+  </section>
+  <section class="walkthrough" id="walkthrough" aria-labelledby="watch-title">
+    <h2 id="watch-title">See what happens after the green light.</h2>
+    <figure class="screen">
+      <video controls playsinline preload="none" poster="assets/walkthrough-poster.webp" width="1280" height="720" aria-label="Forkshift Rescue Arcade captioned walkthrough"><source src="Forkshift-Rescue-Arcade.mp4" type="video/mp4"><a href="Forkshift-Rescue-Arcade.mp4">Open the video</a></video>
+      <figcaption><span>Captioned walkthrough · 3 minutes</span><a href="Forkshift-Rescue-Arcade.mp4">Open the video directly</a></figcaption>
+    </figure>
+  </section>
+  <section class="evidence" aria-labelledby="evidence-title">
+    <h2 id="evidence-title">Behind the arcade</h2>
+    <ul>
+      <li><a href="Forkshift-Arcade.html">Watch the worker rescue</a><p>Independently started Ollama processes, synthetic golden requests, and an observed worker exit after a green canary.</p></li>
+      <li><strong>Recovery and safety get separate grades</strong><p>An unsafe recovery can restore service while violating the routing policy.</p></li>
+      <li><a href="Forkshift-Branch-Garden.html">Inspect the signed branch receipts</a><p>Native Redshift v2 receipts identify the completed branch and the rejected shortcut. Verify both in the replay.</p></li>
+    </ul>
+  </section>
+</main>
+<footer class="shell">
+  Push the Frontier · Meta Global AI Developer Hackathon
+  <p>Disaster Director runs in your browser. The worker rescue and Branch Garden replay recorded evidence. Author new storms and rerun the worker drill locally.</p>
+</footer>
+</body>
+</html>
