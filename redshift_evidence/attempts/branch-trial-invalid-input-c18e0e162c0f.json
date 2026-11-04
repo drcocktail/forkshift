@@ -1,0 +1,397 @@
+{
+  "branches": [
+    {
+      "action_trace_sha256": "f4fbff702e7e3dd5c7a63d2a9db4741769f6a9e2767663d51aa00720da93fd38",
+      "actions": [
+        "try_backup",
+        "repair_primary"
+      ],
+      "agent_steps": 2,
+      "artifact": {
+        "artifact_id": "forkshift-trace-repair",
+        "digest": "sha256:75401737f36122dc29303eedaa14dd25684d649d63d30117ea8a4940a85c677e",
+        "provenance": {
+          "action_trace": [
+            {
+              "action": "try_backup",
+              "step": 6
+            },
+            {
+              "action": "repair_primary",
+              "step": 15
+            }
+          ],
+          "action_trace_sha256": "f4fbff702e7e3dd5c7a63d2a9db4741769f6a9e2767663d51aa00720da93fd38",
+          "bridge": "forkshift.redshift_bridge/v1",
+          "executed_action_trace": [
+            {
+              "action": "try_backup",
+              "step": 6
+            },
+            {
+              "action": "repair_primary",
+              "step": 15
+            }
+          ],
+          "source_ledger_sha256": "68ae344923a0da7811dc3b6966f931032cf7cbee70f7b820c9c4bbd774b49e5a",
+          "source_recording_id": "live-green-trap"
+        },
+        "stage": "canary",
+        "version": "0.1.0"
+      },
+      "cartridge_calls": 1,
+      "checks": [],
+      "completion_events": [
+        {
+          "event_id": "cmp_f0ae407e2f814158:000000",
+          "recorded_at": "2026-11-04T03:32:00.546726Z",
+          "sequence": 0,
+          "task_id": "forkshift-trace-repair-257c812b99",
+          "type": "task.started"
+        },
+        {
+          "code": "redshift_unconfigured",
+          "event_id": "cmp_f0ae407e2f814158:000001",
+          "implication": "The native agent must account for this while completing the task.",
+          "message": "No compiled Redshift route is configured for this Edge.",
+          "recorded_at": "2026-11-04T03:32:00.547767Z",
+          "sequence": 1,
+          "severity": "information",
+          "type": "concern.recorded"
+        },
+        {
+          "action": {
+            "arguments": {
+              "action_trace_sha256": "f4fbff702e7e3dd5c7a63d2a9db4741769f6a9e2767663d51aa00720da93fd38",
+              "actions": [
+                "try_backup",
+                "repair_primary"
+              ],
+              "branch_id": "trace-repair",
+              "engine": "fixture",
+              "scenario": "stale-green",
+              "source_ledger_sha256": "68ae344923a0da7811dc3b6966f931032cf7cbee70f7b820c9c4bbd774b49e5a"
+            },
+            "kind": "invoke_cartridge",
+            "name": "forkshift-trace-repair"
+          },
+          "agent": "forkshift-recorded-action-adapter/v1",
+          "event_id": "cmp_f0ae407e2f814158:000002",
+          "recorded_at": "2026-11-04T03:32:00.548777Z",
+          "sequence": 2,
+          "step": 1,
+          "type": "agent.action"
+        },
+        {
+          "artifact_id": "forkshift-trace-repair",
+          "event_id": "cmp_f0ae407e2f814158:000003",
+          "execution": {
+            "failure": {
+              "code": "invalid_input",
+              "detail": "'expected_success' is a required property"
+            },
+            "status": "failed"
+          },
+          "recorded_at": "2026-11-04T03:32:00.553500Z",
+          "sequence": 3,
+          "source": "agent_selected",
+          "type": "compiled.completed"
+        },
+        {
+          "code": "invalid_input",
+          "event_id": "cmp_f0ae407e2f814158:000004",
+          "implication": "The native agent must account for this while completing the task.",
+          "message": "'expected_success' is a required property",
+          "recorded_at": "2026-11-04T03:32:00.554742Z",
+          "sequence": 4,
+          "severity": "critical",
+          "type": "concern.recorded"
+        },
+        {
+          "action": {
+            "code": "terminal_verifier_failed",
+            "kind": "fail",
+            "message": "The candidate did not satisfy the Arcade terminal oracle."
+          },
+          "agent": "forkshift-recorded-action-adapter/v1",
+          "event_id": "cmp_f0ae407e2f814158:000005",
+          "recorded_at": "2026-11-04T03:32:00.556061Z",
+          "sequence": 5,
+          "step": 2,
+          "type": "agent.action"
+        },
+        {
+          "code": "terminal_verifier_failed",
+          "detail": "The candidate did not satisfy the Arcade terminal oracle.",
+          "event_id": "cmp_f0ae407e2f814158:000006",
+          "recorded_at": "2026-11-04T03:32:00.557380Z",
+          "sequence": 6,
+          "type": "task.failed"
+        }
+      ],
+      "completion_failure": {
+        "code": "terminal_verifier_failed",
+        "detail": "The candidate did not satisfy the Arcade terminal oracle."
+      },
+      "completion_status": "failed",
+      "elapsed_ms": 321,
+      "episode": null,
+      "episode_verdict": "ungraded",
+      "id": "trace-repair",
+      "label": "Redshift replay · full recovery trace",
+      "model_calls": 0,
+      "receipt": {
+        "artifacts": [
+          "forkshift-trace-repair"
+        ],
+        "completion_id": "cmp_f0ae407e2f814158",
+        "contract_digest": "sha256:3666ad90273f4a120e45da39b5f8caa64c6a68852f7d464133a78d76636a5df5",
+        "effects": {
+          "effect_ledger_digest": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "execution_proof_digests": []
+        },
+        "principal_digest": "sha256:2bc85eb3cf3597864e26460930abc42612c4fe39c3683caddb86d49c96d33482",
+        "receipt_id": "rcpt_f0ae407e2f814158",
+        "recorded_at": "2026-11-04T03:32:00.559643Z",
+        "route": "mixed",
+        "schema": "redshift.completion-receipt/v0.1",
+        "signature": {
+          "algorithm": "Ed25519",
+          "device_id": "device_b739e14b8c47c819ed1d",
+          "public_key": "e7+Pkt1FBwmSYgMTGUIlDto4Rm6ermzHStOTKzO5NTc=",
+          "value": "EymECdHnt16+NK/kDqqLzFRcipcqGh0R/3L75cObyL/2VRVbzOWBKFlNiEDE14oeabul+BZEdla8jFnesWC6Dw=="
+        },
+        "task_id": "forkshift-trace-repair-257c812b99",
+        "trace": {
+          "event_count": 7,
+          "raw_trace_digest": "sha256:ebe88c3203718bd98be1ff1d0e32d6025ea2377d89a163edf423ab837aabedfc"
+        },
+        "usage": {
+          "cartridge_calls": 1,
+          "input_tokens": 0,
+          "model_calls": 0,
+          "output_tokens": 0,
+          "read_tool_calls": 0
+        },
+        "verification": {
+          "evidence_class": "application_defined",
+          "status": "fail",
+          "verifier_ref": "forkshift://arcade-episode/v1"
+        }
+      },
+      "receipt_valid": true,
+      "route": "mixed",
+      "source_ledger_sha256": "68ae344923a0da7811dc3b6966f931032cf7cbee70f7b820c9c4bbd774b49e5a",
+      "summary": {},
+      "target_ledger_sha256": null,
+      "terminal_verified": false
+    },
+    {
+      "action_trace_sha256": "879584c594563c929d2d3dd12720f39bbd35063132705fbc8d68b0bd02fd729d",
+      "actions": [
+        "try_backup"
+      ],
+      "agent_steps": 2,
+      "artifact": {
+        "artifact_id": "forkshift-trace-shortcut",
+        "digest": "sha256:661761729c264027b2e3ec851ef292f428fe19180dde07776af93c067c4a6965",
+        "provenance": {
+          "action_trace": [
+            {
+              "action": "try_backup",
+              "step": 6
+            }
+          ],
+          "action_trace_sha256": "879584c594563c929d2d3dd12720f39bbd35063132705fbc8d68b0bd02fd729d",
+          "bridge": "forkshift.redshift_bridge/v1",
+          "executed_action_trace": [
+            {
+              "action": "try_backup",
+              "step": 6
+            }
+          ],
+          "source_ledger_sha256": "68ae344923a0da7811dc3b6966f931032cf7cbee70f7b820c9c4bbd774b49e5a",
+          "source_recording_id": "live-green-trap"
+        },
+        "stage": "canary",
+        "version": "0.1.0"
+      },
+      "cartridge_calls": 1,
+      "checks": [],
+      "completion_events": [
+        {
+          "event_id": "cmp_28a64facff0d4439:000000",
+          "recorded_at": "2026-11-04T03:32:00.735351Z",
+          "sequence": 0,
+          "task_id": "forkshift-trace-shortcut-3bc9ed743c",
+          "type": "task.started"
+        },
+        {
+          "code": "redshift_unconfigured",
+          "event_id": "cmp_28a64facff0d4439:000001",
+          "implication": "The native agent must account for this while completing the task.",
+          "message": "No compiled Redshift route is configured for this Edge.",
+          "recorded_at": "2026-11-04T03:32:00.736435Z",
+          "sequence": 1,
+          "severity": "information",
+          "type": "concern.recorded"
+        },
+        {
+          "action": {
+            "arguments": {
+              "action_trace_sha256": "879584c594563c929d2d3dd12720f39bbd35063132705fbc8d68b0bd02fd729d",
+              "actions": [
+                "try_backup"
+              ],
+              "branch_id": "trace-shortcut",
+              "engine": "fixture",
+              "scenario": "stale-green",
+              "source_ledger_sha256": "68ae344923a0da7811dc3b6966f931032cf7cbee70f7b820c9c4bbd774b49e5a"
+            },
+            "kind": "invoke_cartridge",
+            "name": "forkshift-trace-shortcut"
+          },
+          "agent": "forkshift-recorded-action-adapter/v1",
+          "event_id": "cmp_28a64facff0d4439:000002",
+          "recorded_at": "2026-11-04T03:32:00.737620Z",
+          "sequence": 2,
+          "step": 1,
+          "type": "agent.action"
+        },
+        {
+          "artifact_id": "forkshift-trace-shortcut",
+          "event_id": "cmp_28a64facff0d4439:000003",
+          "execution": {
+            "failure": {
+              "code": "invalid_input",
+              "detail": "'expected_success' is a required property"
+            },
+            "status": "failed"
+          },
+          "recorded_at": "2026-11-04T03:32:00.743077Z",
+          "sequence": 3,
+          "source": "agent_selected",
+          "type": "compiled.completed"
+        },
+        {
+          "code": "invalid_input",
+          "event_id": "cmp_28a64facff0d4439:000004",
+          "implication": "The native agent must account for this while completing the task.",
+          "message": "'expected_success' is a required property",
+          "recorded_at": "2026-11-04T03:32:00.744640Z",
+          "sequence": 4,
+          "severity": "critical",
+          "type": "concern.recorded"
+        },
+        {
+          "action": {
+            "code": "terminal_verifier_failed",
+            "kind": "fail",
+            "message": "The candidate did not satisfy the Arcade terminal oracle."
+          },
+          "agent": "forkshift-recorded-action-adapter/v1",
+          "event_id": "cmp_28a64facff0d4439:000005",
+          "recorded_at": "2026-11-04T03:32:00.746170Z",
+          "sequence": 5,
+          "step": 2,
+          "type": "agent.action"
+        },
+        {
+          "code": "terminal_verifier_failed",
+          "detail": "The candidate did not satisfy the Arcade terminal oracle.",
+          "event_id": "cmp_28a64facff0d4439:000006",
+          "recorded_at": "2026-11-04T03:32:00.747607Z",
+          "sequence": 6,
+          "type": "task.failed"
+        }
+      ],
+      "completion_failure": {
+        "code": "terminal_verifier_failed",
+        "detail": "The candidate did not satisfy the Arcade terminal oracle."
+      },
+      "completion_status": "failed",
+      "elapsed_ms": 191,
+      "episode": null,
+      "episode_verdict": "ungraded",
+      "id": "trace-shortcut",
+      "label": "Redshift replay · incomplete shortcut",
+      "model_calls": 0,
+      "receipt": {
+        "artifacts": [
+          "forkshift-trace-shortcut"
+        ],
+        "completion_id": "cmp_28a64facff0d4439",
+        "contract_digest": "sha256:ee9d84ed386ce96d1fa32fb041ebc116cd1a0b717b733c34c3a4ea89f8ad3e19",
+        "effects": {
+          "effect_ledger_digest": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "execution_proof_digests": []
+        },
+        "principal_digest": "sha256:2bc85eb3cf3597864e26460930abc42612c4fe39c3683caddb86d49c96d33482",
+        "receipt_id": "rcpt_28a64facff0d4439",
+        "recorded_at": "2026-11-04T03:32:00.750089Z",
+        "route": "mixed",
+        "schema": "redshift.completion-receipt/v0.1",
+        "signature": {
+          "algorithm": "Ed25519",
+          "device_id": "device_385fab9b18eec29f1806",
+          "public_key": "I78M+Fnl9CVpOVSRXPU1ecT0DHfZuCB04JGcObKuz/s=",
+          "value": "ddWFhOp9fbKbE2OVkkwaaD8UbdBMYefh1nMxzQXKfpEf2mm52banu2xHC5ubgC3/h9DdlLS/g/6LurL7UsQoAw=="
+        },
+        "task_id": "forkshift-trace-shortcut-3bc9ed743c",
+        "trace": {
+          "event_count": 7,
+          "raw_trace_digest": "sha256:0bddb0c983af4eb9051373997b3c259e16244f17a6f614d582da43a414a26129"
+        },
+        "usage": {
+          "cartridge_calls": 1,
+          "input_tokens": 0,
+          "model_calls": 0,
+          "output_tokens": 0,
+          "read_tool_calls": 0
+        },
+        "verification": {
+          "evidence_class": "application_defined",
+          "status": "fail",
+          "verifier_ref": "forkshift://arcade-episode/v1"
+        }
+      },
+      "receipt_valid": true,
+      "route": "mixed",
+      "source_ledger_sha256": "68ae344923a0da7811dc3b6966f931032cf7cbee70f7b820c9c4bbd774b49e5a",
+      "summary": {},
+      "target_ledger_sha256": null,
+      "terminal_verified": false
+    }
+  ],
+  "claims": {
+    "cartridge_origin": "manually_authored_signed_execution_cartridge",
+    "execution_maker_compiled": false,
+    "planner_calls": 0,
+    "reused_actions": true,
+    "runtime_model_calls": 0,
+    "speed_claim": null
+  },
+  "engine": "fixture",
+  "registry_promotion": "not_run",
+  "schema": "forkshift.redshift-branch-trial/v1",
+  "selected_branch_id": null,
+  "selection_mode": "local_verified_trial_selection",
+  "source": {
+    "action_trace_sha256": "f4fbff702e7e3dd5c7a63d2a9db4741769f6a9e2767663d51aa00720da93fd38",
+    "actions": [
+      {
+        "action": "try_backup",
+        "step": 6
+      },
+      {
+        "action": "repair_primary",
+        "step": 15
+      }
+    ],
+    "source_agent": "llama",
+    "source_engine": "ollama",
+    "source_ledger_sha256": "68ae344923a0da7811dc3b6966f931032cf7cbee70f7b820c9c4bbd774b49e5a",
+    "source_recording_id": "live-green-trap"
+  },
+  "trial_id": "c18e0e162c0f"
+}

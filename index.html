@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#21172b">
+<meta name="description" content="Forkshift is a rescue arcade for inference incidents, backed by real worker failures and signed Redshift branch receipts.">
+<title>Forkshift · Rescue Arcade</title>
+<style>
+:root{color-scheme:dark;--ink:#fff5ee;--muted:#d2bdda;--bg:#21172b;--panel:#30223d;--line:#59425f;--pink:#ff9fb1;--mint:#99efc2;--gold:#ffde93;font:16px/1.55 ui-rounded,system-ui,sans-serif}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% 0,#513656,transparent 50%),var(--bg);color:var(--ink)}main{max-width:1120px;padding:0 26px 66px;margin:auto}header{padding:19px 0;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center;justify-content:space-between}header strong{font-size:22px;letter-spacing:-.04em}a{color:var(--mint)}a:focus-visible,video:focus-visible{outline:3px solid var(--gold);outline-offset:5px}.hero{padding:48px 0 27px;display:grid;grid-template-columns:minmax(0,1fr) 240px;align-items:center;gap:20px}.eyebrow{font:700 12px ui-monospace,monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--gold)}h1{font-size:clamp(38px,7vw,77px);line-height:.98;letter-spacing:-.07em;margin:11px 0 19px}p{margin:0;color:var(--muted);max-width:680px}.actions{display:flex;gap:9px;flex-wrap:wrap;margin:22px 0 0}.action{display:inline-block;border:1px solid var(--line);border-radius:12px;padding:9px 14px;text-decoration:none;font-weight:750}.play{background:var(--pink);color:#351d31;border-color:var(--pink)}.mascot{width:100%;filter:drop-shadow(0 12px 10px #1b1026)}.movie{background:var(--panel);padding:15px;border:1px solid var(--line);border-radius:18px}.movie video{display:block;width:100%;aspect-ratio:16/9;background:#19131f;border-radius:11px}.movie p{font-size:13px;margin:9px 0 0}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}.card{border:1px solid var(--line);border-radius:14px;padding:13px;background:var(--panel)}.card strong{display:block;margin-bottom:3px}.card p{font-size:13px}footer{color:var(--muted);font-size:13px;margin-top:14px}@media(max-width:640px){main{padding-inline:14px}.hero{padding-top:30px;grid-template-columns:minmax(0,1fr) 80px}.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main>
+<header><strong>✦ Forkshift</strong><a href="https://github.com/drcocktail/forkshift">Source on GitHub ↗</a></header>
+<section class="hero">
+<div>
+<div class="eyebrow">Push the Frontier · Meta Global AI Developer Hackathon</div>
+<h1>A green light can go stale.</h1>
+<p>Two inference workers. One failed route. An agent that has to get the packets home, and a Redshift receipt that records what really happened.</p>
+<div class="actions"><a class="action play" href="Forkshift-Arcade.html">▶ Play Rescue Arcade</a><a class="action" href="Forkshift-Branch-Garden.html">Inspect branch receipts ↗</a></div>
+</div>
+<svg class="mascot" viewBox="0 0 235 171" role="img" aria-label="Pip and Boba, two smiling inference workers">
+<path d="M60 64 34 36l1 46q-17 19-4 43 13 25 55 19 37-5 37-34 0-21-15-32l-4-40-27 24z" fill="#d4b6ff" stroke="#574163" stroke-width="5" stroke-linejoin="round"/>
+<path d="M161 53l-21-19-2 33q-17 15-11 43 6 27 44 28 39 0 47-29 5-21-11-40l-1-36-25 21z" fill="#99efc2" stroke="#3f6651" stroke-width="5" stroke-linejoin="round"/>
+<path d="M51 98q5-8 11 0m24 0q5-8 11 0m-31 11q7 8 14-1m71-15q5-8 11 0m21 0q5-8 11 0m-29 11q7 8 14-1" fill="none" stroke="#392941" stroke-width="4" stroke-linecap="round"/>
+<path d="m117 15 5 12 12 5-12 5-5 12-5-12-12-5 12-5z" fill="#ffde93"/>
+</svg>
+</section>
+<section class="movie" aria-label="Demo video"><video controls playsinline preload="metadata" aria-label="Forkshift Rescue Arcade captioned walkthrough"><source src="Forkshift-Rescue-Arcade.mp4" type="video/mp4"><a href="Forkshift-Rescue-Arcade.mp4">Open the video</a></video><p>Captioned walkthrough · <a href="Forkshift-Rescue-Arcade.mp4">Direct video link</a></p></section>
+<div class="cards">
+<div class="card"><strong>Real local fault injection</strong><p>Independently started Ollama processes, synthetic golden requests, and an observed worker exit after a green canary.</p></div>
+<div class="card"><strong>Two separate grades</strong><p>Recover the service and respect the route policy. An unsafe recovery can pass one and fail the other.</p></div>
+<div class="card"><strong>Signed branch outcomes</strong><p>Native Redshift v2 receipts identify the completed branch and the rejected shortcut. Verify both in the replay.</p></div>
+</div>
+<footer>The hosted Arcade and Branch Garden replay recorded evidence. Fresh inference and Redshift execution run locally from the repository.</footer>
+</main></body></html>

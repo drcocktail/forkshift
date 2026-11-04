@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#201727">
+<title>Forkshift · Redshift Branch Garden</title>
+<style>
+:root{color-scheme:dark;--ink:#fff4eb;--muted:#c5b4cc;--pink:#ff9ba8;--mint:#93f1bf;--yellow:#ffdb90;--lav:#d4b6ff;--bg:#201727;--card:#2d2237;--line:#4b3a55;font:15px/1.55 ui-rounded,"SF Pro Rounded",system-ui,sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:radial-gradient(ellipse at 72% -8%,#563d60 0,transparent 44%),var(--bg);min-height:100vh}main{max-width:1110px;margin:auto;padding:0 24px 70px}header{padding:19px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px}header strong{font-size:20px;letter-spacing:-.04em}a{color:var(--mint)}button{font:inherit;color:inherit;border:1px solid var(--line);border-radius:12px;padding:8px 13px;background:#36283f;cursor:pointer}button:hover{border-color:var(--mint)}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}h1{font-size:clamp(37px,7vw,74px);line-height:.99;letter-spacing:-.065em;margin:10px 0 18px}h2,h3{line-height:1.1;letter-spacing:-.03em}.mono{font:11px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.095em;color:var(--muted)}.hero{display:grid;grid-template-columns:1fr 245px;gap:18px;align-items:center;padding:36px 0 25px}.hero p{margin:0;max-width:620px;color:var(--muted)}.mascot{width:100%;max-height:175px;filter:drop-shadow(0 13px 12px #160d20a0)}.garden{border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#392b43,#282233);padding:16px;position:relative}.seed{margin:auto;text-align:center;max-width:340px;border:1px solid #ffe2a966;border-radius:15px;padding:10px;background:#4b3c44}.seed strong{display:block}.rails{height:45px;width:65%;margin:auto;position:relative}.rails:after{content:"";position:absolute;inset:16px 7% 0;border:2px solid #9a729b;border-bottom:0;border-radius:16px 16px 0 0}.rails:before{content:"";position:absolute;left:50%;height:18px;border-left:2px solid #9a729b}.branches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.branch{border:1px solid var(--line);border-radius:15px;background:#211b2c;padding:15px;min-width:0}.branch.good{border-color:#93f1bf8a}.branch.bad{border-color:#ff9ba887}.branch h2{margin:8px 0 12px;font-size:25px}.tag{display:inline-block;padding:4px 8px;border-radius:99px;font:11px ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase}.good .tag{color:var(--mint);background:#263c36}.bad .tag{color:var(--pink);background:#472b3a}.steps{display:flex;gap:6px;flex-wrap:wrap;list-style:none;padding:0;margin:0 0 13px}.steps li{font:11px ui-monospace,monospace;padding:6px 8px;border-radius:8px;background:#32283c;overflow-wrap:anywhere}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:0 0 12px}.stat{padding:8px;background:#2d2638;border-radius:8px;font-size:11px;color:var(--muted)}.stat strong{display:block;color:var(--ink);font-size:17px}.details{font-size:13px}.details summary{cursor:pointer;color:var(--lav)}.evidence{max-height:190px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--muted);font:11px ui-monospace,monospace}.promote{margin-top:12px;border:1px solid #93f1bf55;border-radius:15px;padding:11px 15px;background:#263b36;color:var(--mint);display:flex;align-items:center;justify-content:space-between;gap:13px}.promote strong{display:block;color:var(--ink)}.foot{color:var(--muted);font-size:13px}.error{color:var(--pink)}[hidden]{display:none!important}@media(max-width:680px){main{padding-inline:13px}.hero{grid-template-columns:1fr 90px;padding:26px 0}.branches{grid-template-columns:1fr}.rails{display:none}.seed{margin-bottom:12px}.promote{align-items:start;flex-direction:column}}
+</style>
+</head><body><main>
+<header><strong>✿ Forkshift · Branch Garden</strong><a id="back" href="/arcade">Rescue Arcade ↗</a></header>
+<section class="hero">
+<div><div class="mono" style="color:var(--yellow)">Redshift · verified work branches</div><h1>Two timelines.<br>One earns a receipt.</h1><p>Fork the same incident into separate process-owned trials. Redshift executes the candidate actions and an independent oracle checks what each branch actually did.</p></div>
+<svg class="mascot" viewBox="0 0 230 180" aria-label="Two smiling inference critters, each on a branch" role="img">
+<path d="M114 168V97m0 27c-7-38-43-46-71-44m71 56c13-33 39-35 75-40" fill="none" stroke="#ffdb90" stroke-width="8" stroke-linecap="round"/>
+<path d="M39 49 22 30l3 31Q10 80 27 100q15 15 40 8 28-8 18-38L83 34 64 51z" fill="#d4b6ff" stroke="#584064" stroke-width="5" stroke-linejoin="round"/>
+<path d="M172 56l-16-18-1 30q-16 15-5 34 11 21 44 13 29-7 25-30-2-11-10-15l-2-27-19 14z" fill="#93f1bf" stroke="#456153" stroke-width="5" stroke-linejoin="round"/>
+<path d="M39 79q5-7 10 0m13-1q5-7 10 0m-22 9q6 7 12-1m105 1q5-7 10 0m13-1q5-7 10 0m-24 8q6 7 13-1" fill="none" stroke="#392641" stroke-width="3" stroke-linecap="round"/>
+<path d="m116 13 5 13 13 5-13 5-5 13-5-13-13-5 13-5z" fill="#ffdb90"/>
+<circle cx="36" cy="86" r="4" fill="#ff9ba8"/><circle cx="74" cy="86" r="4" fill="#ff9ba8"/>
+</svg>
+</section>
+<p class="mono" role="status" id="status">Loading recorded Redshift trial…</p>
+<section class="garden" id="garden" hidden>
+<div class="seed"><span class="mono">One incident contract</span><strong id="seed"></strong></div>
+<div class="rails" aria-hidden="true"></div><div class="branches" id="branches"></div>
+<div class="promote" id="promotion"><div><span class="mono">Promotion decision</span><strong id="winner"></strong></div><div><button type="button" id="verify">Verify signatures</button> <button type="button" id="tamper">Test a changed receipt</button> <button type="button" id="download">Download trial JSON</button></div></div>
+</section>
+<p class="foot" id="scope"></p>
+</main><script>
+'use strict';
+const OFFLINE_BRANCH_TRIAL = null;
+const byId=id=>document.getElementById(id);
+const safe=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fromB64=value=>Uint8Array.from(atob(value), c=>c.charCodeAt(0));
+async function verifyReceipt(branch){
+  const signature=branch.receipt?.signature;
+  if(!branch.receipt_bytes||signature?.algorithm!=='Ed25519')return false;
+  const publicKey=fromB64(signature.public_key);
+  const payload=fromB64(branch.receipt_bytes);
+  const parsed=JSON.parse(new TextDecoder().decode(payload));
+  const unsigned={...branch.receipt};
+  delete unsigned.signature;
+  const order=value=>Array.isArray(value)?value.map(order):
+    value&&typeof value==='object'?Object.fromEntries(Object.keys(value).sort().map(key=>[key,order(value[key])])):value;
+  if(JSON.stringify(order(parsed))!==JSON.stringify(order(unsigned)))return false;
+  const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',publicKey)), x=>x.toString(16).padStart(2,'0')).join('');
+  if(signature.device_id!=='device_'+hash.slice(0,20))return false;
+  const key=await crypto.subtle.importKey('raw',publicKey,{name:'Ed25519'},false,['verify']);
+  return crypto.subtle.verify({name:'Ed25519'},key,fromB64(signature.value),payload);
+}
+function draw(report){
+  byId('garden').hidden=false;
+  byId('seed').textContent=report.title;
+  byId('status').textContent='Recorded evidence · no fresh workers or model calls';
+  byId('scope').textContent=report.scope;
+  byId('branches').innerHTML=report.branches.map((branch,index)=>{
+    const ok=branch.terminal_verified===true;
+    return `<article class="branch ${ok?'good':'bad'}"><span class="tag">${ok?'Terminal verified':'Terminal rejected'}</span>
+      <h2>${safe(branch.label)}</h2>
+      <ol class="steps">${branch.actions.map(action=>`<li>${safe(action.replaceAll('_',' '))}</li>`).join('')}</ol>
+      <div class="stats">
+        <div class="stat"><strong>${branch.model_calls??'—'}</strong>planner calls</div>
+        <div class="stat"><strong id="signature-${index}">${branch.receipt_valid?'Recorded valid':'Unverified'}</strong>receipt signature</div>
+        <div class="stat"><strong>${safe(branch.route||'—')}</strong>kernel route</div>
+      </div>
+      <p>${safe(branch.outcome)}</p>
+      <details class="details"><summary>Inspect native Redshift receipt</summary><pre class="evidence">${safe(JSON.stringify(branch.receipt,null,2))}</pre></details>
+      <details class="details"><summary>Inspect cartridge digest and provenance</summary><pre class="evidence">${safe(JSON.stringify(branch.cartridge,null,2))}</pre></details>
+      <details class="details"><summary>Inspect isolated worker evidence</summary><pre class="evidence">${safe(JSON.stringify(branch.evidence,null,2))}</pre></details>
+      </article>`;
+  }).join('');
+  byId('winner').textContent=report.winner
+    ? report.winner+' is eligible for reuse. The failed branch stays in the record.'
+    : 'No branch met the promotion gate.';
+  byId('verify').onclick=async()=>{
+    byId('verify').disabled=true;
+    try{
+      if(!globalThis.crypto?.subtle)throw Error('This viewer has no Web Crypto support.');
+      const outcomes=await Promise.all(report.branches.map(verifyReceipt));
+      outcomes.forEach((ok,index)=>{byId('signature-'+index).textContent=ok?'Verified here':'Invalid';});
+      byId('status').textContent=`${outcomes.filter(Boolean).length}/${outcomes.length} Ed25519 signatures verified in this viewer`;
+    }catch(error){byId('status').textContent='Signature check unavailable here · '+error.message;}
+    finally{byId('verify').disabled=false;}
+  };
+  byId('tamper').onclick=async()=>{
+    try{
+      const branch=report.branches.find(row=>row.receipt?.verification);
+      if(!branch)throw Error('No signed receipt is available.');
+      const receipt={...branch.receipt,verification:{...branch.receipt.verification,status:'changed'}};
+      const valid=await verifyReceipt({...branch,receipt});
+      byId('status').textContent=valid?'Unexpected result: changed receipt accepted.':'Changed copy rejected · recorded receipts left intact';
+    }catch(error){byId('status').textContent='Receipt check unavailable here · '+error.message;}
+  };
+  byId('download').onclick=()=>{
+    const url=URL.createObjectURL(new Blob([JSON.stringify(report,null,2)],{type:'application/json'}));
+    const a=document.createElement('a');a.href=url;a.download='forkshift-redshift-branch-trial.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  };
+}
+async function load(){
+  try{
+    if(OFFLINE_BRANCH_TRIAL){byId('back').href='Forkshift-Arcade.html';draw(OFFLINE_BRANCH_TRIAL);return;}
+    const response=await fetch('/api/redshift/trial');
+    if(!response.ok)throw Error('No Redshift trial is available on this server.');
+    draw(await response.json());
+  }catch(error){byId('status').textContent=error.message;byId('status').className='mono error';}
+}
+load();
+</script></body></html>
