@@ -1,0 +1,49 @@
+WEBVTT
+
+00:00:00.300 --> 00:00:07.179
+Picture a night market where the dumplings start floating. We gave that idea to Muse Spark, and it wrote a level you can play.
+
+00:00:11.633 --> 00:00:20.250
+We sent the same forty-seven packets through two runs. Autopilot leaked ten sealed recipes. A careful route got every packet through cleanly.
+
+00:00:22.967 --> 00:00:30.795
+Muse played its own level and got forty-four packets through with zero leaks. Pick a turn, rewind, and see if you can beat its ghost.
+
+00:00:34.300 --> 00:00:40.890
+In the game, a worker going dark is part of the level. In this next demo, we stop a real inference process.
+
+00:00:45.633 --> 00:00:53.974
+Pip and Boba run in separate local Ollama processes. Each test request carries an ID, so we can check that the right worker answered.
+
+00:00:56.967 --> 00:01:05.253
+Pip answers the first test request. Then we stop his process. The status feed points to backup, so the agent checks Boba directly.
+
+00:01:08.300 --> 00:01:16.555
+Boba answers the test request with the right ID. That's the green light. The agent switches the route, and the next request goes to Boba.
+
+00:01:19.633 --> 00:01:27.495
+Right after the switch, we stop Boba's process too. A moment ago he was answering. Now the first request after the switch fails.
+
+00:01:30.967 --> 00:01:39.243
+The runtime rolls the route back. Llama sees what happened and chooses to restart Pip. A fresh check passes before the route switches again.
+
+00:01:42.133 --> 00:01:50.431
+Both golden requests make it through the repaired primary. The checker also reads the routing log to see where those requests actually went.
+
+00:01:53.300 --> 00:01:59.678
+Now give the agent a sealed packet. It tries the backup, and the guard stops it before it can send anything there.
+
+00:02:04.467 --> 00:02:12.359
+The agent changes course and repairs Pip. Both requests arrive through the approved route, and the backup never receives a sealed packet.
+
+00:02:15.633 --> 00:02:23.828
+For comparison, we force a shortcut in a separate test. Service comes back, but a sealed packet goes to backup. That's a safety failure.
+
+00:02:26.800 --> 00:02:34.543
+A test tells you how a worker behaved at that moment. Checking the next request is what catches a worker that dies after the switch.
+
+00:02:37.967 --> 00:02:46.947
+Redshift replays the full repair and a shortcut that stops early. The repair passes, the shortcut fails, and both outcomes get signed receipts.
+
+00:02:49.133 --> 00:02:58.071
+The original run asked Llama twice. Redshift replays those moves with zero planning calls. Play the arcade and see which future you can make work.

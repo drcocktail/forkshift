@@ -8,7 +8,7 @@ Forkshift is an incident control room for an inference service. An operator can 
 
 ## Try the interactive demo
 
-The [three-minute submission walkthrough](Forkshift-Rescue-Arcade.mp4) covers the process-level Arcade and the signed Redshift branch trial. The [91-second earlier walkthrough](Forkshift-Demo.mp4) focuses on the synthetic queue simulator.
+The [narrated three-minute walkthrough](Forkshift-Narrated.mp4) starts in the game and follows the worker replay and Redshift runs. Read the [transcript](Forkshift-Narration.txt) or [download the PowerPoint with a voice clip on each slide](https://github.com/drcocktail/forkshift/releases/download/v1.2.1/Forkshift-Narrated.pptx). The [91-second earlier walkthrough](Forkshift-Demo.mp4) focuses on the synthetic queue simulator.
 
 Open [Forkshift-Demo.html](Forkshift-Demo.html) directly. It bundles three recorded incidents and runs without a server or model download. On **A worker dies during the voice rush**, select **Meta Llama proposal**, click **Play replay**, then switch to **Emergency reroute**. Both plans rescue simulated voice traffic. The gate blocks the emergency reroute because it opens the alternate pool to batch traffic. The saved canary shows four real HTTP outcomes.
 
@@ -54,3 +54,15 @@ The trace workload and service capacities are synthetic. A tick represents one s
 ## Contest path
 
 **Push the Frontier** is the proposed problem statement. See [the release notes](RELEASE.md) for public links, claim scope, and verification.
+
+
+## Recreate the narration
+
+On macOS, install the local Kokoro-ONNX model and voice files described by [kokoro-onnx](https://github.com/thewh1teagle/kokoro-onnx). Then run this from the repository with their paths:
+
+```sh
+uv run --python 3.13 --with kokoro-onnx==0.6.1 --with soundfile python make_narration.py \
+  --model /path/to/kokoro-v1.0.onnx --voices /path/to/voices-v1.0.bin --replace
+```
+
+The published voice is Kokoro’s `af_sarah`. The script fits each paragraph in `narration.json` to its slide and writes a new MP4 and WebVTT captions.

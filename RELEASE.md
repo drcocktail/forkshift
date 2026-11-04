@@ -2,7 +2,7 @@
 
 - [Public source](https://github.com/drcocktail/forkshift)
 - [Interactive demo and walkthrough](https://drcocktail.github.io/forkshift/)
-- [Direct three-minute video](https://drcocktail.github.io/forkshift/Forkshift-Rescue-Arcade.mp4)
+- [Direct three-minute video](https://forkshift-muse-arcade.vercel.app/Forkshift-Narrated.mp4)
 - [Disaster Director game](https://drcocktail.github.io/forkshift/director/)
 - [Rescue Arcade](https://drcocktail.github.io/forkshift/Forkshift-Arcade.html)
 - [Redshift Branch Garden](https://drcocktail.github.io/forkshift/Forkshift-Branch-Garden.html)

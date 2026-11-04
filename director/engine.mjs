@@ -1,9 +1,9 @@
 /** Deterministic Arcade engine. Every branch sees exactly the same world tape. */
 export const ACTIONS = Object.freeze({
-  auto: {label:'Autopilot', description:'Fill Pip, then Boba in arrival order. Fast, but Boba may get sealed packets.'},
-  rescue: {label:'Save the chorus', description:'Give both workers live audio first. Boba receives only public packets.'},
-  guard: {label:'Guard the secrets', description:'Pip takes sealed packets first. Boba handles only public traffic.'},
-  boost: {label:'Spark jump', description:'Spend one charge for two extra Pip slots. Prioritize sealed packets.'},
+  auto: {label:'Autopilot', description:'Send packets in the order they arrived. Boba might get a sealed packet.'},
+  rescue: {label:'Save the live feed', description:'Send live audio first. Boba skips sealed packets.'},
+  guard: {label:'Guard the secrets', description:'Give Pip the sealed packets first. Boba takes public traffic.'},
+  boost: {label:'Use a spark', description:'Give Pip room for two extra packets this turn, even if Pip is offline.'},
 });
 const kinds = ['voice', 'private', 'bulk'];
 const ttl = {voice:1, private:2, bulk:3};

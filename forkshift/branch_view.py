@@ -39,10 +39,8 @@ def read_trial(path=None):
         })
     return {
         'title': 'The green-light trap', 'winner': winner, 'branches': branches,
-        'scope': ('The original local Llama run supplied the successful action trace. '
-                  'This recording shows Redshift replaying candidates in fresh worker processes, '
-                  'with independent episode grades and native signed receipts. '
-                  'Eligibility is local to this incident contract.'),
+        'scope': ('The worker drill recorded the original Llama moves. Redshift repeats the moves with fresh workers '
+                  'and signs each result. The grades apply to this incident.'),
     }
 
 

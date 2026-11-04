@@ -192,22 +192,22 @@ a{color:var(--green);text-underline-offset:.2em}
 </style></head>
 <body><div class="wrap">
 <header class="top"><div class="brand"><div class="mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M16 2v8c0 6-5 7-11 7m11-7c0 6 5 7 11 7M16 10v19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="5" cy="17" r="2.7" fill="#a4edc7"/><circle cx="27" cy="17" r="2.7" fill="#ffacbc"/></svg></div><div><strong>Two Futures Arcade</strong><small>DISASTER DIRECTOR</small></div></div><div class="topright"><div class="level-tools"><select class="level-select" id="levelSelect" aria-label="Choose level"><option value="flagship">Night Market</option><option value="moonlight">Moonlight Meltdown</option></select><button class="sharebtn" id="shareLevel" type="button">Share level</button></div><div class="tag">SCENARIO <b id="scenarioTag">LOADING</b></div><button class="iconbtn" id="help" aria-controls="modal" aria-expanded="false">How to play</button></div></header>
-<div class="level-error" id="levelError" role="status" aria-live="polite"></div><section class="hero"><div><h1 id="title">Disaster Director</h1><p id="brief">Direct the deliveries. Keep Pip and Boba safe.</p></div><div class="seed"><strong id="origin">Two futures · 12 turns</strong>Same storm, different choices</div></section>
-<div id="authorBox" class="author-box"><label>Disaster pitch <input id="authorBrief" maxlength="600" placeholder="Pitch a tiny-town disaster…"></label><button id="authorBtn">Dream up a storm</button></div>
+<div class="level-error" id="levelError" role="status" aria-live="polite"></div><section class="hero"><div><h1 id="title">Disaster Director</h1><p id="brief">Keep the orders moving and the recipes sealed.</p></div><div class="seed"><strong id="origin">Two futures · 12 turns</strong>Try a different move and see what changes</div></section>
+<div id="authorBox" class="author-box"><label>Disaster pitch <input id="authorBrief" maxlength="600" placeholder="Try: the bakery loses power at midnight"></label><button id="authorBtn">Make a level</button></div>
 <section class="help-panel" id="modal" aria-labelledby="help-title" hidden>
-  <div class="help-head"><h2 id="help-title">How to direct a disaster</h2><button class="iconbtn" id="closeHelp">Close help</button></div>
-  <p>Pick a move each turn. Save live audio, keep sealed packets with Pip, and spend your three spark charges when Pip needs them.</p>
-  <p>Rewind to a completed turn to keep your old run as a ghost and change what happens next. Use keys 1–4 to choose a move or R to rewind.</p>
+  <div class="help-head"><h2 id="help-title">How to play</h2><button class="iconbtn" id="closeHelp">Close help</button></div>
+  <p>Pick a move each turn. Boba can help with public orders. Only Pip should see sealed recipes. A spark gives Pip room for two more packets that turn.</p>
+  <p>Rewind to a turn you’ve played. Your old run stays on screen so you can see what one different move changes. Press 1–4 to play or R to rewind.</p>
   <label class="file-label">Import a scenario JSON <input id="file" type="file" accept="application/json,.json"></label>
 </section>
 <div class="stage"><main class="main"><section class="arena"><div class="arenahead"><div class="lane-label"><i class="dot"></i> <span id="laneName">TIMELINE A · YOUR RUN</span></div><div class="now" id="turnLabel">TURN 1 / 12</div></div><div class="sky" id="sky"><div class="sun"></div><div class="cloud"></div><div class="hill"></div><div class="hill two"></div><div class="pond"></div><div class="home"></div><div class="event-bubble" id="event">Waiting for forecast...</div>
 <svg class="character pip" viewBox="0 0 80 95" role="img" aria-label="Pip the rabbit"><ellipse cx="29" cy="23" rx="9" ry="24" fill="#f2c5ad" transform="rotate(-9 29 23)"/><ellipse cx="51" cy="22" rx="9" ry="23" fill="#f2c5ad" transform="rotate(8 51 22)"/><ellipse cx="29" cy="24" rx="4" ry="15" fill="#ec9f9f"/><ellipse cx="51" cy="23" rx="4" ry="14" fill="#ec9f9f"/><ellipse cx="40" cy="55" rx="28" ry="30" fill="#fff8ed"/><ellipse cx="32" cy="51" rx="2.5" ry="3" fill="#383d35"/><ellipse cx="48" cy="51" rx="2.5" ry="3" fill="#383d35"/><path d="M37 59q3 4 6 0" fill="none" stroke="#b87675" stroke-width="2" stroke-linecap="round"/><circle cx="26" cy="59" r="4" fill="#f4b9ad"/><circle cx="54" cy="59" r="4" fill="#f4b9ad"/><path d="M24 76q16 14 32 0" fill="#e2a274"/><circle cx="60" cy="78" r="8" fill="#fff8ed"/></svg>
 <svg class="character boba" viewBox="0 0 80 95" role="img" aria-label="Boba the bear"><circle cx="20" cy="35" r="13" fill="#9c7654"/><circle cx="60" cy="35" r="13" fill="#9c7654"/><circle cx="20" cy="35" r="6" fill="#d5a886"/><circle cx="60" cy="35" r="6" fill="#d5a886"/><ellipse cx="40" cy="58" rx="29" ry="28" fill="#b98d64"/><ellipse cx="40" cy="62" rx="16" ry="12" fill="#f1d6b3"/><circle cx="31" cy="51" r="2.5" fill="#352f29"/><circle cx="49" cy="51" r="2.5" fill="#352f29"/><ellipse cx="40" cy="59" rx="4" ry="3" fill="#514035"/><path d="M36 65q4 4 8 0" fill="none" stroke="#765748" stroke-width="2" stroke-linecap="round"/><path d="M24 78q16 11 32 0" fill="#82a9a0"/></svg>
-<div class="endoverlay" id="end"><div><svg class="outcome-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 1 2.6 8.4L23 12l-8.4 2.6L12 23l-2.6-8.4L1 12l8.4-2.6Z"/></svg><h2 id="endTitle">Shift complete!</h2><p id="endText"></p><button id="restart">Run it again</button></div></div></div><div class="worker-slots"><span id="pipSlots"></span><span id="bobaSlots"></span></div><div class="forecast" id="forecast"></div><div class="queue" id="queue"><span class="queue-title">LIVE QUEUE</span><span class="parcel">Loading parcels…</span></div></section>
+<div class="endoverlay" id="end"><div><svg class="outcome-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 1 2.6 8.4L23 12l-8.4 2.6L12 23l-2.6-8.4L1 12l8.4-2.6Z"/></svg><h2 id="endTitle">That’s the shift</h2><p id="endText"></p><button id="restart">Run it again</button></div></div></div><div class="worker-slots"><span id="pipSlots"></span><span id="bobaSlots"></span></div><div class="forecast" id="forecast"></div><div class="queue" id="queue"><span class="queue-title">LIVE QUEUE</span><span class="parcel">Loading parcels…</span></div></section>
 <div class="timerow"><span>SHIFT</span><div class="ticks" id="ticks"></div><span id="timeLeft">12 TURNS LEFT</span></div><div class="cards" id="actions"></div></main>
-<aside class="aside"><section class="status"><div class="statushead">Town pulse <span class="livepill" id="statusPill">ON SHIFT</span></div><div class="meter"><div class="meterline"><span>Delivery rhythm</span><b id="deliveryPct">—</b></div><div class="bar"><i id="deliveryBar"></i></div></div><div class="meter"><div class="meterline"><span>Storm pressure</span><b id="stormPct">—</b></div><div class="bar orange"><i id="stormBar"></i></div></div><div class="mini-stats"><div class="stat"><b id="delivered">0</b><span>On time</span></div><div class="stat"><b id="leaks">0</b><span>Private leaks</span></div><div class="stat"><b id="missed">0</b><span>Missed</span></div><div class="stat"><b id="charge">3</b><span>Spark charges</span></div></div></section>
-<section class="rewind"><h3>Try the other future</h3><p>Pick a turn and replay this exact storm. Your previous timeline stays as a ghost.</p><select class="fork-point" id="forkPoint" aria-label="Turn to replay"></select><button class="forkbtn" id="fork">Rewind and fork</button><button class="forkbtn" id="autopilot" >Compare with Autopilot</button><button class="forkbtn" id="museGhost" style="display:none">Race Muse’s ghost</button></section>
-<section class="compare" id="compare"><div class="comphead"><span>Two futures, one storm</span></div><div class="lanes"><div class="lane"><b id="baseLabel">GHOST BASELINE</b><span id="resultA">—</span><div class="route-strip" id="stripA"></div></div><div class="lane"><b id="liveLabel">YOUR RUN</b><span id="resultB">—</span><div class="route-strip" id="stripB"></div></div></div><p id="museCaption" class="level-error"></p></section></aside></div>
+<aside class="aside"><section class="status"><div class="statushead">Your run <span class="livepill" id="statusPill">ON SHIFT</span></div><div class="meter"><div class="meterline"><span>Packets on time</span><b id="deliveryPct">—</b></div><div class="bar"><i id="deliveryBar"></i></div></div><div class="meter"><div class="meterline"><span>Queue pressure</span><b id="stormPct">—</b></div><div class="bar orange"><i id="stormBar"></i></div></div><div class="mini-stats"><div class="stat"><b id="delivered">0</b><span>On time</span></div><div class="stat"><b id="leaks">0</b><span>Private leaks</span></div><div class="stat"><b id="missed">0</b><span>Missed</span></div><div class="stat"><b id="charge">3</b><span>Spark charges</span></div></div></section>
+<section class="rewind"><h3>Try that turn again</h3><p>Go back to a turn you’ve played. Compare your new moves with the old run.</p><select class="fork-point" id="forkPoint" aria-label="Turn to replay"></select><button class="forkbtn" id="fork">Rewind to this turn</button><button class="forkbtn" id="autopilot" >Compare with Autopilot</button><button class="forkbtn" id="museGhost" style="display:none">Race Muse’s ghost</button></section>
+<section class="compare" id="compare"><div class="comphead"><span>Compare at the same turn</span></div><div class="lanes"><div class="lane"><b id="baseLabel">GHOST BASELINE</b><span id="resultA">—</span><div class="route-strip" id="stripA"></div></div><div class="lane"><b id="liveLabel">YOUR RUN</b><span id="resultB">—</span><div class="route-strip" id="stripB"></div></div></div><p id="museCaption" class="level-error"></p></section></aside></div>
 <div class="footer"><span><a href="../">Forkshift </a> · 1–4 choose · R rewind</span><span id="modelMeta" style="overflow-wrap:anywhere">SCENARIO DATA · LOCAL</span></div></div><div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script type="module">
 import {start,step,replay,ACTIONS} from './engine.mjs';
@@ -250,8 +250,11 @@ function render(){
   const upcoming=level.level.turns[state.tick];
   const turn=Math.min(state.tick+1,ticks);
   const {done,delivered,missed,leaks,charge,queue}=state;
-  $('#title').textContent=level.level.title;
-  $('#brief').textContent=level.level.brief;
+  const nightMarket=level.level.title==='Floating Night Market: Zero-G Lantern Drift';
+  $('#title').textContent=nightMarket?'Floating Night Market':level.level.title;
+  $('#brief').textContent=nightMarket
+    ? 'Pip is about to have a run-in with a lantern. Keep the live orders moving and save a spark for the fireworks.'
+    : level.level.brief;
   $('#scenarioTag').textContent=String(level.origin||'imported').toUpperCase();
   $('#modelMeta').textContent=`${level.metadata?.provider||'Local file'} · ${level.metadata?.model||'Imported tape'}`;
   $('#laneName').textContent=`TIMELINE ${lane} · YOUR RUN`;
@@ -286,11 +289,11 @@ function render(){
   document.querySelectorAll('.action').forEach(button=>button.onclick=()=>move(button.dataset.action));
   $('#end').classList.toggle('show',done);
   if(done){
-    $('#endTitle').textContent=!missed&&!leaks?'A perfect little shift!':'Shift complete!';
+    $('#endTitle').textContent=!missed&&!leaks?'Every packet made it':'That’s the shift';
     $('#endText').textContent=`${delivered} on time · ${missed} missed · ${leaks} private leaks · ${state.score} points`;
   }
   const point=$('#forkPoint'), previous=Number(point.value);
-  point.innerHTML=Array.from({length:Math.max(1,state.tick)},(_,i)=>`<option value="${i}">Replay from turn ${i+1}</option>`).join('');
+  point.innerHTML=Array.from({length:Math.max(1,state.tick)},(_,i)=>`<option value="${i}">Go back to turn ${i+1}</option>`).join('');
   point.value=String(Math.min(previous,Math.max(0,state.tick-1)));
   $('#fork').disabled=state.tick===0;
   $('#compare').classList.toggle('show',Boolean(ghost));
@@ -330,7 +333,7 @@ function fork(){
 function autopilot(){
   ghost={...replay(level.level,Array(ticks).fill('auto')),autopilot:true};
   render();
-  toast('Autopilot ghost ready. Compare your choices on the same turns.');
+  toast('Autopilot is ready to race.');
 }
 document.addEventListener('keydown',event=>{
   if(event.target?.matches?.('input, textarea, select')||event.target?.closest?.('#modal'))return;
@@ -408,10 +411,10 @@ $('#shareLevel').onclick=async()=>{
 };
 const preferred=new URLSearchParams(location.search).get('level');
 syncShare();
-if(['localhost','127.0.0.1'].includes(location.hostname))$('#authorBox').style.display='flex';$('#authorBtn').onclick=async()=>{const brief=$('#authorBrief').value.trim();if(!brief)return toast('Add a one-line disaster pitch first.');$('#authorBtn').disabled=true;$('#authorBtn').textContent='Dreaming…';toast('Your local model is dreaming up a storm. This may take a minute.');try{const r=await fetch('/api/director/author',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({brief})});const data=await r.json();if(!r.ok)throw new Error(data.error||'Author request failed.');load(norm(data));bundledLevel=null;setLevelUrl(null);syncShare();refreshMuseGhost();toast('New storm ready!')}catch(e){console.error(e);toast(e.message+' The current tape is still ready to play.')}finally{$('#authorBtn').disabled=false;$('#authorBtn').textContent='Dream up a storm'}};try{
+if(['localhost','127.0.0.1'].includes(location.hostname))$('#authorBox').style.display='flex';$('#authorBtn').onclick=async()=>{const brief=$('#authorBrief').value.trim();if(!brief)return toast('Add a one-line disaster pitch first.');$('#authorBtn').disabled=true;$('#authorBtn').textContent='Making your level…';toast('Llama is writing the level. This may take a minute.');try{const r=await fetch('/api/director/author',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({brief})});const data=await r.json();if(!r.ok)throw new Error(data.error||'Author request failed.');load(norm(data));bundledLevel=null;setLevelUrl(null);syncShare();refreshMuseGhost();toast('Your new level is ready.')}catch(e){console.error(e);toast(e.message+' The current tape is still ready to play.')}finally{$('#authorBtn').disabled=false;$('#authorBtn').textContent='Make a level'}};try{
   const response=await fetch('./level.json');
   if(!response.ok)throw new Error('No tape.');
   load(await response.json());bundledLevel='flagship';setLevelUrl('flagship');syncShare();refreshMuseGhost();
   if(preferred==='moonlight')await chooseLevel('moonlight');
-}catch{load(fixture);bundledLevel=null;syncShare();toast('Playing the bundled fixture tape.');}
+}catch{load(fixture);bundledLevel=null;syncShare();toast('The night market couldn’t load. You can play the backup level.');}
 </script></body></html>

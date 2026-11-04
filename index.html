@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#241b2e">
-<meta name="description" content="Race Muse Spark through a zero-gravity night market, then see what happens when a real inference worker fails.">
+<meta name="description" content="A lantern takes Pip down and the orders keep coming. Play the night market Muse Spark built and try to beat its run.">
 <title>Forkshift · Rescue Arcade</title>
 <style>
 @font-face{font-family:Bricolage;src:url("assets/bricolage-latin.woff2") format("woff2");font-weight:400 800;font-display:swap}
@@ -85,11 +85,11 @@ footer p{max-width:72ch;margin:.45rem 0 0}
 <main class="shell">
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-copy">
-      <h1 id="hero-title">Same storm.<span>Two futures.</span></h1>
-      <p>Muse Spark writes a zero-gravity disaster and plays it as your rival. Rewind any turn, race its ghost, then watch what happens when we kill a real inference worker.</p>
+      <h1 id="hero-title">The market is <span>floating away.</span></h1>
+      <p>A runaway lantern takes Pip down. The orders keep coming. Use your three sparks to keep the market running and try to beat the run Muse Spark left behind.</p>
       <div class="actions">
-        <a class="play" href="director/index.html"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5 13 8l-9 5.5z"/></svg>Play Disaster Director</a>
-        <a class="watch" href="#walkthrough">Watch the 3-minute demo</a>
+        <a class="play" href="director/index.html"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5 13 8l-9 5.5z"/></svg>Play the night market</a>
+        <a class="watch" href="#walkthrough">Watch the demo</a>
       </div>
     </div>
     <figure class="hero-art">
@@ -125,24 +125,24 @@ footer p{max-width:72ch;margin:.45rem 0 0}
     </figure>
   </section>
   <section class="walkthrough" id="walkthrough" aria-labelledby="watch-title">
-    <h2 id="watch-title">See what happens after the green light.</h2>
+    <h2 id="watch-title">Boba passes the test. Then he goes dark.</h2>
     <figure class="screen">
-      <video controls playsinline preload="none" poster="assets/walkthrough-poster.webp" width="1280" height="720" aria-label="Forkshift Rescue Arcade captioned walkthrough"><source src="Forkshift-Rescue-Arcade.mp4" type="video/mp4"><a href="Forkshift-Rescue-Arcade.mp4">Open the video</a></video>
-      <figcaption><span>Captioned walkthrough · 3 minutes</span><a href="Forkshift-Rescue-Arcade.mp4">Open the video directly</a></figcaption>
+      <video controls playsinline preload="none" poster="assets/walkthrough-poster.webp" width="1280" height="720" aria-label="Forkshift narrated walkthrough"><source src="Forkshift-Narrated.mp4" type="video/mp4"><track kind="captions" srclang="en" label="English" src="Forkshift-Narrated.vtt"><a href="Forkshift-Narrated.mp4">Open the narrated video</a></video>
+      <figcaption><span>Narrated walkthrough · 3 minutes</span><span><a href="Forkshift-Narrated.mp4">Open the video</a> · <a href="Forkshift-Narration.txt">Read the transcript</a> · <a href="https://github.com/drcocktail/forkshift/releases/download/v1.2.1/Forkshift-Narrated.pptx">Download the PowerPoint</a></span></figcaption>
     </figure>
   </section>
   <section class="evidence" aria-labelledby="evidence-title">
-    <h2 id="evidence-title">Behind the arcade</h2>
+    <h2 id="evidence-title">What we tested</h2>
     <ul>
-      <li><a href="Forkshift-Arcade.html">Watch the worker rescue</a><p>Independently started Ollama processes, synthetic golden requests, and an observed worker exit after a green canary.</p></li>
-      <li><strong>Recovery and safety get separate grades</strong><p>An unsafe recovery can restore service while violating the routing policy.</p></li>
-      <li><a href="Forkshift-Branch-Garden.html">Inspect the signed branch receipts</a><p>Native Redshift v2 receipts identify the completed branch and the rejected shortcut. Verify both in the replay.</p></li>
+      <li><a href="Forkshift-Arcade.html">Watch Pip get back online</a><p>Boba answers a test request. We switch the route and stop his process. You can see the next request fail and the agent bring Pip back.</p></li>
+      <li><strong>Where did the packets go?</strong><p>Getting a packet through is only part of the job. A run can bring service back and still send a sealed recipe to the wrong worker.</p></li>
+      <li><a href="Forkshift-Branch-Garden.html">Compare the two Redshift runs</a><p>Both runs start with the same failure. One repairs it and the other stops early. Open their receipts to see what each run did.</p></li>
     </ul>
   </section>
 </main>
 <footer class="shell">
   Push the Frontier · Meta Global AI Developer Hackathon
-  <p>Disaster Director runs in your browser. The worker rescue and Branch Garden replay recorded evidence. Author new storms and rerun the worker drill locally.</p>
+  <p>Play the saved levels in your browser. The worker and Redshift demos replay runs we recorded locally.</p>
 </footer>
 </body>
 </html>

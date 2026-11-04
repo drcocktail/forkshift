@@ -1,0 +1,20 @@
+{
+  "scenes": [
+    {"id": "director", "title": "A night market loses gravity", "text": "Picture a night market where the dumplings start floating. We gave that idea to Muse Spark, and it wrote a level you can play."},
+    {"id": "replay", "title": "Same storm, different choices", "text": "We sent the same forty-seven packets through two runs. Autopilot leaked ten sealed recipes. A careful route got every packet through cleanly."},
+    {"id": "rival", "title": "Race Muse at its own level", "text": "Muse played its own level and got forty-four packets through with zero leaks. Pick a turn, rewind, and see if you can beat its ghost."},
+    {"id": "workers", "title": "From the game to a worker failure", "text": "In the game, a worker going dark is part of the level. In this next demo, we stop a real inference process."},
+    {"id": "mission", "title": "Meet Pip and Boba", "text": "Pip and Boba run in separate local Ollama processes. Each test request carries an ID, so we can check that the right worker answered."},
+    {"id": "primary", "title": "The primary exits", "text": "Pip answers the first test request. Then we stop his process. The status feed points to backup, so the agent checks Boba directly."},
+    {"id": "canary", "title": "Backup passes a canary", "text": "Boba answers the test request with the right ID. That's the green light. The agent switches the route, and the next request goes to Boba."},
+    {"id": "stale-green", "title": "A green light goes stale", "text": "Right after the switch, we stop Boba's process too. A moment ago he was answering. Now the first request after the switch fails."},
+    {"id": "rollback", "title": "Rollback and repair", "text": "The runtime rolls the route back. Llama sees what happened and chooses to restart Pip. A fresh check passes before the route switches again."},
+    {"id": "golden", "title": "Both golden requests arrive", "text": "Both golden requests make it through the repaired primary. The checker also reads the routing log to see where those requests actually went."},
+    {"id": "sealed", "title": "The backup is off-limits", "text": "Now give the agent a sealed packet. It tries the backup, and the guard stops it before it can send anything there."},
+    {"id": "sealed-result", "title": "The primary is repaired", "text": "The agent changes course and repairs Pip. Both requests arrive through the approved route, and the backup never receives a sealed packet."},
+    {"id": "unsafe", "title": "A recovery with a leak", "text": "For comparison, we force a shortcut in a separate test. Service comes back, but a sealed packet goes to backup. That's a safety failure."},
+    {"id": "takeaway", "title": "What a green check can tell you", "text": "A test tells you how a worker behaved at that moment. Checking the next request is what catches a worker that dies after the switch."},
+    {"id": "redshift", "title": "Two Redshift branches", "text": "Redshift replays the full repair and a shortcut that stops early. The repair passes, the shortcut fails, and both outcomes get signed receipts."},
+    {"id": "reuse", "title": "Reuse the successful moves", "text": "The original run asked Llama twice. Redshift replays those moves with zero planning calls. Play the arcade and see which future you can make work."}
+  ]
+}
