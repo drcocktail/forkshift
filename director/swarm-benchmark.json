@@ -1,0 +1,186 @@
+{
+  "trials": 8,
+  "attempts": 56,
+  "completed": 52,
+  "zeroLeak": 52,
+  "repairedForks": 3,
+  "oracleMatches": 6,
+  "entries": [
+    {
+      "level": "Moonlight Meltdown",
+      "trial": 1,
+      "attempts": 7,
+      "completed": 5,
+      "winner": {
+        "delivered": 39,
+        "leaks": 0,
+        "dropped": 1,
+        "queued": 0,
+        "points": 131,
+        "charge": 0
+      },
+      "oracle": {
+        "delivered": 39,
+        "leaks": 0,
+        "dropped": 1,
+        "queued": 0,
+        "points": 131
+      },
+      "filename": "evidence/swarm/moonlight-1.json"
+    },
+    {
+      "level": "Moonlight Meltdown",
+      "trial": 2,
+      "attempts": 7,
+      "completed": 7,
+      "winner": {
+        "delivered": 39,
+        "leaks": 0,
+        "dropped": 1,
+        "queued": 0,
+        "points": 131,
+        "charge": 0
+      },
+      "oracle": {
+        "delivered": 39,
+        "leaks": 0,
+        "dropped": 1,
+        "queued": 0,
+        "points": 131
+      },
+      "filename": "evidence/swarm/moonlight-2.json"
+    },
+    {
+      "level": "Moonlight Meltdown",
+      "trial": 3,
+      "attempts": 7,
+      "completed": 7,
+      "winner": {
+        "delivered": 39,
+        "leaks": 0,
+        "dropped": 1,
+        "queued": 0,
+        "points": 131,
+        "charge": 0
+      },
+      "oracle": {
+        "delivered": 39,
+        "leaks": 0,
+        "dropped": 1,
+        "queued": 0,
+        "points": 131
+      },
+      "filename": "evidence/swarm/moonlight-3.json"
+    },
+    {
+      "level": "Moonlight Meltdown",
+      "trial": 4,
+      "attempts": 7,
+      "completed": 7,
+      "winner": {
+        "delivered": 39,
+        "leaks": 0,
+        "dropped": 1,
+        "queued": 0,
+        "points": 131,
+        "charge": 0
+      },
+      "oracle": {
+        "delivered": 39,
+        "leaks": 0,
+        "dropped": 1,
+        "queued": 0,
+        "points": 131
+      },
+      "filename": "evidence/swarm/moonlight-4.json"
+    },
+    {
+      "level": "Floating Night Market: Zero-G Lantern Drift",
+      "trial": 1,
+      "attempts": 7,
+      "completed": 5,
+      "winner": {
+        "delivered": 46,
+        "leaks": 0,
+        "dropped": 1,
+        "queued": 0,
+        "points": 179,
+        "charge": 0
+      },
+      "oracle": {
+        "delivered": 47,
+        "leaks": 0,
+        "dropped": 0,
+        "queued": 0,
+        "points": 185
+      },
+      "filename": "evidence/swarm/night-1.json"
+    },
+    {
+      "level": "Floating Night Market: Zero-G Lantern Drift",
+      "trial": 2,
+      "attempts": 7,
+      "completed": 7,
+      "winner": {
+        "delivered": 47,
+        "leaks": 0,
+        "dropped": 0,
+        "queued": 0,
+        "points": 185,
+        "charge": 0
+      },
+      "oracle": {
+        "delivered": 47,
+        "leaks": 0,
+        "dropped": 0,
+        "queued": 0,
+        "points": 185
+      },
+      "filename": "evidence/swarm/night-2.json"
+    },
+    {
+      "level": "Floating Night Market: Zero-G Lantern Drift",
+      "trial": 3,
+      "attempts": 7,
+      "completed": 7,
+      "winner": {
+        "delivered": 47,
+        "leaks": 0,
+        "dropped": 0,
+        "queued": 0,
+        "points": 185,
+        "charge": 0
+      },
+      "oracle": {
+        "delivered": 47,
+        "leaks": 0,
+        "dropped": 0,
+        "queued": 0,
+        "points": 185
+      },
+      "filename": "evidence/swarm/night-3.json"
+    },
+    {
+      "level": "Floating Night Market: Zero-G Lantern Drift",
+      "trial": 4,
+      "attempts": 7,
+      "completed": 7,
+      "winner": {
+        "delivered": 46,
+        "leaks": 0,
+        "dropped": 1,
+        "queued": 0,
+        "points": 179,
+        "charge": 0
+      },
+      "oracle": {
+        "delivered": 47,
+        "leaks": 0,
+        "dropped": 0,
+        "queued": 0,
+        "points": 185
+      },
+      "filename": "evidence/swarm/night-4.json"
+    }
+  ]
+}

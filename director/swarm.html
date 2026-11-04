@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#f6f1e7" />
+    <title>Forkshift • Swarm Observatory</title>
+    <link rel="stylesheet" href="./swarm.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="top">
+        <div class="brand">
+          <span class="mark" aria-hidden="true">✦</span>
+          <div><strong>Forkshift</strong><small>Swarm Observatory</small></div>
+        </div>
+        <div class="top-actions">
+          <a href="./index.html">← Play the arcade</a
+          ><select id="levelPick" aria-label="Evidence tape">
+            <option value="night">Night market</option>
+            <option value="moonlight">Moonlight</option></select
+          ><button id="reload" type="button">Refresh</button>
+        </div>
+      </header>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Same tape · many small brains</div>
+          <h1>Watch the swarm<br />find its way.</h1>
+          <p id="heroSummary">
+            Replay measured agent runs turn by turn. Compare delivery with
+            sealed-packet safety, inspect the actual moves, and follow each
+            branch back into the arcade.
+          </p>
+        </div>
+        <div
+          class="mascot-pair"
+          aria-label="Pip and Boba are watching the runs"
+        >
+          <svg
+            class="mascot"
+            viewBox="0 0 100 130"
+            role="img"
+            aria-label="Pip the rabbit"
+          >
+            <ellipse
+              cx="34"
+              cy="35"
+              rx="10"
+              ry="28"
+              fill="#f2c5ad"
+              transform="rotate(-8 34 35)"
+            />
+            <ellipse
+              cx="64"
+              cy="32"
+              rx="10"
+              ry="27"
+              fill="#f2c5ad"
+              transform="rotate(8 64 32)"
+            />
+            <ellipse cx="34" cy="36" rx="4" ry="17" fill="#ec9f9f" />
+            <ellipse cx="64" cy="33" rx="4" ry="16" fill="#ec9f9f" />
+            <ellipse cx="49" cy="76" rx="34" ry="34" fill="#fff8ed" />
+            <circle cx="40" cy="72" r="3" fill="#383d35" />
+            <circle cx="57" cy="72" r="3" fill="#383d35" />
+            <path
+              d="M45 81q4 5 8 0"
+              fill="none"
+              stroke="#b87675"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <circle cx="32" cy="82" r="5" fill="#f4b9ad" />
+            <circle cx="66" cy="82" r="5" fill="#f4b9ad" />
+            <path d="M31 100q18 15 37 0" fill="#e2a274" />
+            <circle cx="70" cy="103" r="9" fill="#fff8ed" /></svg
+          ><svg
+            class="mascot"
+            viewBox="0 0 100 130"
+            role="img"
+            aria-label="Boba the bear"
+          >
+            <circle cx="25" cy="47" r="17" fill="#9c7654" />
+            <circle cx="75" cy="47" r="17" fill="#9c7654" />
+            <circle cx="25" cy="47" r="8" fill="#d5a886" />
+            <circle cx="75" cy="47" r="8" fill="#d5a886" />
+            <ellipse cx="50" cy="77" rx="36" ry="34" fill="#b98d64" />
+            <ellipse cx="50" cy="81" rx="19" ry="15" fill="#f1d6b3" />
+            <circle cx="39" cy="69" r="3" fill="#352f29" />
+            <circle cx="61" cy="69" r="3" fill="#352f29" />
+            <ellipse cx="50" cy="78" rx="5" ry="4" fill="#514035" />
+            <path
+              d="M45 84q5 5 10 0"
+              fill="none"
+              stroke="#765748"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path d="M30 101q20 14 40 0" fill="#82a9a0" />
+          </svg>
+        </div>
+      </section>
+      <div id="loadState" class="load-state" role="status" aria-live="polite">
+        Loading saved swarm evidence…
+      </div>
+      <div id="app" hidden>
+        <aside class="real-worker">
+          <div>
+            <span class="eyebrow">Separate recorded demo</span
+            ><strong>Muse repairs a real local worker</strong>
+            <p>
+              Three recorded cases passed their checks. This worker demo is
+              separate from the simulated parcel tape below.
+            </p>
+          </div>
+          <a href="../Forkshift-Arcade.html?recording=muse-green-trap"
+            >Watch the worker recovery ↗</a
+          >
+        </aside>
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <h2 id="tapeTitle">A shared tape</h2>
+              <p id="levelLine">
+                One deterministic scenario · independent runs
+              </p>
+            </div>
+            <div class="stamp" id="generated"></div>
+          </div>
+          <div class="intro-grid">
+            <article class="score-panel">
+              <div class="score-head">
+                <h3>Recorded baseline</h3>
+                <span>reference</span>
+              </div>
+              <div id="baselineMetrics" class="metrics"></div>
+            </article>
+            <article id="oraclePanel" class="score-panel oracle" hidden>
+              <div class="score-head">
+                <h3>Oracle reference</h3>
+                <span>upper-bound context</span>
+              </div>
+              <div id="oracleMetrics" class="metrics"></div>
+            </article>
+          </div>
+          <div class="winners">
+            <article class="winner-card" id="museCard">
+              <small>Model runs on this tape</small
+              ><strong id="modelTitle">Model not recorded</strong>
+              <p id="modelDetail">
+                Attempt status and measured outcomes are listed below.
+              </p>
+              <div id="modelNumbers" class="numbers"></div>
+            </article>
+            <article class="winner-card" id="safeCard">
+              <small>Best sealed-safe agent</small
+              ><strong id="safeTitle">Waiting for evidence</strong>
+              <p id="safeDetail"></p>
+              <div id="safeNumbers" class="numbers"></div>
+            </article>
+          </div>
+          <p class="footnote">
+            <strong>Read the tape carefully.</strong> These are measured
+            simulated outcomes for the selected level. A clean run on this tape
+            is evidence about this replay; it does not establish broader
+            reliability or deployment safety.
+          </p>
+        </section>
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <h2>Route traces</h2>
+              <p>
+                Choose a turn to inspect what each run did and what happened
+                next.
+              </p>
+            </div>
+            <div class="legend">
+              <span><i></i>delivered</span
+              ><span class="leak"><i></i>sealed leak</span
+              ><span class="drop"><i></i>dropped</span>
+            </div>
+          </div>
+          <div class="toolbar">
+            <button id="prevTurn" type="button" aria-label="Previous turn">
+              ←</button
+            ><input
+              id="turnRange"
+              type="range"
+              min="1"
+              max="12"
+              value="1"
+              aria-label="Selected tape turn"
+            /><button id="nextTurn" type="button" aria-label="Next turn">
+              →</button
+            ><output id="turnLabel" for="turnRange">TURN 1</output>
+          </div>
+          <div
+            id="traceBoard"
+            class="trace-board"
+            aria-label="Run routes by turn"
+          ></div>
+          <div class="detail-grid">
+            <article class="turn-detail">
+              <h3 id="detailTitle">Turn 1</h3>
+              <p class="muted" id="detailCaption">
+                Recorded action and per-turn deltas.
+              </p>
+              <div id="eventList" class="event-list"></div>
+            </article>
+            <article id="forkPanel" class="fork-panel" hidden>
+              <h3>Fork after the shared prefix</h3>
+              <p class="muted" id="forkCaption"></p>
+              <div class="fork-braid">
+                <span class="prefix" id="prefixLabel">COMMON PREFIX</span
+                ><span class="fork-lines" aria-hidden="true"></span>
+                <div id="forkBranches" class="fork-branches"></div>
+              </div>
+            </article>
+          </div>
+        </section>
+        <section id="benchmarkSection" class="section" hidden>
+          <div class="section-head">
+            <div>
+              <h2>Replay benchmark</h2>
+              <p>Bounded batch evidence from the saved report.</p>
+            </div>
+            <div class="stamp">LOCAL REPLAY RUNS</div>
+          </div>
+          <div id="benchmarkSummary" class="intro-grid"></div>
+          <div
+            id="benchmarkEntries"
+            class="runs-grid"
+            style="margin-top: 0.7rem"
+          ></div>
+        </section>
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <h2>All measured runs</h2>
+              <p>Failures, errors, and unscored attempts stay visible.</p>
+            </div>
+            <div class="stamp" id="runCount"></div>
+          </div>
+          <div id="runsGrid" class="runs-grid"></div>
+        </section>
+      </div>
+      <footer class="footnote">
+        <span
+          >Forkshift · local replay evidence · no cloud inference from this
+          viewer.</span
+        ><span id="provenance"></span>
+      </footer>
+    </main>
+    <script>
+      const $ = (id) => document.getElementById(id);
+      const SOURCES = {
+        night: './swarm-evidence.json',
+        moonlight: './swarm-moonlight.json',
+      };
+      let evidence = null,
+        selectedTurn = 1,
+        sourceName = 'night';
+      let requestId = 0;
+      const esc = (v) =>
+        String(v ?? '').replace(
+          /[&<>"']/g,
+          (c) =>
+            ({
+              '&': '&amp;',
+              '<': '&lt;',
+              '>': '&gt;',
+              '"': '&quot;',
+              "'": '&#39;',
+            })[c],
+        );
+      const nfmt = (v) =>
+        v === null || v === undefined || v === ''
+          ? '—'
+          : Number.isFinite(Number(v))
+            ? Number(v).toLocaleString()
+            : esc(v);
+      const scoreLabel = (s) =>
+        s && typeof s === 'object'
+          ? `del ${nfmt(s.delivered)} · leaks ${nfmt(s.leaks)} · pts ${nfmt(s.points)}`
+          : nfmt(s);
+      function scoreMetrics(score) {
+        if (!score)
+          return '<div class="metric"><b>—</b><span>unscored</span></div>';
+        return [
+          ['delivered', 'Delivered'],
+          ['leaks', 'Leaks'],
+          ['dropped', 'Dropped'],
+          ['queued', 'Queued'],
+          ['points', 'Points'],
+        ]
+          .map(
+            ([k, label]) =>
+              `<div class="metric"><b>${nfmt(score[k])}</b><span>${label}</span></div>`,
+          )
+          .join('');
+      }
+      function statusKind(status, error) {
+        const s = String(status || '').toLowerCase();
+        if (error || /fail|error|invalid|timeout|rejected|unsafe/.test(s))
+          return 'bad';
+        if (/partial|incomplete|ungraded|unknown|pending/.test(s))
+          return 'warn';
+        return '';
+      }
+      function runFailed(r) {
+        return (
+          !!r.error ||
+          /fail|error|invalid|timeout|rejected|unsafe|incomplete/.test(
+            String(r.status || '').toLowerCase(),
+          )
+        );
+      }
+      function displayActions(run) {
+        if (Array.isArray(run.actions)) return run.actions;
+        if (typeof run.actions === 'string')
+          return run.actions.split(/\s*[→,]\s*/);
+        return [];
+      }
+      function routeRows(run) {
+        if (Array.isArray(run.history) && run.history.length)
+          return run.history;
+        return displayActions(run).map((action, i) => ({
+          turn: i + 1,
+          action,
+        }));
+      }
+      function participants() {
+        const p = [];
+        if (Array.isArray(evidence.baselineHistory))
+          p.push({
+            label: 'Autopilot baseline',
+            role: 'reference',
+            status: 'baseline',
+            score: evidence.baseline,
+            history: evidence.baselineHistory,
+            actions: evidence.baselineHistory.map((h) => h.action),
+          });
+        return p.concat(evidence.runs || []);
+      }
+      function turnCount() {
+        return Math.max(
+          1,
+          ...participants().flatMap((r) =>
+            routeRows(r).map((h) => Number(h.turn) || 0),
+          ),
+          Number(evidence.baseline?.turns) || 0,
+        );
+      }
+      function currentRow(run, turn) {
+        return routeRows(run).find((h) => Number(h.turn) === turn);
+      }
+      function safeCandidate(run) {
+        return !!run.score && Number(run.score.leaks) === 0 && !runFailed(run);
+      }
+      function bestSafe() {
+        const runs = evidence.runs || [];
+        const w = evidence.winnerIndex;
+        if (Number.isInteger(w) && runs[w] && safeCandidate(runs[w]))
+          return { run: runs[w], index: w };
+        const candidates = runs
+          .map((run, index) => ({ run, index }))
+          .filter((x) => safeCandidate(x.run));
+        candidates.sort((a, b) => {
+          const points =
+            (b.run.score.points ?? -Infinity) -
+            (a.run.score.points ?? -Infinity);
+          if (Number.isFinite(points) && points !== 0) return points;
+          const delivered =
+            (Number(b.run.score.delivered) || 0) -
+            (Number(a.run.score.delivered) || 0);
+          if (delivered) return delivered;
+          return (
+            (Number(a.run.score.dropped) || 0) -
+            (Number(b.run.score.dropped) || 0)
+          );
+        });
+        return candidates[0] || null;
+      }
+      function renderModelRollup() {
+        const runs = evidence.runs || [];
+        const complete = runs.filter((r) => r.score && !runFailed(r)).length;
+        const failures = runs.filter(runFailed).length;
+        const unscored = runs.length - complete - failures;
+        const model = evidence.model || 'Model not recorded';
+        $('modelTitle').textContent =
+          `${model} · ${complete} completed / ${failures} failed`;
+        $('modelDetail').textContent =
+          `${nfmt(evidence.calls)} model calls recorded; ${unscored} unscored attempt${unscored === 1 ? '' : 's'}. Failed responses remain visible and are not treated as zero-score runs.`;
+        $('modelNumbers').innerHTML =
+          `<span>${complete} scored</span><span>${failures} failed</span><span>${nfmt(evidence.calls)} calls</span>`;
+      }
+      function setEpisodeCopy() {
+        const runs = evidence.runs || [];
+        const scouts = runs.filter((r) => r.phase === 'scout').length;
+        const repairs = runs.filter((r) => r.phase === 'repair').length;
+        const f = evidence.fork;
+        const failTurn = f?.failure?.turn;
+        const countWord = (n) =>
+          ({ 1: 'one', 2: 'two', 3: 'three', 4: 'four' })[n] ||
+          String(n || 'several');
+        $('heroSummary').textContent =
+          `Muse Spark played the same level ${countWord(scouts)} ways. When a packet expired${failTurn ? ` at turn ${failTurn}` : ''}, ${countWord(repairs)} more agents rewound to that moment and tried different moves. Follow each measured route turn by turn.`;
+      }
+      function renderSafe() {
+        const best = bestSafe();
+        if (!best) {
+          $('safeCard').classList.add('no-safe');
+          $('safeTitle').textContent = 'No sealed-safe model run';
+          $('safeDetail').textContent =
+            'Every scored run either leaked a sealed packet or failed before a safe result was verified.';
+          $('safeNumbers').textContent = '';
+          return;
+        }
+        const { run, index } = best;
+        $('safeCard').classList.remove('no-safe');
+        $('safeTitle').textContent =
+          run.label || run.role || `Run ${index + 1}`;
+        $('safeDetail').textContent =
+          `Measured leak-free replay · status ${run.status || 'not recorded'}${run.phase ? ` · ${run.phase} phase` : ''}`;
+        $('safeNumbers').innerHTML = [
+          ['Delivered', run.score.delivered],
+          ['Dropped', run.score.dropped],
+          ['Points', run.score.points],
+        ]
+          .filter((x) => x[1] !== undefined)
+          .map((x) => `<span>${esc(x[0])} ${nfmt(x[1])}</span>`)
+          .join('');
+      }
+      function rowClass(row) {
+        return Number(row?.leaks) > 0
+          ? 'leak'
+          : Number(row?.dropped) > 0
+            ? 'drop'
+            : '';
+      }
+      function renderTraces() {
+        const runs = participants();
+        const max = turnCount();
+        $('turnRange').max = max;
+        selectedTurn = Math.max(1, Math.min(selectedTurn, max));
+        $('turnRange').value = selectedTurn;
+        $('turnLabel').textContent = `TURN ${selectedTurn} / ${max}`;
+        $('traceBoard').innerHTML =
+          runs
+            .map((run, index) => {
+              const rows = routeRows(run),
+                bad = runFailed(run);
+              const steps = Array.from({ length: max }, (_, i) => {
+                const turn = i + 1,
+                  row = rows.find((x) => Number(x.turn) === turn),
+                  cls = row ? rowClass(row) : 'missing';
+                const act = row?.action ?? '';
+                return `<button class="trace-step ${cls} ${turn === selectedTurn ? 'current' : ''}" data-run="${index}" data-turn="${turn}" aria-label="${esc(run.label || run.role || `Run ${index + 1}`)}, turn ${turn}: ${esc(act || 'no action recorded')}" title="Turn ${turn}: ${esc(act || 'no action')} · delivered ${nfmt(row?.delivered)} · leaks ${nfmt(row?.leaks)}">${row ? esc(turn) : '·'}</button>`;
+              }).join('');
+              return `<article class="trace-lane"><div class="trace-label"><b>${esc(run.label || run.role || `Run ${index + 1}`)}</b><small>${esc(run.role || 'agent')} · ${esc(run.status || 'ungraded')}${bad ? ' · review failure' : ''}</small></div><div class="trace-steps">${steps}</div></article>`;
+            })
+            .join('') ||
+          '<p class="load-state">No agent runs are included in this bundle.</p>';
+        renderTurnDetails();
+      }
+      function renderTurnDetails() {
+        const runs = participants();
+        $('detailTitle').textContent = `Turn ${selectedTurn} · all runs`;
+        $('eventList').innerHTML =
+          runs
+            .map((r, i) => {
+              const row = currentRow(r, selectedTurn);
+              if (!row)
+                return `<div class="event-row"><b>${esc(r.label || r.role || `Run ${i + 1}`)}</b><span>No event recorded for this turn.</span></div>`;
+              const cls = Number(row.leaks) > 0 ? 'leak' : '';
+              const delta = `+${nfmt(row.delivered)} del · ${nfmt(row.leaks)} leak · ${nfmt(row.dropped)} drop`;
+              $('detailCaption').textContent =
+                'History values are per-turn deltas; final totals remain in each score card.';
+              return `<div class="event-row ${cls}"><b>${esc(r.label || r.role || `Run ${i + 1}`)}</b><span>${esc(row.action || 'Action not recorded')}${row.event ? ` · ${esc(row.event)}` : ''}</span><span class="delta">${delta}</span></div>`;
+            })
+            .join('') || '<p>No run history.</p>';
+      }
+      function renderFork() {
+        const f = evidence.fork;
+        if (!f) {
+          $('forkPanel').hidden = true;
+          return;
+        }
+        $('forkPanel').hidden = false;
+        const after = Number(f.afterTurn) || 0;
+        const failure = f.failure || {};
+        const parent = evidence.runs?.[Number(f.parentIndex)];
+        const ps = f.parentScore || {};
+        const parentLabel = parent?.label || `Run ${Number(f.parentIndex) + 1}`;
+        $('forkCaption').textContent =
+          `${parentLabel} is frozen after ${after} turns. Its next move, ${failure.action || 'unknown move'} at turn ${nfmt(failure.turn)}, left ${nfmt(failure.dropped)} dropped and ${nfmt(failure.queued)} queued. Parent final: ${nfmt(ps.delivered)} delivered, ${nfmt(ps.leaks)} leaks, ${nfmt(ps.dropped)} dropped. Repair branches replay the same prefix.`;
+        $('prefixLabel').textContent = after
+          ? `COMMON PREFIX · ${after} TURNS`
+          : 'SCOUT START · NO PREFIX';
+        const runs = evidence.runs || [];
+        const branches = Array.isArray(f.branches) ? f.branches : [];
+        $('forkBranches').innerHTML =
+          branches
+            .map((b) => {
+              const index = Number(b.index);
+              const run = runs[index];
+              const dest = sourceName === 'moonlight' ? 'moonlight' : 'night';
+              const href = `./index.html?swarm=${dest}&agent=${encodeURIComponent(index)}&turn=${encodeURIComponent(after)}`;
+              const label = esc(b.label || run?.label || `Branch ${index + 1}`);
+              const detail = `turn ${after} · delivered ${nfmt(b.score?.delivered)} · leaks ${nfmt(b.score?.leaks)}`;
+              const open =
+                !!run &&
+                !!run.score &&
+                !runFailed(run) &&
+                /complete|completed|verified/.test(String(run.status || ''));
+              return open
+                ? `<a class="fork-branch" href="${href}"><b>${label}</b><small>${detail} · open this future ↗</small></a>`
+                : `<div class="fork-branch unavailable"><b>${label}</b><small>${detail} · ${esc(run?.status || 'no completed run')} · not playable</small></div>`;
+            })
+            .join('') ||
+          '<div class="fork-branch">No branch scores recorded.</div>';
+      }
+      function renderRuns() {
+        const runs = evidence.runs || [];
+        $('runCount').textContent =
+          `${runs.length} RECORDED RUN${runs.length === 1 ? '' : 'S'}`;
+        const winner = bestSafe();
+        const max = turnCount();
+        $('runsGrid').innerHTML =
+          runs
+            .map((r, i) => {
+              const failed = runFailed(r),
+                win = winner?.index === i;
+              const statKind = statusKind(r.status, r.error);
+              const actions = displayActions(r);
+              const rows = routeRows(r);
+              const chips = Array.from({ length: max }, (_, j) => {
+                const turn = j + 1;
+                const row = rows.find((x) => Number(x.turn) === turn);
+                return `<span class="action-chip ${turn === selectedTurn ? 'active' : ''}" title="Turn ${turn}: ${esc(row?.action || actions[j] || 'no action recorded')}">${String(turn).padStart(2, '0')} ${esc(row?.action || actions[j] || '—')}</span>`;
+              }).join('');
+              const model = r.model || r.provider || '';
+              const usage = r.usage
+                ? `${nfmt(r.usage.promptTokens)} prompt / ${nfmt(r.usage.outputTokens)} output tokens`
+                : '';
+              const latency =
+                r.latencyMs !== undefined ? `${nfmt(r.latencyMs)} ms` : '';
+              const callText =
+                r.calls !== undefined ? `${nfmt(r.calls)} model calls` : '';
+              const error = r.error
+                ? `<div class="error-note"><b>Run error:</b> ${esc(r.error)}</div>`
+                : '';
+              const analysis = r.analysis
+                ? `<p class="analysis">${esc(r.analysis)}</p>`
+                : '';
+              const playable =
+                !!r.score &&
+                !runFailed(r) &&
+                /complete|completed|verified/.test(String(r.status || ''));
+              const basePath = `./index.html?swarm=${sourceName === 'moonlight' ? 'moonlight' : 'night'}&agent=${i}&turn=`;
+              let branchLink = '';
+              if (playable) {
+                if (r.phase === 'repair') {
+                  const forkTurn = Number(evidence.fork?.afterTurn) || 0;
+                  branchLink = `<a class="run-foot-link" href="${basePath}${forkTurn}">Replay repair from turn ${forkTurn} ↗</a>`;
+                } else {
+                  branchLink = `<a class="run-foot-link" href="${basePath}0">Play scout from start ↗</a>`;
+                  if (
+                    Number(evidence.fork?.parentIndex) === i &&
+                    Number(evidence.fork?.afterTurn) > 0
+                  ) {
+                    branchLink += `<a class="run-foot-link" href="${basePath}${Number(evidence.fork.afterTurn)}">Fork scout at turn ${Number(evidence.fork.afterTurn)} ↗</a>`;
+                  }
+                }
+              }
+              return `<article class="run-card ${win ? 'winner' : ''} ${failed ? 'failed' : ''}"><div class="run-card-head"><div class="role-meta"><div class="role">${esc(r.role || 'agent')}${r.phase ? ` · ${esc(r.phase)}` : ''}</div><h3>${esc(r.label || `Run ${i + 1}`)}${win ? '<span class="winner-mark">BEST SEALED-SAFE</span>' : ''}</h3></div><span class="pill ${statKind}">${esc(r.status || 'ungraded')}</span></div><div class="metrics">${scoreMetrics(r.score)}</div>${analysis}${error}<div class="action-strip" aria-label="Action sequence for ${esc(r.label || `run ${i + 1}`)}">${chips || '<span class="action-chip">No actions recorded</span>'}</div><div class="run-foot"><span>${esc(model || 'model/provider unavailable')}</span><span>${esc([latency, callText, usage].filter(Boolean).join(' · ') || 'runtime details unrecorded')}</span>${branchLink}</div></article>`;
+            })
+            .join('') || '<p>No runs recorded.</p>';
+      }
+      function render() {
+        const e = evidence;
+        $('tapeTitle').textContent = e.tapeTitle || e.levelId || 'Swarm tape';
+        $('levelLine').textContent =
+          `${e.trial ? `Trial ${e.trial} · ` : ''}Level ${e.levelId || '—'} · ${e.model || 'model not recorded'} · ${(e.runs || []).length} independent measured runs`;
+        $('generated').textContent = e.generatedAt
+          ? `GENERATED ${new Date(e.generatedAt).toLocaleString()}`
+          : 'SAVED EVIDENCE';
+        $('baselineMetrics').innerHTML = scoreMetrics(e.baseline);
+        if (e.oracle) {
+          $('oraclePanel').hidden = false;
+          $('oracleMetrics').innerHTML = scoreMetrics(
+            e.oracle.score || e.oracle,
+          );
+        } else $('oraclePanel').hidden = true;
+        setEpisodeCopy();
+        renderModelRollup();
+        renderSafe();
+        renderTraces();
+        renderFork();
+        renderRuns();
+        loadBenchmark();
+        $('provenance').textContent =
+          `level ${e.levelId || '—'}${e.tapeSha256 ? ` · tape sha256 ${String(e.tapeSha256).slice(0, 12)}…` : ''}`;
+        $('app').hidden = false;
+      }
+      async function loadBenchmark() {
+        const section = $('benchmarkSection');
+        try {
+          const res = await fetch('./swarm-benchmark.json', {
+            cache: 'no-store',
+          });
+          if (!res.ok) throw new Error('not available');
+          const b = await res.json();
+          if (!Array.isArray(b.entries))
+            throw new Error('invalid benchmark report');
+          const fields = [
+            ['Trials', b.trials],
+            ['Attempts', b.attempts],
+            ['Completed', b.completed],
+            ['Zero-leak', b.zeroLeak],
+            ['Repaired forks', b.repairedForks],
+            ['Oracle matches', b.oracleMatches],
+          ];
+          $('benchmarkSummary').innerHTML = fields
+            .map(
+              ([label, value]) =>
+                `<article class="score-panel"><div class="score-head"><h3>${esc(label)}</h3><span>reported</span></div><div class="metrics" style="grid-template-columns:1fr"><div class="metric"><b>${nfmt(value)}</b><span>${esc(label.toLowerCase())}</span></div></div></article>`,
+            )
+            .join('');
+          $('benchmarkEntries').innerHTML = b.entries
+            .map((e) => {
+              const winner = scoreLabel(e.winner);
+              const oracle = scoreLabel(e.oracle);
+              const file = String(e.filename || '');
+              const safeFile =
+                /^evidence\/swarm\/(night|moonlight)-[0-9]+\.json$/.test(file);
+              const fileLabel = safeFile
+                ? `<a href="./${esc(file)}">${esc(file)}</a>`
+                : esc(file || 'evidence entry');
+              return `<article class="run-card"><div class="run-card-head"><div class="role-meta"><div class="role">${esc(e.level || 'level')} · trial ${nfmt(e.trial)}</div><h3>Winner · ${esc(winner)}</h3></div><span class="pill">${fileLabel}</span></div><div class="run-foot"><span>${nfmt(e.completed)} / ${nfmt(e.attempts)} completed</span><span>oracle · ${esc(oracle)}</span></div></article>`;
+            })
+            .join('');
+          section.hidden = false;
+        } catch {
+          section.hidden = true;
+        }
+      }
+      async function load(which = sourceName) {
+        const currentRequest = ++requestId;
+        sourceName = which;
+        $('levelPick').value = which;
+        $('loadState').hidden = false;
+        $('loadState').classList.remove('error');
+        $('loadState').textContent =
+          `Loading ${which === 'moonlight' ? 'Moonlight' : 'Night market'} saved swarm evidence…`;
+        $('app').hidden = true;
+        try {
+          const response = await fetch(SOURCES[which], { cache: 'no-store' });
+          if (!response.ok)
+            throw new Error(`${response.status} ${response.statusText}`);
+          const record = await response.json();
+          if (currentRequest !== requestId) return;
+          if (!record || !Array.isArray(record.runs))
+            throw new Error('Evidence bundle has no runs array.');
+          evidence = record;
+          const forkTurn =
+            Number(evidence.fork?.failure?.turn) ||
+            (Number(evidence.fork?.afterTurn) || 0) + 1;
+          selectedTurn = evidence.fork ? forkTurn : 1;
+          render();
+          $('loadState').hidden = true;
+        } catch (err) {
+          if (currentRequest !== requestId) return;
+          $('loadState').hidden = false;
+          $('loadState').classList.add('error');
+          $('loadState').textContent =
+            `Could not load ${SOURCES[which]}: ${err.message}. Place the saved JSON beside this page and refresh.`;
+        }
+      }
+      $('turnRange').addEventListener('input', (e) => {
+        selectedTurn = Number(e.target.value);
+        renderTraces();
+        renderRuns();
+      });
+      $('prevTurn').addEventListener('click', () => {
+        selectedTurn = Math.max(1, selectedTurn - 1);
+        renderTraces();
+        renderRuns();
+      });
+      $('nextTurn').addEventListener('click', () => {
+        selectedTurn = Math.min(turnCount(), selectedTurn + 1);
+        renderTraces();
+        renderRuns();
+      });
+      $('traceBoard').addEventListener('click', (e) => {
+        const b = e.target.closest('[data-turn]');
+        if (b) {
+          selectedTurn = Number(b.dataset.turn);
+          renderTraces();
+          renderRuns();
+        }
+      });
+      $('levelPick').addEventListener('change', (e) => load(e.target.value));
+      $('reload').addEventListener('click', () => load());
+      load();
+    </script>
+  </body>
+</html>

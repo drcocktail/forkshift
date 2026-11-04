@@ -206,7 +206,7 @@ a{color:var(--green);text-underline-offset:.2em}
 <div class="endoverlay" id="end"><div><svg class="outcome-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 1 2.6 8.4L23 12l-8.4 2.6L12 23l-2.6-8.4L1 12l8.4-2.6Z"/></svg><h2 id="endTitle">That’s the shift</h2><p id="endText"></p><button id="restart">Run it again</button></div></div></div><div class="worker-slots"><span id="pipSlots"></span><span id="bobaSlots"></span></div><div class="forecast" id="forecast"></div><div class="queue" id="queue"><span class="queue-title">LIVE QUEUE</span><span class="parcel">Loading parcels…</span></div></section>
 <div class="timerow"><span>SHIFT</span><div class="ticks" id="ticks"></div><span id="timeLeft">12 TURNS LEFT</span></div><div class="cards" id="actions"></div></main>
 <aside class="aside"><section class="status"><div class="statushead">Your run <span class="livepill" id="statusPill">ON SHIFT</span></div><div class="meter"><div class="meterline"><span>Packets on time</span><b id="deliveryPct">—</b></div><div class="bar"><i id="deliveryBar"></i></div></div><div class="meter"><div class="meterline"><span>Queue pressure</span><b id="stormPct">—</b></div><div class="bar orange"><i id="stormBar"></i></div></div><div class="mini-stats"><div class="stat"><b id="delivered">0</b><span>On time</span></div><div class="stat"><b id="leaks">0</b><span>Private leaks</span></div><div class="stat"><b id="missed">0</b><span>Missed</span></div><div class="stat"><b id="charge">3</b><span>Spark charges</span></div></div></section>
-<section class="rewind"><h3>Try that turn again</h3><p>Go back to a turn you’ve played. Compare your new moves with the old run.</p><select class="fork-point" id="forkPoint" aria-label="Turn to replay"></select><button class="forkbtn" id="fork">Rewind to this turn</button><button class="forkbtn" id="autopilot" >Compare with Autopilot</button><button class="forkbtn" id="museGhost" style="display:none">Race Muse’s ghost</button></section>
+<section class="rewind"><h3>Try that turn again</h3><p>Go back to a turn you’ve played. Compare your new moves with the old run, or <a href="./swarm.html">see what the Muse swarm tried</a>.</p><select class="fork-point" id="forkPoint" aria-label="Turn to replay"></select><button class="forkbtn" id="fork">Rewind to this turn</button><button class="forkbtn" id="autopilot" >Compare with Autopilot</button><button class="forkbtn" id="museGhost" style="display:none">Race Muse’s ghost</button></section>
 <section class="compare" id="compare"><div class="comphead"><span>Compare at the same turn</span></div><div class="lanes"><div class="lane"><b id="baseLabel">GHOST BASELINE</b><span id="resultA">—</span><div class="route-strip" id="stripA"></div></div><div class="lane"><b id="liveLabel">YOUR RUN</b><span id="resultB">—</span><div class="route-strip" id="stripB"></div></div></div><p id="museCaption" class="level-error"></p></section></aside></div>
 <div class="footer"><span><a href="../">Forkshift </a> · 1–4 choose · R rewind</span><span id="modelMeta" style="overflow-wrap:anywhere">SCENARIO DATA · LOCAL</span></div></div><div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script type="module">
@@ -297,12 +297,12 @@ function render(){
   point.value=String(Math.min(previous,Math.max(0,state.tick-1)));
   $('#fork').disabled=state.tick===0;
   $('#compare').classList.toggle('show',Boolean(ghost));
-  $('#museCaption').classList.toggle('show',Boolean(ghost?.museSpark));
-  $('#museCaption').textContent=ghost?.museSpark?museTape.caption:'';
+  $('#museCaption').classList.toggle('show',Boolean(ghost?.museSpark||ghost?.swarmLabel));
+  $('#museCaption').textContent=ghost?.swarmLabel?ghost.swarmAnalysis:ghost?.museSpark?museTape.caption:'';
 
   if(ghost){
     const compared=Math.min(ghost.tick,state.tick);
-    $('#baseLabel').textContent=ghost.museSpark?`MUSE SPARK · T${compared}`:ghost.autopilot?`AUTOPILOT · T${compared}`:`GHOST · T${compared}`;
+    $('#baseLabel').textContent=`${ghost.swarmLabel || (ghost.museSpark?'MUSE SPARK':ghost.autopilot?'AUTOPILOT':'GHOST')} · T${compared}`;
     $('#liveLabel').textContent=`YOUR RUN · T${compared}`;
     $('#resultA').textContent=through(ghost.history,compared);
     $('#resultB').textContent=through(state.history,compared);
@@ -387,6 +387,7 @@ function syncShare(){
 function setLevelUrl(key){
   const url=new URL(location.href);
   if(key==='moonlight')url.searchParams.set('level','moonlight');else url.searchParams.delete('level');
+  for(const param of ['swarm','agent','turn'])url.searchParams.delete(param);
   history.replaceState(null,'',url);
 }
 async function chooseLevel(key){
@@ -409,12 +410,49 @@ $('#shareLevel').onclick=async()=>{
   try{await navigator.clipboard.writeText(url.href);toast('Level link copied!');}
   catch{window.prompt('Copy this level link:',url.href);}
 };
-const preferred=new URLSearchParams(location.search).get('level');
+const launchUrl=new URL(location.href);
+const launch=launchUrl.searchParams;
+const preferred=launch.get('swarm')==='moonlight'?'moonlight':launch.get('level');
+async function loadSwarmGhost(){
+  const dataset=launch.get('swarm');
+  const tapeFile=dataset==='night'?'level.json':dataset==='moonlight'?'moonlight.json':null;
+  const filename=dataset==='night'?'swarm-evidence.json':'swarm-moonlight.json';
+  if(!tapeFile)return;
+  const initialState=state;
+  const initialLevel=level;
+  try{
+    const responses=await Promise.all([fetch(`./${filename}`),fetch(`./${tapeFile}`)]);
+    if(responses.some(response=>!response.ok))throw new Error('Recording unavailable.');
+    const [evidence,tapeBytes]=await Promise.all([responses[0].json(),responses[1].arrayBuffer()]);
+    if(initialState!==state||initialLevel!==level)return;
+    const hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',tapeBytes))]
+      .map(byte=>byte.toString(16).padStart(2,'0')).join('');
+    if(initialState!==state||initialLevel!==level)return;
+    const recordedLevel=JSON.parse(new TextDecoder().decode(tapeBytes)).level;
+    const index=launch.get('agent'),turn=launch.get('turn');
+    const run=evidence.runs[Number(index)];
+    if(evidence.tapeSha256!==hash||evidence.levelId!==tapeFile||
+       JSON.stringify(recordedLevel)!==JSON.stringify(level.level)||
+       !/^\d+$/.test(index)||!/^\d+$/.test(turn)||Number(turn)>=ticks||
+       run?.status!=='complete'||typeof run.label!=='string'||typeof run.analysis!=='string'||
+       !Array.isArray(run.actions)||run.actions.length!==ticks||
+       run.actions.some(id=>!Object.hasOwn(ACTIONS,id))||run.actions.filter(id=>id==='boost').length>3){
+      throw new Error('Recording does not match this level.');
+    }
+    ghost={...replay(level.level,run.actions),swarmLabel:run.label,swarmAnalysis:run.analysis};
+    state=replay(level.level,run.actions.slice(0,Number(turn)));
+    lane='B';
+    history.replaceState(null,'',launchUrl);
+    render();
+    toast(`You’re up against ${run.label} from turn ${state.tick+1}.`);
+  }catch{showLevelError('That Muse route couldn’t load. You can still play this level.');}
+}
 syncShare();
 if(['localhost','127.0.0.1'].includes(location.hostname))$('#authorBox').style.display='flex';$('#authorBtn').onclick=async()=>{const brief=$('#authorBrief').value.trim();if(!brief)return toast('Add a one-line disaster pitch first.');$('#authorBtn').disabled=true;$('#authorBtn').textContent='Making your level…';toast('Llama is writing the level. This may take a minute.');try{const r=await fetch('/api/director/author',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({brief})});const data=await r.json();if(!r.ok)throw new Error(data.error||'Author request failed.');load(norm(data));bundledLevel=null;setLevelUrl(null);syncShare();refreshMuseGhost();toast('Your new level is ready.')}catch(e){console.error(e);toast(e.message+' The current tape is still ready to play.')}finally{$('#authorBtn').disabled=false;$('#authorBtn').textContent='Make a level'}};try{
   const response=await fetch('./level.json');
   if(!response.ok)throw new Error('No tape.');
   load(await response.json());bundledLevel='flagship';setLevelUrl('flagship');syncShare();refreshMuseGhost();
   if(preferred==='moonlight')await chooseLevel('moonlight');
+  await loadSwarmGhost();
 }catch{load(fixture);bundledLevel=null;syncShare();toast('The night market couldn’t load. You can play the backup level.');}
 </script></body></html>

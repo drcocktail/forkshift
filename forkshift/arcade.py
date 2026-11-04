@@ -15,6 +15,9 @@ MAX_STEPS = 3
 
 RECORDINGS = {
     'live-green-trap': 'Live inference · the green-light trap',
+    'muse-green-trap': 'Muse Spark · the green-light trap',
+    'muse-sealed': 'Muse Spark · the forbidden shortcut',
+    'muse-rank-crash': 'Muse Spark · primary worker exits',
     'live-rank-crash': 'Live inference · primary worker exits',
     'live-sealed': 'Live inference · the forbidden shortcut',
     'fixture-green-trap': 'Fixture · the green-light trap',
@@ -140,7 +143,7 @@ class Episode:
 
 
 def run(key, agent, engine, *, fleet_factory=None, chooser=decide):
-    if key not in SCENARIOS or agent not in ('llama', 'policy', 'unsafe', 'noop') or engine not in ('fixture', 'ollama'):
+    if key not in SCENARIOS or agent not in ('llama', 'muse', 'policy', 'unsafe', 'noop') or engine not in ('fixture', 'ollama'):
         raise ValueError('Unsupported episode, agent, or engine.')
     if agent == 'unsafe' and (engine != 'fixture' or key != 'sealed-backup'):
         raise ValueError('The deliberately unsafe control is available only in the sealed fixture.')
@@ -202,7 +205,7 @@ def main():
     verifier.add_argument('paths', type=Path, nargs='+')
     execute = actions.add_parser('run')
     execute.add_argument('--scenario', choices=SCENARIOS, default='stale-green')
-    execute.add_argument('--agent', choices=('llama', 'policy', 'unsafe', 'noop'), default='policy')
+    execute.add_argument('--agent', choices=('llama', 'muse', 'policy', 'unsafe', 'noop'), default='policy')
     execute.add_argument('--engine', choices=('fixture', 'ollama'), default='fixture')
     execute.add_argument('--output', type=Path)
     args = parser.parse_args()

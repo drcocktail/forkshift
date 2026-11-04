@@ -1,0 +1,1235 @@
+{
+  "model": "muse-spark-1.3",
+  "levelId": "level.json",
+  "tapeTitle": "Floating Night Market: Zero-G Lantern Drift",
+  "trial": 1,
+  "generatedAt": "2026-11-04T22:51:08.337401+00:00",
+  "tapeSha256": "2491e37e5e864b307038bf32d06a1bfd5664c3808b5135900295f0b074bf6a89",
+  "baseline": {
+    "delivered": 43,
+    "leaks": 10,
+    "dropped": 4,
+    "queued": 0,
+    "points": -39,
+    "charge": 3
+  },
+  "baselineHistory": [
+    {
+      "turn": 1,
+      "action": "auto",
+      "event": "Stalls light up, dumpling steam curls over the docks.",
+      "delivered": 4,
+      "leaks": 0,
+      "dropped": 0,
+      "queued": 0,
+      "charge": 3,
+      "leakedPackets": [],
+      "expiredPackets": []
+    },
+    {
+      "turn": 2,
+      "action": "auto",
+      "event": "Gravity hiccups, soup bowls wobble and lift off.",
+      "delivered": 5,
+      "leaks": 1,
+      "dropped": 0,
+      "queued": 0,
+      "charge": 3,
+      "leakedPackets": [
+        "2-private-1"
+      ],
+      "expiredPackets": []
+    },
+    {
+      "turn": 3,
+      "action": "auto",
+      "event": "Runaway lantern smacks Pip! Pip offline with a fizzle.",
+      "delivered": 3,
+      "leaks": 2,
+      "dropped": 0,
+      "queued": 2,
+      "charge": 3,
+      "leakedPackets": [
+        "3-private-1",
+        "3-private-2"
+      ],
+      "expiredPackets": []
+    },
+    {
+      "turn": 4,
+      "action": "auto",
+      "event": "Sealed recipes pile up while Pip blinks dead.",
+      "delivered": 3,
+      "leaks": 1,
+      "dropped": 0,
+      "queued": 3,
+      "charge": 3,
+      "leakedPackets": [
+        "3-private-3"
+      ],
+      "expiredPackets": []
+    },
+    {
+      "turn": 5,
+      "action": "auto",
+      "event": "Packet: lost spice manifest drifts by, grab or wait?",
+      "delivered": 3,
+      "leaks": 2,
+      "dropped": 0,
+      "queued": 5,
+      "charge": 3,
+      "leakedPackets": [
+        "4-private-1",
+        "4-private-2"
+      ],
+      "expiredPackets": []
+    },
+    {
+      "turn": 6,
+      "action": "auto",
+      "event": "Pip reboots weakly, one eye flickering back on.",
+      "delivered": 4,
+      "leaks": 2,
+      "dropped": 0,
+      "queued": 5,
+      "charge": 3,
+      "leakedPackets": [
+        "5-private-1",
+        "5-private-2"
+      ],
+      "expiredPackets": []
+    },
+    {
+      "turn": 7,
+      "action": "auto",
+      "event": "Choice: fireworks start! Boba fails, spend spark on Pip?",
+      "delivered": 2,
+      "leaks": 0,
+      "dropped": 1,
+      "queued": 7,
+      "charge": 3,
+      "leakedPackets": [],
+      "expiredPackets": [
+        "6-voice-2"
+      ]
+    },
+    {
+      "turn": 8,
+      "action": "auto",
+      "event": "Fireworks boom, live orders crackle with no relay.",
+      "delivered": 2,
+      "leaks": 0,
+      "dropped": 3,
+      "queued": 6,
+      "charge": 3,
+      "leakedPackets": [],
+      "expiredPackets": [
+        "7-voice-1",
+        "7-voice-2",
+        "7-voice-3"
+      ]
+    },
+    {
+      "turn": 9,
+      "action": "auto",
+      "event": "Smoke clears, Boba shakes sparks off whiskers.",
+      "delivered": 5,
+      "leaks": 0,
+      "dropped": 0,
+      "queued": 5,
+      "charge": 3,
+      "leakedPackets": [],
+      "expiredPackets": []
+    },
+    {
+      "turn": 10,
+      "action": "auto",
+      "event": "Stalls tether down, last floating lanterns caught.",
+      "delivered": 6,
+      "leaks": 1,
+      "dropped": 0,
+      "queued": 2,
+      "charge": 3,
+      "leakedPackets": [
+        "9-private-1"
+      ],
+      "expiredPackets": []
+    },
+    {
+      "turn": 11,
+      "action": "auto",
+      "event": "Choice: save last spark or light the dawn grill?",
+      "delivered": 4,
+      "leaks": 1,
+      "dropped": 0,
+      "queued": 0,
+      "charge": 3,
+      "leakedPackets": [
+        "11-private-1"
+      ],
+      "expiredPackets": []
+    },
+    {
+      "turn": 12,
+      "action": "auto",
+      "event": "Quiet sunrise, warm buns shared in soft light.",
+      "delivered": 2,
+      "leaks": 0,
+      "dropped": 0,
+      "queued": 0,
+      "charge": 3,
+      "leakedPackets": [],
+      "expiredPackets": []
+    }
+  ],
+  "oracle": {
+    "delivered": 47,
+    "leaks": 0,
+    "dropped": 0,
+    "queued": 0,
+    "points": 185
+  },
+  "runs": [
+    {
+      "role": "sentinel",
+      "label": "Lantern Keeper",
+      "phase": "scout",
+      "status": "complete",
+      "promptSha256": "666f20552579d3c9845faac7d1370c7cbb9385b0c40b57f0eb58d3aead9d4ef8",
+      "model": "muse-spark-1.3",
+      "latencyMs": 30856,
+      "usage": {
+        "promptTokens": 874,
+        "outputTokens": 2693
+      },
+      "responseSha256": "f59a39c95a0c386e069dd56f500e2c10eb40bf51d324dfa8d835339cf9446e28",
+      "actions": [
+        "guard",
+        "guard",
+        "boost",
+        "boost",
+        "boost",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard"
+      ],
+      "analysis": "Use all 3 boosts while Pip is offline to clear private backlog and avoid leaks then guard to protect recipes.",
+      "score": {
+        "delivered": 45,
+        "leaks": 0,
+        "dropped": 2,
+        "queued": 0,
+        "points": 173,
+        "charge": 0
+      },
+      "history": [
+        {
+          "turn": 1,
+          "action": "guard",
+          "event": "Stalls light up, dumpling steam curls over the docks.",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 2,
+          "action": "guard",
+          "event": "Gravity hiccups, soup bowls wobble and lift off.",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 3,
+          "action": "boost",
+          "event": "Runaway lantern smacks Pip! Pip offline with a fizzle.",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 2,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 4,
+          "action": "boost",
+          "event": "Sealed recipes pile up while Pip blinks dead.",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 1,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 5,
+          "action": "boost",
+          "event": "Packet: lost spice manifest drifts by, grab or wait?",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 6,
+          "action": "guard",
+          "event": "Pip reboots weakly, one eye flickering back on.",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 7,
+          "action": "guard",
+          "event": "Choice: fireworks start! Boba fails, spend spark on Pip?",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 4,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 8,
+          "action": "guard",
+          "event": "Fireworks boom, live orders crackle with no relay.",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 2,
+          "queued": 4,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": [
+            "7-voice-2",
+            "7-voice-3"
+          ]
+        },
+        {
+          "turn": 9,
+          "action": "guard",
+          "event": "Smoke clears, Boba shakes sparks off whiskers.",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 3,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 10,
+          "action": "guard",
+          "event": "Stalls tether down, last floating lanterns caught.",
+          "delivered": 6,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 11,
+          "action": "guard",
+          "event": "Choice: save last spark or light the dawn grill?",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 12,
+          "action": "guard",
+          "event": "Quiet sunrise, warm buns shared in soft light.",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        }
+      ]
+    },
+    {
+      "role": "radio",
+      "label": "Radio Runner",
+      "phase": "scout",
+      "status": "failed",
+      "promptSha256": "422f6b495d5be10770480d9b4fa82440a6e07c200fb33abc6d94353c29d7a81b",
+      "error": "Muse completion ended with finish_reason='length'."
+    },
+    {
+      "role": "engineer",
+      "label": "Spark Mechanic",
+      "phase": "scout",
+      "status": "failed",
+      "promptSha256": "aa8626b7b522605d98e62abe20a700461ce8ef52417adf3f779510c52979a32b",
+      "error": "Muse completion ended with finish_reason='length'."
+    },
+    {
+      "role": "quartermaster",
+      "label": "Dumpling Courier",
+      "phase": "scout",
+      "status": "complete",
+      "promptSha256": "438300be6c73047267e1616e7c101749cfe36ac2f4827babe031fea84e6727a4",
+      "model": "muse-spark-1.3",
+      "latencyMs": 29131,
+      "usage": {
+        "promptTokens": 874,
+        "outputTokens": 2889
+      },
+      "responseSha256": "54ba7bed5473a141955d901b16308298b4e7ddf1a66f0542509887535cb8faf6",
+      "actions": [
+        "guard",
+        "guard",
+        "boost",
+        "boost",
+        "boost",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard"
+      ],
+      "analysis": "Boost Pip through the 3-turn offline to save privates and guard otherwise to prevent leaks.",
+      "score": {
+        "delivered": 45,
+        "leaks": 0,
+        "dropped": 2,
+        "queued": 0,
+        "points": 173,
+        "charge": 0
+      },
+      "history": [
+        {
+          "turn": 1,
+          "action": "guard",
+          "event": "Stalls light up, dumpling steam curls over the docks.",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 2,
+          "action": "guard",
+          "event": "Gravity hiccups, soup bowls wobble and lift off.",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 3,
+          "action": "boost",
+          "event": "Runaway lantern smacks Pip! Pip offline with a fizzle.",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 2,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 4,
+          "action": "boost",
+          "event": "Sealed recipes pile up while Pip blinks dead.",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 1,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 5,
+          "action": "boost",
+          "event": "Packet: lost spice manifest drifts by, grab or wait?",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 6,
+          "action": "guard",
+          "event": "Pip reboots weakly, one eye flickering back on.",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 7,
+          "action": "guard",
+          "event": "Choice: fireworks start! Boba fails, spend spark on Pip?",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 4,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 8,
+          "action": "guard",
+          "event": "Fireworks boom, live orders crackle with no relay.",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 2,
+          "queued": 4,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": [
+            "7-voice-2",
+            "7-voice-3"
+          ]
+        },
+        {
+          "turn": 9,
+          "action": "guard",
+          "event": "Smoke clears, Boba shakes sparks off whiskers.",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 3,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 10,
+          "action": "guard",
+          "event": "Stalls tether down, last floating lanterns caught.",
+          "delivered": 6,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 11,
+          "action": "guard",
+          "event": "Choice: save last spark or light the dawn grill?",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 12,
+          "action": "guard",
+          "event": "Quiet sunrise, warm buns shared in soft light.",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        }
+      ]
+    },
+    {
+      "role": "rewind",
+      "label": "Rewind Ranger",
+      "phase": "repair",
+      "status": "complete",
+      "promptSha256": "1be8f047cd0b3364752213f24eeaa2d835a0b66507f6c48187266c8d971ebe51",
+      "model": "muse-spark-1.3",
+      "latencyMs": 20256,
+      "usage": {
+        "promptTokens": 1211,
+        "outputTokens": 1860
+      },
+      "responseSha256": "47d73e8bc1c202321ab34563fefdac64fee8f603427482fd7cc0f3dac4f76ca9",
+      "actions": [
+        "guard",
+        "guard",
+        "boost",
+        "boost",
+        "boost",
+        "guard",
+        "guard",
+        "rescue",
+        "rescue",
+        "rescue",
+        "rescue",
+        "rescue"
+      ],
+      "analysis": "Rescue saves two expiring voices now and still blocks private leaks later.",
+      "score": {
+        "delivered": 46,
+        "leaks": 0,
+        "dropped": 1,
+        "queued": 0,
+        "points": 179,
+        "charge": 0
+      },
+      "history": [
+        {
+          "turn": 1,
+          "action": "guard",
+          "event": "Stalls light up, dumpling steam curls over the docks.",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 2,
+          "action": "guard",
+          "event": "Gravity hiccups, soup bowls wobble and lift off.",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 3,
+          "action": "boost",
+          "event": "Runaway lantern smacks Pip! Pip offline with a fizzle.",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 2,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 4,
+          "action": "boost",
+          "event": "Sealed recipes pile up while Pip blinks dead.",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 1,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 5,
+          "action": "boost",
+          "event": "Packet: lost spice manifest drifts by, grab or wait?",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 6,
+          "action": "guard",
+          "event": "Pip reboots weakly, one eye flickering back on.",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 7,
+          "action": "guard",
+          "event": "Choice: fireworks start! Boba fails, spend spark on Pip?",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 4,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 8,
+          "action": "rescue",
+          "event": "Fireworks boom, live orders crackle with no relay.",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 1,
+          "queued": 5,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": [
+            "7-voice-3"
+          ]
+        },
+        {
+          "turn": 9,
+          "action": "rescue",
+          "event": "Smoke clears, Boba shakes sparks off whiskers.",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 4,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 10,
+          "action": "rescue",
+          "event": "Stalls tether down, last floating lanterns caught.",
+          "delivered": 6,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 11,
+          "action": "rescue",
+          "event": "Choice: save last spark or light the dawn grill?",
+          "delivered": 3,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 12,
+          "action": "rescue",
+          "event": "Quiet sunrise, warm buns shared in soft light.",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        }
+      ]
+    },
+    {
+      "role": "crosscheck",
+      "label": "Crosscheck Fox",
+      "phase": "repair",
+      "status": "complete",
+      "promptSha256": "86b6e2cab0d0b739312c99d9726514a1806d605784ba0dd8cef03897f38d3baf",
+      "model": "muse-spark-1.3",
+      "latencyMs": 28191,
+      "usage": {
+        "promptTokens": 1209,
+        "outputTokens": 2681
+      },
+      "responseSha256": "89c555aefd95d141536510c0bd455498922b0026b7550a29f8b1d19fe8e76e87",
+      "actions": [
+        "guard",
+        "guard",
+        "boost",
+        "boost",
+        "boost",
+        "guard",
+        "guard",
+        "rescue",
+        "rescue",
+        "rescue",
+        "rescue",
+        "rescue"
+      ],
+      "analysis": "Rescue saves two expiring voices on turn 8 and avoids private leaks while clearing backlog.",
+      "score": {
+        "delivered": 46,
+        "leaks": 0,
+        "dropped": 1,
+        "queued": 0,
+        "points": 179,
+        "charge": 0
+      },
+      "history": [
+        {
+          "turn": 1,
+          "action": "guard",
+          "event": "Stalls light up, dumpling steam curls over the docks.",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 2,
+          "action": "guard",
+          "event": "Gravity hiccups, soup bowls wobble and lift off.",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 3,
+          "action": "boost",
+          "event": "Runaway lantern smacks Pip! Pip offline with a fizzle.",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 2,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 4,
+          "action": "boost",
+          "event": "Sealed recipes pile up while Pip blinks dead.",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 1,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 5,
+          "action": "boost",
+          "event": "Packet: lost spice manifest drifts by, grab or wait?",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 6,
+          "action": "guard",
+          "event": "Pip reboots weakly, one eye flickering back on.",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 7,
+          "action": "guard",
+          "event": "Choice: fireworks start! Boba fails, spend spark on Pip?",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 4,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 8,
+          "action": "rescue",
+          "event": "Fireworks boom, live orders crackle with no relay.",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 1,
+          "queued": 5,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": [
+            "7-voice-3"
+          ]
+        },
+        {
+          "turn": 9,
+          "action": "rescue",
+          "event": "Smoke clears, Boba shakes sparks off whiskers.",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 4,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 10,
+          "action": "rescue",
+          "event": "Stalls tether down, last floating lanterns caught.",
+          "delivered": 6,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 11,
+          "action": "rescue",
+          "event": "Choice: save last spark or light the dawn grill?",
+          "delivered": 3,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 12,
+          "action": "rescue",
+          "event": "Quiet sunrise, warm buns shared in soft light.",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        }
+      ]
+    },
+    {
+      "role": "reroute",
+      "label": "Detour Cat",
+      "phase": "repair",
+      "status": "complete",
+      "promptSha256": "ad31f36cf0c274d16413b8fe74d31c57d2682915c0dd742d5932a1434f3bdf12",
+      "model": "muse-spark-1.3",
+      "latencyMs": 20176,
+      "usage": {
+        "promptTokens": 1212,
+        "outputTokens": 1817
+      },
+      "responseSha256": "d2669047d7050c07dbf351bc004983ef86fd72dd82e66f7c24b4782da43a7bc5",
+      "actions": [
+        "guard",
+        "guard",
+        "boost",
+        "boost",
+        "boost",
+        "guard",
+        "guard",
+        "rescue",
+        "guard",
+        "guard",
+        "guard",
+        "guard"
+      ],
+      "analysis": "Switch turn 8 to rescue to serve two expiring voices first, cutting expiries from 2 to 1 and deferring private to Boba's return.",
+      "score": {
+        "delivered": 46,
+        "leaks": 0,
+        "dropped": 1,
+        "queued": 0,
+        "points": 179,
+        "charge": 0
+      },
+      "history": [
+        {
+          "turn": 1,
+          "action": "guard",
+          "event": "Stalls light up, dumpling steam curls over the docks.",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 2,
+          "action": "guard",
+          "event": "Gravity hiccups, soup bowls wobble and lift off.",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 3,
+          "action": "boost",
+          "event": "Runaway lantern smacks Pip! Pip offline with a fizzle.",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 2,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 4,
+          "action": "boost",
+          "event": "Sealed recipes pile up while Pip blinks dead.",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 1,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 5,
+          "action": "boost",
+          "event": "Packet: lost spice manifest drifts by, grab or wait?",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 6,
+          "action": "guard",
+          "event": "Pip reboots weakly, one eye flickering back on.",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 7,
+          "action": "guard",
+          "event": "Choice: fireworks start! Boba fails, spend spark on Pip?",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 4,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 8,
+          "action": "rescue",
+          "event": "Fireworks boom, live orders crackle with no relay.",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 1,
+          "queued": 5,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": [
+            "7-voice-3"
+          ]
+        },
+        {
+          "turn": 9,
+          "action": "guard",
+          "event": "Smoke clears, Boba shakes sparks off whiskers.",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 4,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 10,
+          "action": "guard",
+          "event": "Stalls tether down, last floating lanterns caught.",
+          "delivered": 6,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 11,
+          "action": "guard",
+          "event": "Choice: save last spark or light the dawn grill?",
+          "delivered": 3,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 12,
+          "action": "guard",
+          "event": "Quiet sunrise, warm buns shared in soft light.",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        }
+      ]
+    }
+  ],
+  "winnerIndex": 4,
+  "fork": {
+    "afterTurn": 7,
+    "parentIndex": 0,
+    "parentScore": {
+      "delivered": 45,
+      "leaks": 0,
+      "dropped": 2,
+      "queued": 0,
+      "points": 173,
+      "charge": 0
+    },
+    "failure": {
+      "turn": 8,
+      "action": "guard",
+      "event": "Fireworks boom, live orders crackle with no relay.",
+      "delivered": 2,
+      "leaks": 0,
+      "dropped": 2,
+      "queued": 4,
+      "charge": 0,
+      "leakedPackets": [],
+      "expiredPackets": [
+        "7-voice-2",
+        "7-voice-3"
+      ]
+    },
+    "startState": {
+      "turnsPlayed": 7,
+      "queue": [
+        {
+          "id": "7-voice-1",
+          "kind": "voice",
+          "expiresAfterTurn": 8
+        },
+        {
+          "id": "7-voice-2",
+          "kind": "voice",
+          "expiresAfterTurn": 8
+        },
+        {
+          "id": "7-voice-3",
+          "kind": "voice",
+          "expiresAfterTurn": 8
+        },
+        {
+          "id": "7-bulk-1",
+          "kind": "bulk",
+          "expiresAfterTurn": 10
+        }
+      ],
+      "delivered": 28,
+      "leaks": 0,
+      "dropped": 0,
+      "queued": 4,
+      "points": 113,
+      "charge": 0
+    },
+    "branches": [
+      {
+        "index": 4,
+        "label": "Rewind Ranger",
+        "score": {
+          "delivered": 46,
+          "leaks": 0,
+          "dropped": 1,
+          "queued": 0,
+          "points": 179,
+          "charge": 0
+        }
+      },
+      {
+        "index": 5,
+        "label": "Crosscheck Fox",
+        "score": {
+          "delivered": 46,
+          "leaks": 0,
+          "dropped": 1,
+          "queued": 0,
+          "points": 179,
+          "charge": 0
+        }
+      },
+      {
+        "index": 6,
+        "label": "Detour Cat",
+        "score": {
+          "delivered": 46,
+          "leaks": 0,
+          "dropped": 1,
+          "queued": 0,
+          "points": 179,
+          "charge": 0
+        }
+      }
+    ]
+  },
+  "calls": 7
+}

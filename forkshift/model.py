@@ -49,7 +49,8 @@ def generate(model, prompt, *, schema=None, tokens=200, keep_alive=None):
     return result['response'], metadata
 
 
-def generate_muse(prompt, *, schema=SCHEMA, schema_name="ForkshiftPlan", tokens=1200, reasoning_effort=None):
+def generate_muse(prompt, *, schema=SCHEMA, schema_name="ForkshiftPlan", tokens=1200,
+                  reasoning_effort=None, timeout=50):
     key = os.environ.get('MODEL_API_KEY')
     if not key:
         raise ValueError('Set MODEL_API_KEY to enable Muse planning.')
@@ -66,7 +67,7 @@ def generate_muse(prompt, *, schema=SCHEMA, schema_name="ForkshiftPlan", tokens=
                       headers={'Content-Type': 'application/json', 'Authorization': f'Bearer {key}'})
     started = time.monotonic()
     try:
-        with urlopen(request, timeout=50) as stream:
+        with urlopen(request, timeout=timeout) as stream:
             result = json.loads(stream.read(1_000_000))
         choice = result['choices'][0]
         if choice.get('finish_reason') != 'stop':

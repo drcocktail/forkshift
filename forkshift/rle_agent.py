@@ -1,7 +1,7 @@
-"""Bounded local model policy and explicit deterministic comparator."""
+"""Bounded model policies and explicit deterministic comparators."""
 import json
 
-from .model import generate
+from .model import generate, generate_muse
 
 MODEL = 'llama3.2:3b'
 ACTIONS = ('try_backup', 'repair_primary', 'stop')
@@ -33,18 +33,22 @@ try_backup = ask gateway to canary the backup and switch only if its gates pass.
 repair_primary = restart primary and verify it before switching.
 stop = end with service still unresolved.
 Choose a useful action and a concise reason.'''
-    try:
-        response, usage = generate(MODEL, prompt, schema=SCHEMA, tokens=130, keep_alive=0)
-    except ValueError as exc:
-        if str(exc).startswith('Local Ollama request failed'):
-            raise RuntimeError('The local planning backend could not be reached.') from exc
-        raise
+    if agent == 'muse':
+        response, usage = generate_muse(prompt, schema=SCHEMA, schema_name='WorkerRescueAction',
+                                        tokens=2400, reasoning_effort='low', timeout=75)
+    else:
+        try:
+            response, usage = generate(MODEL, prompt, schema=SCHEMA, tokens=130, keep_alive=0)
+        except ValueError as exc:
+            if str(exc).startswith('Local Ollama request failed'):
+                raise RuntimeError('The local planning backend could not be reached.') from exc
+            raise
     try:
         action = json.loads(response)
     except json.JSONDecodeError:
-        raise ValueError('Local model did not return action JSON.') from None
+        raise ValueError('Planner did not return action JSON.') from None
     if (not isinstance(action, dict) or action.get('action') not in ACTIONS
             or not isinstance(action.get('reason'), str) or set(action) != {'action', 'reason'}):
-        raise ValueError('Local model returned an invalid action.')
+        raise ValueError('Planner returned an invalid action.')
     action['reason'] = action['reason'][:500]
     return {**action, 'model': usage, 'repeated': action['action'] in actions}

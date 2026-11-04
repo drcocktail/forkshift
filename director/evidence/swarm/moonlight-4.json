@@ -1,0 +1,1567 @@
+{
+  "model": "muse-spark-1.3",
+  "levelId": "moonlight.json",
+  "tapeTitle": "Moonlight Meltdown",
+  "trial": 4,
+  "generatedAt": "2026-11-04T22:56:08.552861+00:00",
+  "tapeSha256": "912ff962e10744253ab626488e83862f172d51145f0ec844a3dfafd6af99f0b3",
+  "maxCompletionTokens": 6000,
+  "baseline": {
+    "delivered": 33,
+    "leaks": 2,
+    "dropped": 7,
+    "queued": 0,
+    "points": 58,
+    "charge": 3
+  },
+  "baselineHistory": [
+    {
+      "turn": 1,
+      "action": "auto",
+      "event": "Concert Begins!",
+      "delivered": 4,
+      "leaks": 0,
+      "dropped": 0,
+      "queued": 0,
+      "charge": 3,
+      "leakedPackets": [],
+      "expiredPackets": []
+    },
+    {
+      "turn": 2,
+      "action": "auto",
+      "event": "Singer's First Notes",
+      "delivered": 5,
+      "leaks": 0,
+      "dropped": 0,
+      "queued": 0,
+      "charge": 3,
+      "leakedPackets": [],
+      "expiredPackets": []
+    },
+    {
+      "turn": 3,
+      "action": "auto",
+      "event": "Pip Handles the Mic",
+      "delivered": 2,
+      "leaks": 0,
+      "dropped": 0,
+      "queued": 0,
+      "charge": 3,
+      "leakedPackets": [],
+      "expiredPackets": []
+    },
+    {
+      "turn": 4,
+      "action": "auto",
+      "event": "Boba Relays the Beat",
+      "delivered": 5,
+      "leaks": 0,
+      "dropped": 0,
+      "queued": 0,
+      "charge": 3,
+      "leakedPackets": [],
+      "expiredPackets": []
+    },
+    {
+      "turn": 5,
+      "action": "auto",
+      "event": "Chorus Time!",
+      "delivered": 5,
+      "leaks": 0,
+      "dropped": 0,
+      "queued": 0,
+      "charge": 3,
+      "leakedPackets": [],
+      "expiredPackets": []
+    },
+    {
+      "turn": 6,
+      "action": "auto",
+      "event": "Confetti Cannon Hits!",
+      "delivered": 0,
+      "leaks": 0,
+      "dropped": 0,
+      "queued": 0,
+      "charge": 3,
+      "leakedPackets": [],
+      "expiredPackets": []
+    },
+    {
+      "turn": 7,
+      "action": "auto",
+      "event": "Pip Offline!",
+      "delivered": 0,
+      "leaks": 0,
+      "dropped": 0,
+      "queued": 0,
+      "charge": 3,
+      "leakedPackets": [],
+      "expiredPackets": []
+    },
+    {
+      "turn": 8,
+      "action": "auto",
+      "event": "Boba Keeps Going",
+      "delivered": 2,
+      "leaks": 0,
+      "dropped": 0,
+      "queued": 0,
+      "charge": 3,
+      "leakedPackets": [],
+      "expiredPackets": []
+    },
+    {
+      "turn": 9,
+      "action": "auto",
+      "event": "Pip's Messages Pile Up",
+      "delivered": 4,
+      "leaks": 1,
+      "dropped": 0,
+      "queued": 2,
+      "charge": 3,
+      "leakedPackets": [
+        "9-private-1"
+      ],
+      "expiredPackets": []
+    },
+    {
+      "turn": 10,
+      "action": "auto",
+      "event": "Boba Drops Out!",
+      "delivered": 0,
+      "leaks": 0,
+      "dropped": 0,
+      "queued": 5,
+      "charge": 3,
+      "leakedPackets": [],
+      "expiredPackets": []
+    },
+    {
+      "turn": 11,
+      "action": "auto",
+      "event": "Emergency Charge!",
+      "delivered": 2,
+      "leaks": 0,
+      "dropped": 2,
+      "queued": 3,
+      "charge": 3,
+      "leakedPackets": [],
+      "expiredPackets": [
+        "10-voice-1",
+        "10-voice-2"
+      ]
+    },
+    {
+      "turn": 12,
+      "action": "auto",
+      "event": "Encore Time!",
+      "delivered": 4,
+      "leaks": 1,
+      "dropped": 5,
+      "queued": 0,
+      "charge": 3,
+      "leakedPackets": [
+        "11-private-1"
+      ],
+      "expiredPackets": [
+        "12-voice-2",
+        "12-voice-3",
+        "12-voice-4",
+        "12-bulk-1",
+        "12-bulk-2"
+      ]
+    }
+  ],
+  "oracle": {
+    "delivered": 39,
+    "leaks": 0,
+    "dropped": 1,
+    "queued": 0,
+    "points": 131
+  },
+  "runs": [
+    {
+      "role": "sentinel",
+      "label": "Lantern Keeper",
+      "phase": "scout",
+      "status": "complete",
+      "promptSha256": "1ea0961123f656058f4b400e6e5c06fa72e49b50c460e2bb8be4295e734ac628",
+      "model": "muse-spark-1.3",
+      "latencyMs": 36582,
+      "usage": {
+        "promptTokens": 772,
+        "outputTokens": 3381
+      },
+      "responseSha256": "9529006d2578e7f4dab7b2cc1658c3c9de6c2390b50d21cdf950ced1fb118aea",
+      "actions": [
+        "rescue",
+        "rescue",
+        "rescue",
+        "rescue",
+        "guard",
+        "rescue",
+        "rescue",
+        "rescue",
+        "boost",
+        "boost",
+        "boost",
+        "guard"
+      ],
+      "analysis": "Never use auto to guarantee zero leaks, use rescue early for voice and guard plus three boosts on turns 9-11 to preserve privates through Pip offline and zero-capacity turn 10.",
+      "score": {
+        "delivered": 38,
+        "leaks": 0,
+        "dropped": 2,
+        "queued": 0,
+        "points": 128,
+        "charge": 0
+      },
+      "history": [
+        {
+          "turn": 1,
+          "action": "rescue",
+          "event": "Concert Begins!",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 2,
+          "action": "rescue",
+          "event": "Singer's First Notes",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 3,
+          "action": "rescue",
+          "event": "Pip Handles the Mic",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 4,
+          "action": "rescue",
+          "event": "Boba Relays the Beat",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 5,
+          "action": "guard",
+          "event": "Chorus Time!",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 6,
+          "action": "rescue",
+          "event": "Confetti Cannon Hits!",
+          "delivered": 0,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 7,
+          "action": "rescue",
+          "event": "Pip Offline!",
+          "delivered": 0,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 8,
+          "action": "rescue",
+          "event": "Boba Keeps Going",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 9,
+          "action": "boost",
+          "event": "Pip's Messages Pile Up",
+          "delivered": 6,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 2,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 10,
+          "action": "boost",
+          "event": "Boba Drops Out!",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 1,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 11,
+          "action": "boost",
+          "event": "Emergency Charge!",
+          "delivered": 3,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 12,
+          "action": "guard",
+          "event": "Encore Time!",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 2,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": [
+            "12-bulk-1",
+            "12-bulk-2"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "radio",
+      "label": "Radio Runner",
+      "phase": "scout",
+      "status": "complete",
+      "promptSha256": "ab8a0512d51b0e04959480f9aadb529880ca2e702027ff7dd5312c612ab088e4",
+      "model": "muse-spark-1.3",
+      "latencyMs": 25422,
+      "usage": {
+        "promptTokens": 774,
+        "outputTokens": 2325
+      },
+      "responseSha256": "dac2fa734f9bc00e5fcc4d2387e06a886ee0af103a618f50d780b5ce5f2e0c59",
+      "actions": [
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "boost",
+        "boost",
+        "boost",
+        "guard"
+      ],
+      "analysis": "Guard prevents private leaks and boost adds Pip capacity during offline pile-up on turns 9-11.",
+      "score": {
+        "delivered": 38,
+        "leaks": 0,
+        "dropped": 2,
+        "queued": 0,
+        "points": 128,
+        "charge": 0
+      },
+      "history": [
+        {
+          "turn": 1,
+          "action": "guard",
+          "event": "Concert Begins!",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 2,
+          "action": "guard",
+          "event": "Singer's First Notes",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 3,
+          "action": "guard",
+          "event": "Pip Handles the Mic",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 4,
+          "action": "guard",
+          "event": "Boba Relays the Beat",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 5,
+          "action": "guard",
+          "event": "Chorus Time!",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 6,
+          "action": "guard",
+          "event": "Confetti Cannon Hits!",
+          "delivered": 0,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 7,
+          "action": "guard",
+          "event": "Pip Offline!",
+          "delivered": 0,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 8,
+          "action": "guard",
+          "event": "Boba Keeps Going",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 9,
+          "action": "boost",
+          "event": "Pip's Messages Pile Up",
+          "delivered": 6,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 2,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 10,
+          "action": "boost",
+          "event": "Boba Drops Out!",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 1,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 11,
+          "action": "boost",
+          "event": "Emergency Charge!",
+          "delivered": 3,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 12,
+          "action": "guard",
+          "event": "Encore Time!",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 2,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": [
+            "12-bulk-1",
+            "12-bulk-2"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "engineer",
+      "label": "Spark Mechanic",
+      "phase": "scout",
+      "status": "complete",
+      "promptSha256": "60269447efcac1d06eee4943d1edfdff5ed38cd4afe9c338d4b8c5afb9de9baa",
+      "model": "muse-spark-1.3",
+      "latencyMs": 29099,
+      "usage": {
+        "promptTokens": 772,
+        "outputTokens": 2631
+      },
+      "responseSha256": "432d670c8c67f3b5fa74366150158bb3734d42474c85638eb9219ce3303f841d",
+      "actions": [
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "boost",
+        "boost",
+        "boost"
+      ],
+      "analysis": "Guard prevents private leaks and boosts on 10-12 cover outages to save expiring voice and private.",
+      "score": {
+        "delivered": 39,
+        "leaks": 0,
+        "dropped": 1,
+        "queued": 0,
+        "points": 131,
+        "charge": 0
+      },
+      "history": [
+        {
+          "turn": 1,
+          "action": "guard",
+          "event": "Concert Begins!",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 2,
+          "action": "guard",
+          "event": "Singer's First Notes",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 3,
+          "action": "guard",
+          "event": "Pip Handles the Mic",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 4,
+          "action": "guard",
+          "event": "Boba Relays the Beat",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 5,
+          "action": "guard",
+          "event": "Chorus Time!",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 6,
+          "action": "guard",
+          "event": "Confetti Cannon Hits!",
+          "delivered": 0,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 7,
+          "action": "guard",
+          "event": "Pip Offline!",
+          "delivered": 0,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 8,
+          "action": "guard",
+          "event": "Boba Keeps Going",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 9,
+          "action": "guard",
+          "event": "Pip's Messages Pile Up",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 2,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 10,
+          "action": "boost",
+          "event": "Boba Drops Out!",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 3,
+          "charge": 2,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 11,
+          "action": "boost",
+          "event": "Emergency Charge!",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 1,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 12,
+          "action": "boost",
+          "event": "Encore Time!",
+          "delivered": 6,
+          "leaks": 0,
+          "dropped": 1,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": [
+            "12-bulk-2"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "quartermaster",
+      "label": "Dumpling Courier",
+      "phase": "scout",
+      "status": "complete",
+      "promptSha256": "1a4640b3dfa5752279ec61d5910cad280da02cff1e2a279436ee967fe09146dc",
+      "model": "muse-spark-1.3",
+      "latencyMs": 29208,
+      "usage": {
+        "promptTokens": 772,
+        "outputTokens": 2827
+      },
+      "responseSha256": "08414ae6275204f115e8fb6c4ebbb9e8f2d6c9ddb7fc7276edf50d6fdc8ce494",
+      "actions": [
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "boost",
+        "boost",
+        "boost",
+        "guard"
+      ],
+      "analysis": "Guard prevents private leaks and boosts on 9-11 clear offline backlog to minimize expiries.",
+      "score": {
+        "delivered": 38,
+        "leaks": 0,
+        "dropped": 2,
+        "queued": 0,
+        "points": 128,
+        "charge": 0
+      },
+      "history": [
+        {
+          "turn": 1,
+          "action": "guard",
+          "event": "Concert Begins!",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 2,
+          "action": "guard",
+          "event": "Singer's First Notes",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 3,
+          "action": "guard",
+          "event": "Pip Handles the Mic",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 4,
+          "action": "guard",
+          "event": "Boba Relays the Beat",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 5,
+          "action": "guard",
+          "event": "Chorus Time!",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 6,
+          "action": "guard",
+          "event": "Confetti Cannon Hits!",
+          "delivered": 0,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 7,
+          "action": "guard",
+          "event": "Pip Offline!",
+          "delivered": 0,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 8,
+          "action": "guard",
+          "event": "Boba Keeps Going",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 9,
+          "action": "boost",
+          "event": "Pip's Messages Pile Up",
+          "delivered": 6,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 2,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 10,
+          "action": "boost",
+          "event": "Boba Drops Out!",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 1,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 11,
+          "action": "boost",
+          "event": "Emergency Charge!",
+          "delivered": 3,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 12,
+          "action": "guard",
+          "event": "Encore Time!",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 2,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": [
+            "12-bulk-1",
+            "12-bulk-2"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "rewind",
+      "label": "Rewind Ranger",
+      "phase": "repair",
+      "status": "complete",
+      "promptSha256": "ff0abe94003821b42b3cd9c89d2e6aced7ffc7e533374bd1013310684f7c4642",
+      "model": "muse-spark-1.3",
+      "latencyMs": 16446,
+      "usage": {
+        "promptTokens": 1034,
+        "outputTokens": 1592
+      },
+      "responseSha256": "36e9b98d28f9b8a38d0c30b452bd39b6b177f97f4740a8fb8744bdfec21627fe",
+      "actions": [
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "boost",
+        "boost",
+        "boost"
+      ],
+      "analysis": "Boost adds Pip capacity to deliver four voice and two bulk with only one expiry.",
+      "score": {
+        "delivered": 39,
+        "leaks": 0,
+        "dropped": 1,
+        "queued": 0,
+        "points": 131,
+        "charge": 0
+      },
+      "history": [
+        {
+          "turn": 1,
+          "action": "guard",
+          "event": "Concert Begins!",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 2,
+          "action": "guard",
+          "event": "Singer's First Notes",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 3,
+          "action": "guard",
+          "event": "Pip Handles the Mic",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 4,
+          "action": "guard",
+          "event": "Boba Relays the Beat",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 5,
+          "action": "guard",
+          "event": "Chorus Time!",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 6,
+          "action": "guard",
+          "event": "Confetti Cannon Hits!",
+          "delivered": 0,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 7,
+          "action": "guard",
+          "event": "Pip Offline!",
+          "delivered": 0,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 8,
+          "action": "guard",
+          "event": "Boba Keeps Going",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 9,
+          "action": "guard",
+          "event": "Pip's Messages Pile Up",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 2,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 10,
+          "action": "boost",
+          "event": "Boba Drops Out!",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 3,
+          "charge": 2,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 11,
+          "action": "boost",
+          "event": "Emergency Charge!",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 1,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 12,
+          "action": "boost",
+          "event": "Encore Time!",
+          "delivered": 6,
+          "leaks": 0,
+          "dropped": 1,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": [
+            "12-bulk-2"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "crosscheck",
+      "label": "Crosscheck Fox",
+      "phase": "repair",
+      "status": "complete",
+      "promptSha256": "553554d3ae8fcd6eebe7e22bf9b6303e6eb8e87e6002e137ce6c2caa5f85e481",
+      "model": "muse-spark-1.3",
+      "latencyMs": 23509,
+      "usage": {
+        "promptTokens": 1032,
+        "outputTokens": 2093
+      },
+      "responseSha256": "1344ca088ac4eccc16987ee116c0099992163e1a867aaca84f5f8ff6c6405fb2",
+      "actions": [
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "boost",
+        "boost",
+        "boost"
+      ],
+      "analysis": "Boost gives 6 deliveries with zero leaks versus 4 otherwise, maximizing points despite one bulk expiry.",
+      "score": {
+        "delivered": 39,
+        "leaks": 0,
+        "dropped": 1,
+        "queued": 0,
+        "points": 131,
+        "charge": 0
+      },
+      "history": [
+        {
+          "turn": 1,
+          "action": "guard",
+          "event": "Concert Begins!",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 2,
+          "action": "guard",
+          "event": "Singer's First Notes",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 3,
+          "action": "guard",
+          "event": "Pip Handles the Mic",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 4,
+          "action": "guard",
+          "event": "Boba Relays the Beat",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 5,
+          "action": "guard",
+          "event": "Chorus Time!",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 6,
+          "action": "guard",
+          "event": "Confetti Cannon Hits!",
+          "delivered": 0,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 7,
+          "action": "guard",
+          "event": "Pip Offline!",
+          "delivered": 0,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 8,
+          "action": "guard",
+          "event": "Boba Keeps Going",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 9,
+          "action": "guard",
+          "event": "Pip's Messages Pile Up",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 2,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 10,
+          "action": "boost",
+          "event": "Boba Drops Out!",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 3,
+          "charge": 2,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 11,
+          "action": "boost",
+          "event": "Emergency Charge!",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 1,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 12,
+          "action": "boost",
+          "event": "Encore Time!",
+          "delivered": 6,
+          "leaks": 0,
+          "dropped": 1,
+          "queued": 0,
+          "charge": 0,
+          "leakedPackets": [],
+          "expiredPackets": [
+            "12-bulk-2"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "reroute",
+      "label": "Detour Cat",
+      "phase": "repair",
+      "status": "complete",
+      "promptSha256": "74986095dc67e55cae21b3370cd8443e82d39184955f1356b7f407fc8464a640",
+      "model": "muse-spark-1.3",
+      "latencyMs": 24201,
+      "usage": {
+        "promptTokens": 1035,
+        "outputTokens": 2165
+      },
+      "responseSha256": "39a5b939efba0154a7b31dd31d43a0cf22684f5efad17d7ebbea97988c20cad9",
+      "actions": [
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "guard",
+        "boost",
+        "boost",
+        "guard"
+      ],
+      "analysis": "Keep voice priority without extra slots to deliver all 4 voice and accept bulk expiry since boost capacity still leaves one expiry.",
+      "score": {
+        "delivered": 37,
+        "leaks": 0,
+        "dropped": 3,
+        "queued": 0,
+        "points": 125,
+        "charge": 1
+      },
+      "history": [
+        {
+          "turn": 1,
+          "action": "guard",
+          "event": "Concert Begins!",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 2,
+          "action": "guard",
+          "event": "Singer's First Notes",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 3,
+          "action": "guard",
+          "event": "Pip Handles the Mic",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 4,
+          "action": "guard",
+          "event": "Boba Relays the Beat",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 5,
+          "action": "guard",
+          "event": "Chorus Time!",
+          "delivered": 5,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 6,
+          "action": "guard",
+          "event": "Confetti Cannon Hits!",
+          "delivered": 0,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 7,
+          "action": "guard",
+          "event": "Pip Offline!",
+          "delivered": 0,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 8,
+          "action": "guard",
+          "event": "Boba Keeps Going",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 0,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 9,
+          "action": "guard",
+          "event": "Pip's Messages Pile Up",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 2,
+          "charge": 3,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 10,
+          "action": "boost",
+          "event": "Boba Drops Out!",
+          "delivered": 2,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 3,
+          "charge": 2,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 11,
+          "action": "boost",
+          "event": "Emergency Charge!",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 0,
+          "queued": 1,
+          "charge": 1,
+          "leakedPackets": [],
+          "expiredPackets": []
+        },
+        {
+          "turn": 12,
+          "action": "guard",
+          "event": "Encore Time!",
+          "delivered": 4,
+          "leaks": 0,
+          "dropped": 3,
+          "queued": 0,
+          "charge": 1,
+          "leakedPackets": [],
+          "expiredPackets": [
+            "10-bulk-1",
+            "12-bulk-1",
+            "12-bulk-2"
+          ]
+        }
+      ]
+    }
+  ],
+  "winnerIndex": 2,
+  "fork": {
+    "afterTurn": 11,
+    "parentIndex": 2,
+    "parentScore": {
+      "delivered": 39,
+      "leaks": 0,
+      "dropped": 1,
+      "queued": 0,
+      "points": 131,
+      "charge": 0
+    },
+    "failure": {
+      "turn": 12,
+      "action": "boost",
+      "event": "Encore Time!",
+      "delivered": 6,
+      "leaks": 0,
+      "dropped": 1,
+      "queued": 0,
+      "charge": 0,
+      "leakedPackets": [],
+      "expiredPackets": [
+        "12-bulk-2"
+      ]
+    },
+    "startState": {
+      "turnsPlayed": 11,
+      "queue": [
+        {
+          "id": "10-bulk-1",
+          "kind": "bulk",
+          "expiresAfterTurn": 13
+        }
+      ],
+      "delivered": 33,
+      "leaks": 0,
+      "dropped": 0,
+      "queued": 1,
+      "points": 115,
+      "charge": 1
+    },
+    "branches": [
+      {
+        "index": 4,
+        "label": "Rewind Ranger",
+        "score": {
+          "delivered": 39,
+          "leaks": 0,
+          "dropped": 1,
+          "queued": 0,
+          "points": 131,
+          "charge": 0
+        }
+      },
+      {
+        "index": 5,
+        "label": "Crosscheck Fox",
+        "score": {
+          "delivered": 39,
+          "leaks": 0,
+          "dropped": 1,
+          "queued": 0,
+          "points": 131,
+          "charge": 0
+        }
+      },
+      {
+        "index": 6,
+        "label": "Detour Cat",
+        "score": {
+          "delivered": 37,
+          "leaks": 0,
+          "dropped": 3,
+          "queued": 0,
+          "points": 125,
+          "charge": 1
+        }
+      }
+    ]
+  },
+  "calls": 7
+}

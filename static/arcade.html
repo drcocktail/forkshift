@@ -10,7 +10,7 @@
 </head><body><main class="wrap">
 <header><div class="brand"><span class="brand-mark" aria-hidden="true">↗</span>Forkshift <span style="color:var(--pink)">•</span> Rescue Arcade</div><a class="badge" id="branch-link" href="/redshift">Branch Garden ↗</a></header>
 <section class="hero"><h1>Watch Boba drop out mid-run.</h1><p>We ran Pip and Boba as separate local Ollama processes. Follow the agent as it switches to Boba, loses the backup, and brings Pip back.</p></section>
-<section class="toolbar" aria-label="Run controls"><div class="field"><label for="scenario">Incident</label><select id="scenario"></select></div><div class="field"><label for="recording">Saved replay</label><select id="recording"><option value="">Choose a recording…</option></select></div><div class="field"><label for="agent">Decision maker</label><select id="agent"><option value="llama">Llama agent</option><option value="policy">Tiny safe policy</option></select></div><div class="field"><label for="engine">Run source</label><select id="engine"><option value="fixture">Fixture workers</option><option value="ollama">Local Ollama inference</option></select></div><button id="run" class="primary">▶ Start rescue</button><button id="replay" class="ghost">↻ Play recording</button></section>
+<section class="toolbar" aria-label="Run controls"><div class="field"><label for="scenario">Incident</label><select id="scenario"></select></div><div class="field"><label for="recording">Saved replay</label><select id="recording"><option value="">Choose a recording…</option></select></div><div class="field"><label for="agent">Decision maker</label><select id="agent"><option value="llama">Llama agent</option><option value="muse">Muse Spark agent</option><option value="policy">Tiny safe policy</option></select></div><div class="field"><label for="engine">Run source</label><select id="engine"><option value="fixture">Fixture workers</option><option value="ollama">Local Ollama inference</option></select></div><button id="run" class="primary">▶ Start rescue</button><button id="replay" class="ghost">↻ Play recording</button></section>
 <div id="status" class="status" role="status" aria-live="polite">Loading the rescue station…</div>
 <section id="workspace" hidden>
 <div class="stage" id="stage" aria-label="Animated incident playback"><div class="stage-top"><div><h2 id="mission">Packet rescue</h2><p id="brief"></p></div><span class="live-dot" id="source">● RECORDING</span></div>
@@ -29,21 +29,24 @@ async function api(path,opts={}){const r=await fetch(path,{...opts,headers:{'Con
 function setStatus(s,cls=''){ $('status').className='status '+cls;$('status').textContent=s }
 function listRecords(){if(!OFFLINE_ARCADE)return {};const r=OFFLINE_ARCADE.records||{};return Array.isArray(r)?Object.fromEntries(r.map((x,i)=>[x.id||String(i),x])):r}
 function scenarioId(){return $('scenario').value}
-async function boot(){try{let catalog;if(OFFLINE_ARCADE?.catalog)catalog=OFFLINE_ARCADE.catalog;else catalog=await api('/api/arcade');$('scenario').innerHTML=(catalog.scenarios||[]).map(s=>`<option value="${esc(s.id)}">${esc(s.title)}</option>`).join('');$('recording').innerHTML='<option value="">Choose a recording…</option>'+(catalog.recordings||[]).map(r=>`<option value="${esc(typeof r==='string'?r:r.id)}">${esc(typeof r==='string'?r:r.label)}</option>`).join('');if(catalog.default_recording)$('recording').value=catalog.default_recording;
-if(OFFLINE_ARCADE){for(const id of ['scenario','agent','engine','run'])$(id).disabled=true;$('branch-link').href='Forkshift-Branch-Garden.html';}setStatus(OFFLINE_ARCADE?'Offline bundle ready · recorded evidence only':'Station ready · choose a recording or start a rescue');if(catalog.default_recording)await loadRecording(catalog.default_recording,false)}catch(e){setStatus(`Station offline: ${e.message}. If this page is embedded, set OFFLINE_ARCADE with catalog and records.`,'fallback')}}
+async function boot(){try{let catalog;if(OFFLINE_ARCADE?.catalog)catalog=OFFLINE_ARCADE.catalog;else catalog=await api('/api/arcade');$('scenario').innerHTML=(catalog.scenarios||[]).map(s=>`<option value="${esc(s.id)}">${esc(s.title)}</option>`).join('');$('recording').innerHTML='<option value="">Choose a recording…</option>'+(catalog.recordings||[]).map(r=>`<option value="${esc(typeof r==='string'?r:r.id)}">${esc(typeof r==='string'?r:r.label)}</option>`).join('');const requested=new URLSearchParams(location.search).get('recording');const selected=(catalog.recordings||[]).some(r=>r.id===requested)?requested:catalog.default_recording;if(selected)$('recording').value=selected;
+if(OFFLINE_ARCADE){for(const id of ['scenario','agent','engine','run'])$(id).disabled=true;$('branch-link').href='Forkshift-Branch-Garden.html';}setStatus(OFFLINE_ARCADE?'Offline bundle ready · recorded evidence only':'Station ready · choose a recording or start a rescue');if(selected)await loadRecording(selected,false)}catch(e){setStatus(`Station offline: ${e.message}. If this page is embedded, set OFFLINE_ARCADE with catalog and records.`,'fallback')}}
 async function loadRecording(id,announce=true){try{let r;if(OFFLINE_ARCADE){r=listRecords()[id];if(!r)throw Error('That recording is not bundled.')}else r=await api('/api/arcade/replay/'+encodeURIComponent(id));if(r.scenario?.id)$('scenario').value=r.scenario.id;
-render(r,`RECORDED · ${r.engine==='ollama'?'LOCAL INFERENCE':'FIXTURE'}`);if(announce)setStatus('Loaded recording · no new inference was run.');return true;}catch(e){setStatus(e.message,'fallback');return false;}}
+render(r,`RECORDED · ${r.agent==='muse'?'MUSE SPARK · ':''}${r.engine==='ollama'?'LOCAL INFERENCE':'FIXTURE'}`);if(announce)setStatus('Loaded recording · no new inference was run.');return true;}catch(e){setStatus(e.message,'fallback');return false;}}
 async function run(){
   if(!scenarioId())return setStatus('Choose an incident first.','fallback');
   const button=$('run'), agent=$('agent').value, engine=$('engine').value;
   button.disabled=true;
-  setStatus(engine==='ollama'||agent==='llama'
+  setStatus(agent==='muse'
+    ? 'Muse Spark is choosing the next move. The previous recording is still available.'
+    : engine==='ollama'||agent==='llama'
     ? 'Running on local Ollama. The last recording remains available while the episode runs.'
     : 'Starting the isolated fixture workers…');
   try{
     const r=await api('/api/arcade/run',{method:'POST',body:JSON.stringify({scenario:scenarioId(),agent,engine})});
     render(r,`FRESH · ${engine} workers · ${agent}`);
     setStatus(r.verdict==='ungraded'?'The environment could not complete this run. See its event ledger.':
+      agent==='muse'?'Fresh Muse Spark decisions with '+(engine==='ollama'?'local inference workers.':'deterministic fixture workers.'):
       engine==='ollama'?'Fresh run with local inference workers.':
       agent==='llama'?'Fresh local Llama decisions with deterministic fixture workers.':
       'Fresh deterministic fixture run.');

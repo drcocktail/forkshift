@@ -2,6 +2,7 @@
 import argparse
 import json
 import os
+import re
 import threading
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -65,13 +66,20 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header('Location', '/director/')
             self.send_header('Content-Length', '0')
             self.end_headers()
-        elif self.path == '/director/':
+        elif self.path.split('?', 1)[0] in ('/director/', '/director/index.html'):
             self.reply(200, (ROOT / 'director' / 'index.html').read_bytes(), 'text/html')
+        elif self.path == '/director/swarm.html':
+            self.reply(200, (ROOT / 'director' / 'swarm.html').read_bytes(), 'text/html')
+        elif self.path == '/director/swarm.css':
+            self.reply(200, (ROOT / 'director' / 'swarm.css').read_bytes(), 'text/css')
         elif self.path == '/assets/bricolage-latin.woff2':
             self.reply(200, (ROOT / 'assets' / 'bricolage-latin.woff2').read_bytes(), 'font/woff2')
         elif self.path == '/director/engine.mjs':
             self.reply(200, (ROOT / 'director' / 'engine.mjs').read_bytes(), 'text/javascript')
-        elif self.path in ('/director/level.json', '/director/moonlight.json', '/director/muse-ghost.json'):
+        elif (self.path in ('/director/level.json', '/director/moonlight.json', '/director/muse-ghost.json',
+                            '/director/swarm-evidence.json', '/director/swarm-moonlight.json',
+                            '/director/swarm-benchmark.json')
+              or re.fullmatch(r'/director/evidence/swarm/(?:night|moonlight)-[0-9]+\.json', self.path)):
             path = ROOT / self.path.removeprefix('/')
             if path.is_file():
                 self.reply(200, path.read_bytes())
